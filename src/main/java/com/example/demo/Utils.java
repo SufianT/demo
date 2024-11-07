@@ -3,7 +3,7 @@ package com.example.demo;
 public class Utils {
     private Utils() {}
 
-    public static boolean isEmpty(String... strings) {
+    public static boolean isEmpty(String... strings) { //variadic function
         for (String str : strings) {
             if (str == null || str.isEmpty()) return true;
         }

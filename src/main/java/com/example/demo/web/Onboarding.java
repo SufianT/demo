@@ -1,8 +1,9 @@
-package com.example.demo.model;
+package com.example.demo.web;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Utils;
+import com.example.demo.model.User;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class Onboarding {
 
 record BodyOfRegister(String email, String password) {
     boolean isValid() {
-        return !Utils.isEmpty(email) && !Utils.isEmpty(password);
+        return !Utils.isEmpty(email, password);
     }
 
 }
