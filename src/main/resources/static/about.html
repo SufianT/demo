@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/styleMain.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>BookHaven</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCO3cA8cOjlZHE1fWd1lyl7o+JblHGIOJL3qDcB/suHZJOV3Ao9r8Mn27Q4/2z"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhG81rvOyDOeJ6ZjWkOWRQQj6UJxzQ8igb96ywJoeMq6CU3k9El2g2FiEfpH"
+        crossorigin="anonymous"></script>
+    <title>About Us - BookHaven</title>
 </head>
 
 <body>
@@ -37,8 +43,9 @@
                             <li><a class="dropdown-item" href="#">Mystery</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="About.html">About us</a>
+                        <a class="nav-link active" style="font-weight: bold;" href="About.html">About us</a>
                     </li>
                 </ul>
                 <form class="d-flex mx-auto" style="width: 60%;">
@@ -56,7 +63,12 @@
                         </div>
                         <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
                             id="searchInput">
-                        <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
+                        <button class="btn btn-outline-light" type="submit" id="searchButton"> <svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg></i></button>
                     </div>
                 </form>
                 <ul class="navbar-nav ms-auto">
@@ -71,25 +83,36 @@
         </div>
     </nav>
 
-    <main>
-        <div class="jumbotron">
-            <div class="text">
-                <h1 class="display-5 font-italic">This Month's Favourite</h1>
-                <p class="lead my-3">"The Great Adventure" - A thrilling journey of discovery and courage. Don't miss
-                    out on this masterpiece!</p>
-                <a href="#">Lend Now</a>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">About Us</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/images/aboutimage.jpg" alt="Library Image" style="height: 390px; width: 450px" class="img-fluid rounded shadow">
             </div>
-            <img src="/images/bookcover.jpg" alt="The Great Adventure Book Cover">
+            <div class="col-md-6" style="margin-top: 50px;">
+                <p>
+                    Welcome to <strong>BookHaven</strong>, your ultimate destination for exploring, borrowing, and enjoying books of all genres. 
+                    Our mission is to connect readers with the stories and knowledge they seek, fostering a community of book enthusiasts.
+                </p>
+                <p>
+                    Founded by a passionate team of readers and developers, BookHaven is designed to make your library experience seamless 
+                    and engaging. Whether you're into thrilling mysteries, heartwarming romances, or insightful non-fiction, we've got something 
+                    for everyone.
+                </p>
+                <p>
+                    Feel free to explore our collections, search for your favourite authors, and immerse yourself in the world of literature. 
+                    We’re constantly updating our library to bring you the best reads.
+                </p>
+            </div>
         </div>
-    </main>
+    </div>
 
-    <footer>
+    <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 BookHaven. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
