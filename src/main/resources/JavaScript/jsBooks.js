@@ -1,48 +1,47 @@
-async function generateBookCards() {
-    try {
-        const response = await fetch('../JavaScript/booksDatabase.csv');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const cors = require('cors');
 
-        const data = await response.text();
-        console.log("File fetched successfully:", data);
+const app = express();
 
-        const rows = data.split('\n').slice(1); // Remove first row
-        const container = document.querySelector('#book-container');
+// 👇️ Configure CORS
+app.use(cors());
+// Create the Express app
+const port = 3000;
 
-        rows.forEach(row => {
-            // split CSV row
-            const columns = row.match(/(".*?"|[^",]+)(?=,|$)/g);
-            if (!columns) return; // Skip invalid rows
+// Middleware
+app.use(bodyParser.json());
 
-            const title = columns[0]?.replace(/"/g, '').trim();
-            const author = columns[1]?.replace(/"/g, '').trim();
-            const genre = columns[3]?.replace(/"/g, '').trim(); // Adjusted to fit actual CSV format
+// Serve static files (optional)
+app.use(express.static('public'));
 
-            // Create card HTML
-            const cardHTML = `
-                <div class="col">
-                    <div class="card" style="height: 400px; width: 100%;"> <!-- Inline style to control size -->
-                        <img src="../static/images/bookImg.png" class="card-img-top img-fluid" alt="Book Cover">
-                        <div class="card-body">
-                        <h5 class="card-title">${title}</h5>
-                            <p class="card-text">Author: ${author}<br>Genre: ${genre}</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary" onclick="showBookModal('${title}', 'Author: ${author}\\nGenre: ${genre}')">View Details</button>
-                        </div>
-                    </div>
-                </div>`;
-            container.innerHTML += cardHTML;
-        });
-    } catch (error) {
-        console.error("Failed to fetch the file:", error);
+// Endpoint to add a new book
+app.post('/books', (req, res) => {
+    const { title, author, isbn, genre} = req.body;
+
+    if (!title || !author || !isbn || !genre) {
+        return res.status(400).json({ error: 'Missing required fields' });
     }
-}
 
-function showBookModal(title, details) {
-    alert(`Book Details:\n\nTitle: ${title}\n${details}`);
-}
+    const newBook = { title, author, isbn, genre };
+    let books = [];
 
-generateBookCards();
+    try {
+        const data = fs.readFileSync('Books.json', 'utf8');
+        books = JSON.parse(data);
+    } catch {
+        console.log('Creating a new Books.json file.');
+    }
+
+    books.push(newBook);
+
+    fs.writeFileSync('Books.json', JSON.stringify(books, null, 2));
+    res.status(201).json({ message: 'Book added successfully', newBook });
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
+
