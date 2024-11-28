@@ -1,0 +1,122 @@
+[
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "isbn": "9780061120084",
+    "genre": "Fiction"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "9780451524935",
+    "genre": "Dystopian"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "9781503290563",
+    "genre": "Romance"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "genre": "Classic"
+  },
+  {
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "isbn": "9781503280786",
+    "genre": "Adventure"
+  },
+  {
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "isbn": "9781400079988",
+    "genre": "Historical Fiction"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "isbn": "9780316769488",
+    "genre": "Fiction"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9780547928227",
+    "genre": "Fantasy"
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "isbn": "9781451673319",
+    "genre": "Dystopian"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "isbn": "9780060850524",
+    "genre": "Science Fiction"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "isbn": "9780141439570",
+    "genre": "Philosophical Fiction"
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "isbn": "9780141441147",
+    "genre": "Gothic Fiction"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9780618640157",
+    "genre": "Fantasy"
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "isbn": "9780486415871",
+    "genre": "Psychological Fiction"
+  },
+  {
+    "title": "Catch-22",
+    "author": "Joseph Heller",
+    "isbn": "9781451626650",
+    "genre": "Satire"
+  },
+  {
+    "title": "The Odyssey",
+    "author": "Homer",
+    "isbn": "9780140268867",
+    "genre": "Epic Poetry"
+  },
+  {
+    "title": "The Chronicles of Narnia",
+    "author": "C.S. Lewis",
+    "isbn": "9780066238500",
+    "genre": "Fantasy"
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "isbn": "9780061122415",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "isbn": "9781594631931",
+    "genre": "Historical Fiction"
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "isbn": "9780439023528",
+    "genre": "Dystopian"
+  }
+]
