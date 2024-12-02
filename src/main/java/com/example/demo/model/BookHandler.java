@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class BookHandler {
-    private final Library library;
+     LibrarySystem librarySystem;
 
-    public BookHandler(Library library) {
-        this.library = library;
+    public BookHandler(LibrarySystem librarySystem) {
+        this.librarySystem=librarySystem;
     }
-
     public void loadBooksFromDatabase(String filePath) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -24,7 +23,7 @@ public class BookHandler {
             );
 
             for (Book book : books) {
-                library.addBook(book);
+                librarySystem.addBook(book);
             }
         } catch (IOException e) {
             e.printStackTrace();

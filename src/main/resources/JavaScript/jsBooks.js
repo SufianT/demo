@@ -1,3 +1,4 @@
+app.use(bodyParser.json());
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -11,7 +12,7 @@ app.use(cors());
 const port = 3000;
 
 // Middleware
-app.use(bodyParser.json());
+
 
 // Serve static files (optional)
 app.use(express.static('public'));
@@ -20,8 +21,10 @@ app.use(express.static('public'));
 app.post('/books', (req, res) => {
     const { title, author, isbn, genre} = req.body;
 
+
+
     if (!title || !author || !isbn || !genre) {
-        return res.status(400).json({ error: 'Missing required fields' });
+       return res.status(400).json({ error: 'Missing required fields' });
     }
 
     const newBook = { title, author, isbn, genre };
@@ -33,6 +36,7 @@ app.post('/books', (req, res) => {
     } catch {
         console.log('Creating a new Books.json file.');
     }
+    const duplicate = books.find(book => book.isbn === isbn);
 
     books.push(newBook);
 
