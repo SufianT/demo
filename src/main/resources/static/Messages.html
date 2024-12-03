@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/styleMain.css?v=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Chat | BookHaven</title>
+    <style>
+        .chat-list {
+            max-width: 300px;
+            margin-right: 20px;
+        }
+
+        .chat-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .chat-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .chat-list li:hover {
+            background-color: #f8f9fa;
+        }
+
+        .chat-container {
+            flex: 1;
+        }
+
+        .admin-layout {
+            display: flex;
+        }
+
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message.sent {
+            text-align: right;
+            color: #0056b3;
+        }
+
+        .message.received {
+            text-align: left;
+            color: #333;
+        }
+
+        .chat-input {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="loggedInUser.html" style="font-weight: 700;">
+                BookHaven
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: lightgray;">
+                            Genre
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                            <li><a class="dropdown-item" href="#">Romance</a></li>
+                            <li><a class="dropdown-item" href="#">Thriller</a></li>
+                            <li><a class="dropdown-item" href="#">SciFi</a></li>
+                            <li><a class="dropdown-item" href="#">Horror</a></li>
+                            <li><a class="dropdown-item" href="#">Mystery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgray;" href="about.html">About us</a>
+                    </li>
+                </ul>
+                <form class="d-flex mx-auto" style="width: 60%;">
+                    <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
+                        id="searchInput">
+                    <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
+            </div>
+            </form>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Notifications.html" style="color: lightgray;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Messages.html" style="color: lightgray;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="SavedBooks.html">Saved Books</a></li>
+                        <li><a class="dropdown-item" href="History.html">Borrowing History</a></li>
+                        <li><a class="dropdown-item" href="Fines.html">Fines Due</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <main id="mainContent">
+        <div class="chat-container">
+            <div class="chat-header">Chat</div>
+            <div class="chat-box">
+                <div class="message received">
+                    <strong>Admin:</strong> Hello! How can I assist you today?
+                </div>
+                <div class="message sent">
+                    You: Hi, I need help with renewing my borrowed book.
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" class="form-control" placeholder="Type a message...">
+                <button class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-5">
+        <p>&copy; 2024 BookHaven. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Example user role: Fetch from backend or localStorage
+        const userRole = 'admin'; // Change this to 'user' to test user layout
+
+        // Admin chat list (dummy data)
+        const chats = [
+            { name: 'User 1', lastMessage: 'Hello!', id: 1 },
+            { name: 'User 2', lastMessage: 'Can you help me?', id: 2 },
+            { name: 'User 3', lastMessage: 'Thanks!', id: 3 },
+        ];
+
+        // Dynamic rendering
+        function renderChatPage() {
+            const mainContent = document.getElementById('mainContent');
+
+            if (userRole === 'admin') {
+                mainContent.innerHTML = `
+                    <div class="admin-layout">
+                        <div class="chat-list">
+                            <ul id="chatList">
+                                ${chats.map(chat => `<li data-id="${chat.id}"><strong>${chat.name}</strong><br><small>${chat.lastMessage}</small></li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="chat-container">
+                            <div class="chat-header">Select a chat</div>
+                            <div class="chat-box" id="chatBox"></div>
+                            <div class="chat-input">
+                                <input type="text" class="form-control" placeholder="Type a message..." disabled>
+                                <button class="btn btn-primary" disabled>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                attachChatListEvents();
+            } else {
+                mainContent.innerHTML = `
+                    <div class="chat-container">
+                        <div class="chat-header">Chat with Admin</div>
+                        <div class="chat-box" id="chatBox">
+                            <div class="message received">
+                                <strong>Admin:</strong> Hello! How can I assist you today?
+                            </div>
+                            <div class="message sent">
+                                You: Hi, I need help with renewing my borrowed book.
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" class="form-control" placeholder="Type a message...">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                    `;
+            }
+        }
+
+        // Attach events to admin chat list
+        function attachChatListEvents() {
+            const chatList = document.getElementById('chatList');
+            const chatBox = document.getElementById('chatBox');
+
+            chatList.addEventListener('click', (e) => {
+                const chatId = e.target.closest('li')?.dataset.id;
+                const chat = chats.find(chat => chat.id == chatId);
+                if (chat) {
+                    chatBox.innerHTML = `
+                            <div class="message received">
+                                <strong>${chat.name}:</strong> ${chat.lastMessage}
+                            </div>
+                            <div class="message sent">
+                                You: Hello, how can I assist you?
+                            </div>
+                        `;
+                    document.querySelector('.chat-input input').disabled = false;
+                    document.querySelector('.chat-input button').disabled = false;
+                }
+            });
+        }
+
+        // Render the page
+        renderChatPage();
+    </script>
+</body>
+
+</html>

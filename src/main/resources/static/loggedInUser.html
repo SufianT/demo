@@ -3,23 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Required meta tags and links -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/styleMain.css?v=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
-    EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>BookHaven</title>
-    <style>
-        
-    </style>
-
 </head>
 
 <body>
-    <!-- Navbar remains unchanged -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html" style="font-weight: 700;">
+            <a class="navbar-brand" href="loggedInUser.html" style="font-weight: 700;">
                 BookHaven
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,9 +22,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- Genre Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false" style="color: lightgray;">
@@ -45,37 +37,55 @@
                             <li><a class="dropdown-item" href="#">Mystery</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link active" style="font-weight: bold;" href="about.html">About us</a>
+                        <a class="nav-link" style="color: lightgray;" href="about.html">About us</a>
                     </li>
                 </ul>
-                <!-- Search Bar -->
                 <form class="d-flex mx-auto" style="width: 60%;">
                     <div class="input-group w-100">
                         <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
                             id="searchInput">
-                        <button class="btn btn-outline-light" type="submit" id="searchButton">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 
-                                    3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 
-                                    0-.115-.1zM12 6.5a5.5 5.5 0 1 
-                                    1-11 0 5.5 5.5 0 0 1 11 0" />
-                            </svg>
-                        </button>
+                        <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
                     </div>
                 </form>
-                <!-- Login/Register Links -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="login.html">Login</a>
+                        <a class="nav-link" href="Notifications.html" style="color: lightgray;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="register.html">Register</a>
+                        <a class="nav-link" href="Messages.html" style="color: lightgray;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                            </svg>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="addBook.html">add book</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="SavedBooks.html">Saved Books</a></li>
+                            <li><a class="dropdown-item" href="History.html">Borrowing History</a></li>
+                            <li><a class="dropdown-item" href="Fines.html">Fines Due</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -91,7 +101,7 @@
                     out on this masterpiece!</p>
                 <a href="#" class="btn btn-primary">Lend Now</a>
             </div>
-            <img src="../static/images/bookcover.jpg" alt="The Great Adventure Book Cover">
+            <img src="/images/bookcover.jpg" alt="The Great Adventure Book Cover">
         </div>
 
         <!-- Book Cards Section -->
@@ -263,31 +273,13 @@
         </div>
     </main>
 
-<<<<<<< Updated upstream
-    <div id="book-container" class="row">
-        <div id="bookModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span> <!-- Close button -->
-                <h2 id="modalTitle"></h2>
-                <img id="modalImage" src="" alt="Book Image" class="modal-image" />
-                <p id="modalDetails"></p>
-                <button class="btn btn-outline-light" type="submit" id="barrowBtn">Barrow</button>
-                <button class="btn btn-outline-light" type="submit" id="closeBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="../JavaScript/GenerateBookCards.js"></script>
-=======
-    <!-- Footer remains unchanged -->
->>>>>>> Stashed changes
     <footer>
         <p>&copy; 2024 BookHaven. All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-
-    MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
