@@ -75,3 +75,73 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+.card {
+    width: 14rem;
+    /* Adjusted width for symmetry */
+    height: 24rem;
+    /* Adjusted height to fit content cleanly */
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    /* Smooth corners for cleaner look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+.card img {
+    width: 100%;
+    height: 12rem;
+    /* Resized image height for consistency */
+    object-fit: cover;
+    /* Ensures image doesn't stretch */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.card .btn {
+    flex: 1;
+    margin: 0 4px;
+    /* Adjust spacing between buttons */
+    font-size: 0.75rem;
+    /* Smaller buttons for proportional size */
+}
+
+.card .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.card .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.card .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.card .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
