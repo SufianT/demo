@@ -1,42 +1,42 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
+
 public class Book {
-    private String name;
-    private String[] author;
-    private boolean isBorrowed;
-    private Long ISBN;
+    private String title;
+    private ArrayList<String> author;
+    private String isbn;
     private Genre genre;
 
-    public Book(String name, String[] author, Long ISBN, Genre genre) {
-        this.name = name;
+    public Book() { //DONT REMOVE!
+
+    }
+
+    public Book(String title, ArrayList<String> author, String isbn, Genre genre) {
+        this.title = title;
         this.author = author;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.genre = genre;
-        this.isBorrowed = false;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public String[] getAuthor() {
+    public ArrayList<String> getAuthor() {
         return author;
     }
 
-    public Long getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
     public Genre getGenre() {
         return genre;
     }
 
-    public boolean getIsBorrowed() {
-        return isBorrowed;
-    }
-
-    public void setIsBorrowed(boolean isBorrowed) {
-        this.isBorrowed = isBorrowed;
+    public String toString() {
+        return String.format("{title:%s, author:%s, genre:%s}", title, author, genre.toString());
     }
 
     enum Genre {
