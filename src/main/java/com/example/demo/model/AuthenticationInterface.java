@@ -1,13 +1,14 @@
 package com.example.demo.model;
 
+import com.example.demo.model.exceptions.PersonExistException;
+
 public interface AuthenticationInterface {
+    public String login(Person person);
 
-    public default void registerAdmin(Admin admin){
+    public void logout(String uuid);
 
-    }
-    public default void registerUser(User user){
+    public void registerUser(User user) throws PersonExistException;
 
-    }
-    default void logIn(Person person){}
-    default void logOut(Person person){}
+    public void registerAdmin(Admin admin) throws PersonExistException;
+
 }

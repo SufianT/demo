@@ -15,8 +15,8 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html" style="font-weight: 700;">
-                BookHaven
+            <a class="navbar-brand" href="loggedInAdmin.html" style="font-weight: 700;">
+                BookHaven Admin
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -58,7 +58,7 @@
     <!-- Main Content -->
     <main>
         <div class="form-container">
-            <h2 class="text-center mb-4">Login</h2>
+            <h2 class="text-center mb-4">Admin Login</h2>
             <form class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -74,11 +74,18 @@
                         Please enter a password.
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="adminKey" class="form-label">Admin Key <span class="text-danger">*</span></label>
+                    <input type="adminKey" class="form-control" id="adminKey" placeholder="Admin Key provided by the Library" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid key.
+                    </div>
+                </div>
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">Login</button>
                 </div>
                 <div class="register-link">
-                    <small>Don't have an account? <a href="register.html">Register here</a>.</small>
+                    <small>Not an admin? <a href="login.html">Login as a user here</a>.</small>
                 </div>
             </form>
         </div>

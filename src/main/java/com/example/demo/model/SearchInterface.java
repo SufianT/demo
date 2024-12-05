@@ -2,17 +2,10 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 
-interface SearchInterface {
+public interface SearchInterface {
+    public ArrayList<Book> SearchByAuthor(String[] authors);
 
-      public default ArrayList<Book> SearchByAuthor(String author){
-          return null;
-      }
-      public default ArrayList<Book>  SearchBytitle(String title){
+    public ArrayList<Book> SearchBytitle(String title);
 
-          return null;
-      }
-     public default ArrayList<Book>  SearchByISBN(int ISBN){
-         return null;
-     }
-
+    public ArrayList<Book> SearchByISBN(int ISBN);
 }

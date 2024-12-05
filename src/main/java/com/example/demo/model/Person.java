@@ -1,26 +1,32 @@
 package com.example.demo.model;
 
-import java.net.PasswordAuthentication;
+public abstract class Person {
+    private String name;
+    private String email;
+    private String password;
+    private String id;
 
-public class Person {
-    String name;
-    String email;
-    String password;
-    long id;
-
+    // Constructor
     public Person(String name, String email, String id, String password) {
+        this.name = name;
+        this.email = email;
+        this.id = id;
+        this.password = password;
     }
 
-    public long getId(){
-        return id;
-    }
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public String getPassword(){
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
         return password;
     }
-    public String getEmail(){
-        return email;
+
+    public String getId() {
+        return id;
     }
 }
