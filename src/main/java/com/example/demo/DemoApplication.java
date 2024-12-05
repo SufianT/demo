@@ -17,12 +17,13 @@ public class DemoApplication {
 		BookHandler bookHandler = new BookHandler(librarySystem);
 
 		bookHandler.loadBooksFromDatabase("src/main/resources/JavaScript/Books.json");
+
 			// Print the books to verify
 			library.getBookList().forEach(book -> {
 				System.out.println("Title: " + book.getTitle() +
 						", ISBN: " + book.getISBN() +
 						", Authors: " + book.getAuthor() +
-						", Is Borrowed: " + book.getIsBarrowed());
+						", Is Borrowed: " + book.getIsBorrowed());
 			});
 
 	}

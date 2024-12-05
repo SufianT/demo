@@ -26,14 +26,14 @@
 }
 
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
 }
 
 .card-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #555;
     margin-bottom: 10px;
 }
@@ -41,6 +41,8 @@
 .card-footer {
     text-align: center;
     padding: 10px;
+    height:auto;
+
 }
 
 .card-footer button {
@@ -52,6 +54,7 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+
 }
 
 .card-footer button:hover {
@@ -63,35 +66,51 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .modal {
-    display: none; /* Hidden by default */
-    width: 400px;
-    height: 800px;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 /* Modal content */
 .modal-content {
     background-color: white;
-    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; /* Can adjust to your needs */
-    text-align: center;
+    width: 40%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal image */
 .modal-image {
     width: 200px;
     height: auto;
-    margin: 20px 0;
+    margin: 40px 0 ;
 }
 .modal button{
 background-color:black;
-
+margin-left:100px;
+width: 300px;
 }
 
-/* Close button */
+.modal-text {
+    max-width: 70%; /* Limit the text width */
+    font-size: 1.2rem;
+    margin-top: 60px;
+}
+
+
 .close {
     color: #aaa;
     font-size: 28px;

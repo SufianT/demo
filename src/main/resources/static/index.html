@@ -68,9 +68,7 @@
                     <li class="nav-item">
                         <a class="nav-link" style="color: lightgray;" href="register.html">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="addBook.html">add book</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -89,15 +87,16 @@
     </main>
 
     <div id="book-container" class="row">
-        <div id="bookModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span> <!-- Close button -->
-                <h2 id="modalTitle"></h2>
-                <img id="modalImage" src="" alt="Book Image" class="modal-image" />
-                <p id="modalDetails"></p>
-                <button class="btn btn-outline-light" type="submit" id="barrowBtn">Barrow</button>
-                <button class="btn btn-outline-light" type="submit" id="closeBtn">Close</button>
-            </div>
+
+    </div>
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span> <!-- Close button -->
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="Book Image" class="modal-image" />
+            <p id="modalDetails"></p>
+            <button class="btn btn-outline-light" type="submit" onclick="loggedOutBorrow()">Borrow</button>
+            <button class="btn btn-outline-light" type="submit" id="closeBtn">Close</button>
         </div>
     </div>
 
