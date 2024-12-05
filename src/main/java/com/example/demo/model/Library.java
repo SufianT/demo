@@ -3,10 +3,15 @@ package com.example.demo.model;
 import java.util.ArrayList;
 
 public class Library {
-    private SearchInterface search;
-    ArrayList<Book> books;
+    Book book;
+    ArrayList<Book> bookList= new ArrayList<>();
+   
+    public void addBook(Book book) {
+        bookList.add(book);
+    }
 
-    public Library() {
-        this.books = new ArrayList<>();
+    public ArrayList<Book> getBookList() {
+        return bookList;
     }
 }
+
