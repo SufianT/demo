@@ -6,15 +6,10 @@ import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.CacheControl;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.*;
 
 @RestController
@@ -31,7 +26,7 @@ public class BookController {
     @PostMapping("/addBook")
     public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body) {
         if (!body.isValid()) {
-            return Map.of("success", false, "message", "Pleas fill in all required fields");
+            return Map.of("success", false, "message", "Please fill in all the required fields");
         }
 
         // Handle multiple authors
@@ -54,14 +49,7 @@ public class BookController {
 
         // Add the book to JSON and the library system
         try {
-            bk.saveBookToFile(book,"src/main/resources/static/Database/Books.json");
-            //bara för att kolla att det funkar
-            ls.library.getBookList().forEach(b -> {
-                System.out.println("Title: " + b.getTitle() +
-                        ", ISBN: " + b.getISBN() +
-                        ", Authors: " + b.getAuthor() +
-                        ", Is Borrowed: " + b.getBorrowed());
-            });
+            bk.saveBookToFile(book,"src/main/resources/Database/Books.json");
             return Map.of("success", true, "message", "Book added successfully", "book", book);
         } catch (Exception e) {
             return Map.of("success", false, "message", "Failed to add book: " + e.getMessage());
@@ -70,7 +58,7 @@ public class BookController {
 
     @GetMapping("/books")
     public List<Book> getBooks() throws IOException {
-        File file = new File("src/main/resources/static/Database/Books.json");
+        File file = new File("src/main/resources/Database/Books.json");
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(file, new TypeReference<List<Book>>() {});
     }
@@ -87,12 +75,3 @@ record BodyOfAddBook(String title, String author1, String author2, String isbn, 
 
 
 
-/*
-    //bara för att kolla att det funkar
-            ls.library.getBookList().forEach(b -> {
-                System.out.println("Title: " + b.getTitle() +
-                        ", ISBN: " + b.getISBN() +
-                        ", Authors: " + b.getAuthor() +
-                        ", Is Borrowed: " + b.getBorrowed());
-            });
- */

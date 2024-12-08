@@ -3,7 +3,6 @@ package com.example.demo.web;
 import com.example.demo.model.Book;
 import com.example.demo.model.BookHandler;
 import com.example.demo.model.LibrarySystem;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
@@ -19,7 +17,7 @@ public class BorrowController {
     private final LibrarySystem ls;
     private final BookHandler bk;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String filePath = "src/main/resources/static/Database/Books.json";
+    private final String filePath = "src/main/resources/Database/Books.json";
 
     public BorrowController(LibrarySystem ls, BookHandler bk) {
         this.ls = ls;
