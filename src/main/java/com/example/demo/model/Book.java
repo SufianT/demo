@@ -1,51 +1,56 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
-
+import java.util.List;
 public class Book {
-    private String title;
-    private ArrayList<String> author;
-    private String isbn;
+
+    String title;
+    String isbn;
+    @JsonProperty("authors")
+    ArrayList<String> authors;
+    Boolean borrowed;
+    String image;
     private Genre genre;
+    String borrowedBy;
+    @JsonIgnore // Ignore the 'author' field if it still exists in old logic
+    private ArrayList<String> author;
 
-    public Book() { //DONT REMOVE!
-
+    public Book() {
+    }
+    public Book(String title, String isbn, ArrayList<String>authors, Boolean borrowed, String image, Genre genre, String borrowedBy) {
+        this.title=title;
+        this.isbn=isbn;
+        this.authors=authors;
+        this.borrowed=borrowed;
+        this.image=image;
+        this.genre=genre;
+        this.borrowedBy=borrowedBy;
     }
 
-    public Book(String title, ArrayList<String> author, String isbn, Genre genre) {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.genre = genre;
+    public boolean getBorrowed(){
+        return borrowed;
     }
-
-    public String getTitle() {
+    public String getTitle(){
         return title;
     }
-
-    public ArrayList<String> getAuthor() {
-        return author;
-    }
-
-    public String getIsbn() {
+    public String getISBN(){
         return isbn;
     }
-
-    public Genre getGenre() {
-        return genre;
+    public ArrayList<String> getAuthor(){
+        return authors;
     }
-
-    public String toString() {
-        return String.format("{title:%s, author:%s, genre:%s}", title, author, genre.toString());
+    public Genre getGenre(){return genre;}
+    public void setBorrowed(boolean value){
+        borrowed=value;
     }
-
-    enum Genre {
-        Fantasy,
-        Romance,
-        Thriller,
-        SCIFI,
-        Horror,
-        Mystery
+    public String getImage(){
+        return image;
     }
+    public  String getBorrowedBy(){return borrowedBy;}
+
 
 }

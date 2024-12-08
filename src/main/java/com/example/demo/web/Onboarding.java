@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.model.Book;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Utils;
@@ -51,7 +52,9 @@ public class Onboarding {
         return Map.of("success", true);
     }
 
+
 }
+
 
 record BodyOfRegister(String email, String password, String id, String name) {
     boolean isValid() {

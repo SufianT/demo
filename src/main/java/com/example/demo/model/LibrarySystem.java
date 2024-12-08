@@ -1,42 +1,36 @@
 package com.example.demo.model;
+import com.example.demo.model.exceptions.PersonExistException;
+import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.io.File;
 
-import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-@Service
+@Component
 public class LibrarySystem {
-    private AuthenticationInterface authenticator;
-    private static Library library;
+   AuthenticationInterface authenticator;
+    public Library library;
 
-    public LibrarySystem(Authenticator authenticator) {
-        this.authenticator = authenticator;
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            library = new Library(objectMapper.readValue(
-                    new File("./src/main/resources/Books.json"),
-                    new TypeReference<ArrayList<BookEntry>>() {
-                    }));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public LibrarySystem(Library library){
+        this.library=library;
     }
 
-    public static Library getLibrary() {
-        return library;
+    public void registerAdmin(Admin admin) throws PersonExistException {
+        authenticator.registerAdmin(admin);
+    }
+
+    public void registerUser(User user) throws PersonExistException {
+        authenticator.registerUser(user);
+    }
+
+    public void addBook(Book book){
+        library.books.add(book);
     }
 
     public AuthenticationInterface getAuth() {
-        return authenticator;
+        return this.authenticator;
     }
+    public ArrayList<Book> getBookList(){
+        return library.getBookList();
+    }
+
+
 }

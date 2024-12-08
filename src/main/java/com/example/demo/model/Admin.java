@@ -1,19 +1,11 @@
 package com.example.demo.model;
 
-public class Admin extends Person {
+import java.security.PublicKey;
 
-    LibrarySystem library;
+public class Admin extends Person{
+static Authenticator authenticator;
 
-    public Admin(String name, String email, String id, String password, LibrarySystem library) {
+    public Admin(String name, String email, String id, String password) {
         super(name, email, id, password);
-        this.library = library;
-    }
-
-    public void addBook(Book book) {
-        // TODO: add a book to the library
-    }
-
-    public void removeBook() {
-        // TODO: remove a book from the library
     }
 }
