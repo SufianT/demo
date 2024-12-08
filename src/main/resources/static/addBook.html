@@ -4,84 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/styleMain.css?v=1.0">
+    <link rel="stylesheet" href="style/styleAddBook.css?v=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Manage Book Inventory</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
 
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-            color: #2c3e50;
-        }
-
-        #addBookForm {
-            background-color: #fff;
-            width: 600px;
-            margin: 30px auto;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #addBookForm label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #34495e;
-        }
-
-        #addBookForm input, #addBookForm select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            background-color: #fafafa;
-        }
-
-        #addBookForm input:focus, #addBookForm select:focus {
-            border-color: #3498db;
-            outline: none;
-            background-color: #fff;
-        }
-
-        #addBookForm button {
-            background-color: blue;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        #addBookForm button:hover {
-            background-color: lightblue;
-        }
-
-        @media (max-width: 768px) {
-            #addBookForm {
-                padding: 15px;
-            }
-
-            #addBookForm button {
-                font-size: 0.9rem;
-                padding: 8px;
-            }
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -163,7 +90,7 @@
     </div>
 </nav>
 <h2>Add a Book</h2>
-<form id="addBookForm">
+<form id="addBookForm"  method="post" action="addBook" >
     <label for="title">Title:</label>
     <input type="text" id="title" name="title"><br><br>
     <label for="author">Author 1:</label>
@@ -171,7 +98,7 @@
     <label for="author2">Author 2:</label>
     <input type="text" id="author2" name="author"><br><br>
     <label for="isbn">ISBN:</label>
-    <input type="number" id="isbn" name="isbn" ><br><br>
+    <input type="number" maxlength="13" id="isbn" name="isbn" ><br><br>
     <label for="image">Image URL :</label>
     <input type="text" id="image" name="image"><br><br>
     <label for="genre">Genre:</label>
@@ -192,51 +119,42 @@
     </select><br><br>
     <button type="submit" id="addBook">Add Book</button>
 </form>
+<script src="JavaScript/GenerateBookCards.js"></script>
 
 <script>
-    const form = document.querySelector('#addBookForm');
+    document.getElementById('addBookForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-       form.addEventListener('submit', (e) => {
-           e.preventDefault(); // Prevent page refresh
+        const bookData = {
+            title: document.getElementById('title').value,
+            author1: document.getElementById('author').value,
+            author2: document.getElementById('author2').value,
+            isbn: document.getElementById('isbn').value,
+            imageURL: document.getElementById('image').value,
+            genre: document.getElementById('genre').value
+        };
 
-           // Collect form data
-           const title = document.getElementById('title').value;
-           const author = document.getElementById('author').value;
-           const author2 = document.getElementById('author2').value;
-           const isbn = document.getElementById('isbn').value;
-           const genre = document.getElementById('genre').value;
-           const image= document.getElementById('image').value;
-           const borrowed= false;
-
-           const authors = [author, author2].filter(a => a); // Create an array of authors, ignoring empty values
-           const newBook = { title, authors, isbn, genre, image, borrowed};
-
-           // Send data to the server via POST request
-           console.log('Intercepting request:', newBook);
-
-           fetch('http://localhost:3000/books', {
+        fetch('/addBook', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-               body: JSON.stringify(newBook), // Send the book data as JSON
-           })
-           .then(response => response.json())
-           .then(data => {
-               if (data.message) {
-                   alert(data.message); // Show success message
-               } else {
-                   alert('Error: ' + data.error);
-               }
-           })
-           .catch(err => {
-               alert('An error occurred: ' + err.message);
-           });
-       });
-
-
+            body: JSON.stringify(bookData)
+        })
+        .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Clear the form fields
+                    document.getElementById('addBookForm').reset();
+                    alert(result.message);
+                } else {
+                    alert(result.message);
+                }
+            })
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    });
 </script>
-<script src="../JavaScript/jsBooks.js"> </script>
 
 </body>
 </html>

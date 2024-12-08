@@ -1,30 +1,21 @@
 package com.example.demo;
 
-import com.example.demo.model.BookHandler;
 import com.example.demo.model.Library;
 import com.example.demo.model.LibrarySystem;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
 
 
 			// Initialize the library
-		Library library= new Library();
-		LibrarySystem librarySystem = new LibrarySystem(library);
-		BookHandler bookHandler = new BookHandler(librarySystem);
 
-		bookHandler.loadBooksFromDatabase("src/main/resources/JavaScript/Books.json");
-
-			// Print the books to verify
-			library.getBookList().forEach(book -> {
-				System.out.println("Title: " + book.getTitle() +
-						", ISBN: " + book.getISBN() +
-						", Authors: " + book.getAuthor() +
-						", Is Borrowed: " + book.getIsBorrowed());
-			});
 
 	}
 

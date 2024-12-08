@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-enum Genre {
+public enum Genre {
     Fantasy,
     Romance,
     Thriller,
@@ -11,6 +11,14 @@ enum Genre {
     Dystopian,
     Classic,
     Adventure,
-    Poetry
+    Poetry;
+    public static Genre fromString(String value) {
+        for (Genre genre : Genre.values()) {
+            if (genre.name().equalsIgnoreCase(value)) {
+                return genre;
+            }
+        }
+        throw new IllegalArgumentException("Invalid genre: " + value);
+    }
 
 }
