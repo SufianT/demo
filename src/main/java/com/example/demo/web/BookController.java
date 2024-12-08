@@ -49,7 +49,7 @@ public class BookController {
 
         // Add the book to JSON and the library system
         try {
-            bk.saveBookToFile(book,"src/main/resources/Database/Books.json");
+            bk.saveBookToFile(book,"src/main/resources/data/Books.json");
             return Map.of("success", true, "message", "Book added successfully", "book", book);
         } catch (Exception e) {
             return Map.of("success", false, "message", "Failed to add book: " + e.getMessage());
@@ -58,7 +58,7 @@ public class BookController {
 
     @GetMapping("/books")
     public List<Book> getBooks() throws IOException {
-        File file = new File("src/main/resources/Database/Books.json");
+        File file = new File("src/main/resources/data/Books.json");
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(file, new TypeReference<List<Book>>() {});
     }
