@@ -17,7 +17,7 @@ public class BorrowController {
     private final LibrarySystem ls;
     private final BookHandler bk;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String filePath = "src/main/resources/Database/Books.json";
+    private final String filePath = "src/main/resources/data/Books.json";
 
     public BorrowController(LibrarySystem ls, BookHandler bk) {
         this.ls = ls;
