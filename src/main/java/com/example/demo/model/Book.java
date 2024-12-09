@@ -40,11 +40,5 @@ public class Book {
         return image;
     }
 
-    public String toString(){
-        String boookString = name;
-        for (int i=0;i< author.length;i++){
-            boookString += " "+author[i];
-        }
-        return boookString.toLowerCase();
-    }
+
 }
