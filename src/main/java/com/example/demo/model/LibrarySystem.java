@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+/**
+ * Orchestrates the overall library functionality.
+ * Acts as a bridge between the authentication system, database, and library components.
+ */
+
 @Component
 public class LibrarySystem {
     AuthenticationInterface authenticator;
