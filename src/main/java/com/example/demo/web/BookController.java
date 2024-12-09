@@ -4,9 +4,10 @@ import com.example.demo.Utils;
 import com.example.demo.model.Book;
 import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.exceptions.IsbnAlreadyExistException;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -18,7 +19,7 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body) {
+    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body)throws IsbnAlreadyExistException{
         if (!body.isValid()) {
             return Map.of("success", false, "message", "Please fill in all the required fields");
         }
@@ -29,12 +30,24 @@ public class BookController {
             authors.add(body.author2());
         }
 
+        Optional<Book> existingBook = ls.getBookList().stream()
+        .filter(book -> book.getISBN().equals(body.isbn()))
+        .findFirst();
+
+        if (existingBook.isPresent()) {
+        return Map.of("success", false, "message", "A book with this ISBN already exists.");
+        }
+        
+
+     
+    
+
         // Create book object & save
         Book book = new Book(body.title(), body.isbn(), authors, body.imageURL(), body.genre());
         ls.addBook(book);
 
-        System.out.println("LOG: Added book!");
-        return Map.of("success", true);
+        return Map.of("success", true, "message", "Book added successfully", "book", book);
+
     }
 
     @GetMapping("/books")
