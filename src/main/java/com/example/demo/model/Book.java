@@ -40,5 +40,11 @@ public class Book {
         return image;
     }
 
-
+    public String toString(){
+        String bookString = title;
+        for (int i = 0; i<=authors.size()-1;i++){
+            title+=" "+authors.get(i);
+        }
+        return bookString;
+    }
 }
