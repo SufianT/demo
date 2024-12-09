@@ -144,7 +144,7 @@ The project integrates core OOP concepts, design patterns, and follows a modular
     - **Author**
     - **Genre**
     - **ISBN**
-    - **Publication Date**
+    - **Image**
 3. Submit the form to add the book to the library's inventory.
 4. The newly added book will be available for users to borrow.
 
