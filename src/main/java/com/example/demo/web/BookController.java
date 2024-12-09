@@ -1,26 +1,20 @@
 package com.example.demo.web;
+
 import com.example.demo.Utils;
 import com.example.demo.model.Book;
-import com.example.demo.model.BookHandler;
 import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 @RestController
 public class BookController {
     private final LibrarySystem ls;
-    private final BookHandler bk;
 
-    public BookController(LibrarySystem ls, BookHandler bk) {
+    public BookController(LibrarySystem ls) {
         this.ls = ls;
-        this.bk=bk;
-
     }
 
     @PostMapping("/addBook")
@@ -30,48 +24,27 @@ public class BookController {
         }
 
         // Handle multiple authors
-        ArrayList<String> authors = new ArrayList<>();
-        authors.add(body.author1());
-        if (body.author2() != null && !body.author2().isBlank()) {
+        List<String> authors = List.of(body.author1());
+        if (!Utils.isEmpty(body.author2())) {
             authors.add(body.author2());
         }
 
-        // Parse genre and validate
-        Genre genreEnum;
-        try {
-            genreEnum = Genre.fromString(body.genre());
-        } catch (IllegalArgumentException e) {
-            return Map.of("success", false, "message", "Invalid genre provided");
-        }
+        // Create book object & save
+        Book book = new Book(body.title(), body.isbn(), authors, body.imageURL(), body.genre());
+        ls.addBook(book);
 
-        // Create book object
-        Book book = new Book(body.title(), body.isbn(), authors, false, body.imageURL(), genreEnum, null);
-
-        // Add the book to JSON and the library system
-        try {
-            bk.saveBookToFile(book,"src/main/resources/data/Books.json");
-            return Map.of("success", true, "message", "Book added successfully", "book", book);
-        } catch (Exception e) {
-            return Map.of("success", false, "message", "Failed to add book: " + e.getMessage());
-        }
+        System.out.println("LOG: Added book!");
+        return Map.of("success", true);
     }
 
     @GetMapping("/books")
-    public List<Book> getBooks() throws IOException {
-        File file = new File("src/main/resources/data/Books.json");
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(file, new TypeReference<List<Book>>() {});
+    public List<Book> getBooks() {
+        return ls.getBookList();
     }
 
-
-
-}
-
-record BodyOfAddBook(String title, String author1, String author2, String isbn, String imageURL, String genre) {
-    boolean isValid() {
-        return !Utils.isEmpty(title, author1, isbn, imageURL, genre);
+    record BodyOfAddBook(String title, String author1, String author2, String isbn, String imageURL, Genre genre) {
+        boolean isValid() {
+            return !Utils.isEmpty(title, author1, isbn, imageURL) && genre != null;
+        }
     }
 }
-
-
-

@@ -1,4 +1,5 @@
 package com.example.demo.model;
+
 import com.example.demo.model.exceptions.PersonExistException;
 import org.springframework.stereotype.Component;
 
@@ -6,11 +7,10 @@ import java.util.ArrayList;
 
 @Component
 public class LibrarySystem {
-   AuthenticationInterface authenticator;
-    public Library library;
+    AuthenticationInterface authenticator;
 
-    public LibrarySystem(Library library){
-        this.library=library;
+    public LibrarySystem(AuthenticationInterface authenticator) {
+        this.authenticator = authenticator;
     }
 
     public void registerAdmin(Admin admin) throws PersonExistException {
@@ -21,16 +21,15 @@ public class LibrarySystem {
         authenticator.registerUser(user);
     }
 
-    public void addBook(Book book){
-        library.books.add(book);
+    public void addBook(Book book) {
+        Database.addBook(book);
     }
 
     public AuthenticationInterface getAuth() {
         return this.authenticator;
     }
-    public ArrayList<Book> getBookList(){
-        return library.getBookList();
+
+    public ArrayList<Book> getBookList() {
+        return Database.getBookList();
     }
-
-
 }

@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+import com.example.demo.model.exceptions.AccountNotFoundException;
+import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;
 
 public interface AuthenticationInterface {
-    public String login(Person person);
+    public String loginUser(User user) throws AccountNotFoundException, IncorrectPasswordException;
+
+    public String loginAdmin(Admin admin) throws AccountNotFoundException, IncorrectPasswordException;
 
     public void logout(String uuid);
 

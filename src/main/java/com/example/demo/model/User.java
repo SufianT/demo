@@ -2,18 +2,28 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 
-import com.example.demo.model.Records.BorrowedBook;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Person {
-    private ArrayList<BorrowedBook> borrowedBooks;
+    private ArrayList<Book> borrowedBooks;
 
-    public User(String name, String email, String password, String id) {
-        super(name, email, password, id);
-        borrowedBooks = new ArrayList<>();
+    // No-args constructor for Jackson
+    public User() {
+        super(null, null, null, null);
     }
 
-    public void borrowBook(Book book, LoanPeriod loanPeriod) { // LoanPeriod for startdate and enddate
-            borrowedBooks.add(LibrarySystem.getLibrary().borrow(book, loanPeriod));
+    public User(String name, String email, String id, String password) {
+        super(name, email, id, password);
+        this.borrowedBooks = new ArrayList<Book>();
+    }
+
+    public User(String email, String password) {
+        super("DefaultName", email, "DefaultID", password);
+    }
+
+    public void borrowBook(Book book) {
+        // TODO: borrow and add to borrowedbooks
     }
 
     public void returnBook(Book book) { // We have to null LoanPeriod...
@@ -22,7 +32,7 @@ public class User extends Person {
 
     }
 
-    public ArrayList<BorrowedBook> getBookList() {
+    public ArrayList<Book> getBookList() {
         return borrowedBooks;
     }
 

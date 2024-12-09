@@ -1,0 +1,16 @@
+[
+    {
+        "name": "John",
+        "email": "johndoe@gmail.com",
+        "password": "1234",
+        "id": "0001",
+        "adminKey": "4000"
+    },
+    {
+        "name": "Jane",
+        "email": "janedoe@gmail.com",
+        "password": "1234",
+        "id": "0002",
+        "adminKey": "4000"
+    }
+]
