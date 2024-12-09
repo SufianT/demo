@@ -1,11 +1,10 @@
 package com.example.demo.model;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public interface SearchInterface {
-    public ArrayList<Book> SearchByAuthor(String[] authors);
+    public ArrayList<Book> SearchByAuthorAndTitle(String search, ArrayList<Book> books);
 
-    public ArrayList<Book> SearchBytitle(String title);
-
-    public ArrayList<Book> SearchByISBN(int ISBN);
+    public ArrayList<Book> SearchByISBN(String search,ArrayList<Book> books);
 }
