@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SetOfBookstoString implements setOfBookstoStringInterface {
+public class SetOfBookstoString implements SetOfBookstoStringInterface {
 
 
     public Set<String> setOfBookstoString(ArrayList<Book> books) {
