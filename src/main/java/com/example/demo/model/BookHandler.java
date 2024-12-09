@@ -2,19 +2,22 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class BookHandler {
-    private final Library library;
+    private  final LibrarySystem ls;
 
-    public BookHandler(Library library) {
-        this.library = library;
+    public BookHandler(LibrarySystem ls) {
+        this.ls = ls;
     }
 
-    public void loadBooksFromDatabase(String filePath) {
+
+    public void loadBooksFromDatabase(LibrarySystem librarySystem,String filePath) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
@@ -24,11 +27,35 @@ public class BookHandler {
             );
 
             for (Book book : books) {
-                library.addBook(book);
+                librarySystem.addBook(book);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+    public void saveBookToFile(Book book, String filePath) throws IOException {
+        File file = new File(filePath);
+        ObjectMapper mapper = new ObjectMapper();
+        List<Book> books;
+        if (file.exists()) {
+            books = mapper.readValue(file, new TypeReference<>() {});
+        } else {
+            books = new ArrayList<>();
+        }
+        boolean isbnExists = books.stream().anyMatch(existingBook -> existingBook.getISBN().equals(book.getISBN()));
+        if (isbnExists) {
+            throw new IllegalArgumentException("A book with this ISBN already exists: " + book.getISBN());
+        }
+
+        // Add the new book
+        books.add(book);
+
+        // Write the updated list back to the file
+        mapper.writerWithDefaultPrettyPrinter().writeValue(file, books);
+
+        //add the new book to Booklist as a book object
+        loadBooksFromDatabase(ls,filePath);
 
     }
 }

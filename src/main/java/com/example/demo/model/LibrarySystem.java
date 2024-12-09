@@ -1,25 +1,36 @@
 package com.example.demo.model;
+import com.example.demo.model.exceptions.PersonExistException;
+import org.springframework.stereotype.Component;
 
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 
-@Service
+@Component
 public class LibrarySystem {
-    private AuthenticationInterface authenticator;
-    private Library library = new Library();
+   AuthenticationInterface authenticator;
+    public Library library;
 
-    public LibrarySystem(Authenticator authenticator) {
-        this.authenticator = authenticator;
+    public LibrarySystem(Library library){
+        this.library=library;
     }
 
-    public void addBook(Book book) {
+    public void registerAdmin(Admin admin) throws PersonExistException {
+        authenticator.registerAdmin(admin);
+    }
+
+    public void registerUser(User user) throws PersonExistException {
+        authenticator.registerUser(user);
+    }
+
+    public void addBook(Book book){
         library.books.add(book);
     }
 
-    public void removeBook(Book book) {
-        library.books.remove(book);
+    public AuthenticationInterface getAuth() {
+        return this.authenticator;
+    }
+    public ArrayList<Book> getBookList(){
+        return library.getBookList();
     }
 
-    public AuthenticationInterface getAuth() {
-        return authenticator;
-    }
+
 }
