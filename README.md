@@ -71,7 +71,7 @@ The project integrates core OOP concepts, design patterns, and follows a modular
 ### **Steps to Run the Project**
 1. **Clone the Repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/SufianT/demo.git
    cd library-management
 2. **Run DemoApplication.java:**
 3. **Start your local host on port 8080 to preview the website**
