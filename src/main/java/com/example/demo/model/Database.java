@@ -3,8 +3,6 @@ package com.example.demo.model;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -29,12 +27,18 @@ public class Database {
         saveBooks(items);
     }
 
+    public static List<LibraryItem> getLibraryItems() {
+        List<LibraryItem> items = loadItems();
+
+        return items;
+    }
+
     public static ArrayList<Book> getBookList() {
         List<LibraryItem> items = loadItems();
 
         ArrayList<Book> books = new ArrayList<Book>();
         for (LibraryItem item : items) {
-            books.add(item.book());
+            books.add(item.getBook());
         }
 
         return books;
@@ -122,6 +126,7 @@ public class Database {
         }
     }
 
-    private record LibraryItem(Book book, int copies) {
-    }
+    
+
+
 }

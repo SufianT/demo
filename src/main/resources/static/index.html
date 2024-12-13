@@ -87,18 +87,11 @@
     </main>
 
     <div id="book-container" class="row">
-
-    </div>
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span> <!-- Close button -->
-            <h2 id="modalTitle"></h2>
-            <img id="modalImage" src="" alt="Book Image" class="modal-image" />
-            <p id="modalDetails"></p>
-            <button class="btn btn-outline-light" type="submit" onclick="loggedOutBorrow()">Borrow</button>
-            <button class="btn btn-outline-light" type="submit" id="closeBtn">Close</button>
+        <div id="bookModal" class="modal">
+       
         </div>
     </div>
+   
 
     <div id="listBooks" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px; margin: 0 auto;">
 
@@ -114,7 +107,7 @@
 
     <script>
 
-        fetch("books").then((response) => response.json()).then((data) => {
+        <!-- fetch("books").then((response) => response.json()).then((data) => {
             data.forEach(element => {
                 console.log(element);
                 listBooks.innerHTML += `<div class="card" style="width: 18rem;">
@@ -126,8 +119,10 @@
                     </div>
                 </div>`;
             });
-        });
+        }); -->
     </script>
+
+    <script src="JavaScript/GenerateBook.js"></script>
 </body>
 
 </html>

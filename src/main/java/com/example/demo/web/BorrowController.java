@@ -1,7 +1,12 @@
 package com.example.demo.web;
 
+import com.example.demo.model.Book;
 import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.LoanSystem.BorrowedBook;
+import com.example.demo.model.exceptions.PersonExistException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,62 +21,23 @@ public class BorrowController {
         this.ls = ls;
     }
 
-    /* @PostMapping("/borrow")
-    public Map<String, Object> borrowBook(@RequestBody Map<String, String> requestBody) {
-        String isbn = requestBody.get("isbn");
+    // @PostMapping("/borrow")
+    // public Map<String, Object> onborrowBook(@RequestBody BodyOfBorrowBook requestBody) {
+    //    try {
+           
+            
+    //         return Map.of("success", true);
+    //     } catch () { 
+    //         return Map.of("success", false, "message", "person already exists");
+    //     }
+    // }
 
-        try {
-            // Load existing books
-            ls.getBookList().clear();
-            bk.loadBooksFromDatabase(ls,filePath);
 
+    // @PostMapping("/return")
+    // public Map<String, Object> returnbook(@RequestBody Map<String, String> requestBody) {
+    
+    // } 
 
-            // Find the book by ISBN
-            for (Book book : ls.getBookList()) {
-                if (book.getISBN().equals(isbn)) {
-                    if (book.getBorrowed()) {
-                        return Map.of("success", false, "message", "Book is already borrowed.");
-                    }
-                    // Change the borrowed status
-                    book.setBorrowed(true);
-                    // Update JSON file
-                    new ObjectMapper().writerWithDefaultPrettyPrinter().writeValue(new File(filePath), ls.getBookList());
-                    return Map.of("success", true, "message", "Book borrowed successfully.");
-                }
-            }
-            return Map.of("success", false, "message", "Book not found.");
-        } catch (IOException e) {
-            return Map.of("success", false, "message", "Error occurred: " + e.getMessage());
-        }
+    public record BodyOfBorrowBook(String isbn, String startDate, String id) {
     }
-
-
-    @PostMapping("/return")
-    public Map<String, Object> returnbook(@RequestBody Map<String, String> requestBody) {
-        String isbn = requestBody.get("isbn");
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-            // Load existing books
-            ls.getBookList().clear();
-            bk.loadBooksFromDatabase(ls,filePath);
-
-            // Find the book by ISBN
-            for (Book book : ls.getBookList()) {
-                if (book.getISBN().equals(isbn)) {
-                    if (!book.getBorrowed()) {
-                        return Map.of("success", false, "message", "Can not return a book that is not borrowed.");
-                    }
-                    // Change the borrowed status
-                    book.setBorrowed(false);
-                    // Update JSON file
-                    mapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePath), ls.getBookList());
-                    return Map.of("success", true, "message", "Book returned successfully.");
-                }
-            }
-            return Map.of("success", false, "message", "Book not found.");
-        } catch (IOException e) {
-            return Map.of("success", false, "message", "Error occurred: " + e.getMessage());
-        }
-    } */
 }

@@ -1,242 +1,235 @@
-[
-  {
-    "book": {
-      "title": "To Kill a Mockingbird",
-      "authors": [
-        "Harper Lee"
-      ],
-      "isbn": "9780061120084",
-      "genre": "SCIFI",
-      "image": "http://localhost:8080/images/bookcover.jpg"
-    },
-    "copies": 54
+[ {
+  "book" : {
+    "title" : "To Kill a Mockingbird",
+    "authors" : [ "Harper Lee" ],
+    "isbn" : "9780061120084",
+    "genre" : "SCIFI",
+    "image" : "http://localhost:8080/images/bookcover.jpg"
   },
-  {
-    "book": {
-      "title": "1984",
-      "authors": [
-        "George Orwell"
-      ],
-      "isbn": "9780451524935",
-      "genre": "Thriller",
-      "image": null
-    },
-    "copies": 12
+  "copies" : 54
+}, {
+  "book" : {
+    "title" : "1984",
+    "authors" : [ "George Orwell" ],
+    "isbn" : "9780451524935",
+    "genre" : "Thriller",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Pride and Prejudice",
-      "authors": [
-        "Jane Austen"
-      ],
-      "isbn": "9781503290563",
-      "genre": "Romance",
-      "image": null
-    },
-    "copies": 20
+  "copies" : 12
+}, {
+  "book" : {
+    "title" : "Pride and Prejudice",
+    "authors" : [ "Jane Austen" ],
+    "isbn" : "9781503290563",
+    "genre" : "Romance",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Great Gatsby",
-      "authors": [
-        "F. Scott Fitzgerald"
-      ],
-      "isbn": "9780743273565",
-      "genre": "Mystery",
-      "image": null
-    },
-    "copies": 30
+  "copies" : 20
+}, {
+  "book" : {
+    "title" : "The Great Gatsby",
+    "authors" : [ "F. Scott Fitzgerald" ],
+    "isbn" : "9780743273565",
+    "genre" : "Mystery",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Moby-Dick",
-      "authors": [
-        "Herman Melville"
-      ],
-      "isbn": "9781503280786",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 15
+  "copies" : 30
+}, {
+  "book" : {
+    "title" : "Moby-Dick",
+    "authors" : [ "Herman Melville" ],
+    "isbn" : "9781503280786",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "War and Peace",
-      "authors": [
-        "Leo Tolstoy"
-      ],
-      "isbn": "9781400079988",
-      "genre": "SCIFI",
-      "image": null
-    },
-    "copies": 10
+  "copies" : 15
+}, {
+  "book" : {
+    "title" : "War and Peace",
+    "authors" : [ "Leo Tolstoy" ],
+    "isbn" : "9781400079988",
+    "genre" : "SCIFI",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Catcher in the Rye",
-      "authors": [
-        "J.D. Salinger"
-      ],
-      "isbn": "9780316769488",
-      "genre": "Thriller",
-      "image": null
-    },
-    "copies": 18
+  "copies" : 10
+}, {
+  "book" : {
+    "title" : "The Catcher in the Rye",
+    "authors" : [ "J.D. Salinger" ],
+    "isbn" : "9780316769488",
+    "genre" : "Thriller",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Hobbit",
-      "authors": [
-        "J.R.R. Tolkien"
-      ],
-      "isbn": "9780547928227",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 25
+  "copies" : 18
+}, {
+  "book" : {
+    "title" : "The Hobbit",
+    "authors" : [ "J.R.R. Tolkien" ],
+    "isbn" : "9780547928227",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Fahrenheit 451",
-      "authors": [
-        "Ray Bradbury"
-      ],
-      "isbn": "9781451673319",
-      "genre": "SCIFI",
-      "image": null
-    },
-    "copies": 8
+  "copies" : 25
+}, {
+  "book" : {
+    "title" : "Fahrenheit 451",
+    "authors" : [ "Ray Bradbury" ],
+    "isbn" : "9781451673319",
+    "genre" : "SCIFI",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Brave New World",
-      "authors": [
-        "Aldous Huxley"
-      ],
-      "isbn": "9780060850524",
-      "genre": "SCIFI",
-      "image": null
-    },
-    "copies": 14
+  "copies" : 8
+}, {
+  "book" : {
+    "title" : "Brave New World",
+    "authors" : [ "Aldous Huxley" ],
+    "isbn" : "9780060850524",
+    "genre" : "SCIFI",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Picture of Dorian Gray",
-      "authors": [
-        "Oscar Wilde"
-      ],
-      "isbn": "9780141439570",
-      "genre": "Mystery",
-      "image": null
-    },
-    "copies": 11
+  "copies" : 14
+}, {
+  "book" : {
+    "title" : "The Picture of Dorian Gray",
+    "authors" : [ "Oscar Wilde" ],
+    "isbn" : "9780141439570",
+    "genre" : "Mystery",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Jane Eyre",
-      "authors": [
-        "Charlotte Brontë"
-      ],
-      "isbn": "9780141441147",
-      "genre": "Romance",
-      "image": null
-    },
-    "copies": 16
+  "copies" : 11
+}, {
+  "book" : {
+    "title" : "Jane Eyre",
+    "authors" : [ "Charlotte Brontë" ],
+    "isbn" : "9780141441147",
+    "genre" : "Romance",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Lord of the Rings",
-      "authors": [
-        "J.R.R. Tolkien"
-      ],
-      "isbn": "9780618640157",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 22
+  "copies" : 16
+}, {
+  "book" : {
+    "title" : "The Lord of the Rings",
+    "authors" : [ "J.R.R. Tolkien" ],
+    "isbn" : "9780618640157",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Crime and Punishment",
-      "authors": [
-        "Fyodor Dostoevsky"
-      ],
-      "isbn": "9780486415871",
-      "genre": "Mystery",
-      "image": null
-    },
-    "copies": 13
+  "copies" : 22
+}, {
+  "book" : {
+    "title" : "Crime and Punishment",
+    "authors" : [ "Fyodor Dostoevsky" ],
+    "isbn" : "9780486415871",
+    "genre" : "Mystery",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "Catch-22",
-      "authors": [
-        "Joseph Heller"
-      ],
-      "isbn": "9781451626650",
-      "genre": "Thriller",
-      "image": null
-    },
-    "copies": 9
+  "copies" : 13
+}, {
+  "book" : {
+    "title" : "Catch-22",
+    "authors" : [ "Joseph Heller" ],
+    "isbn" : "9781451626650",
+    "genre" : "Thriller",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Odyssey",
-      "authors": [
-        "Homer"
-      ],
-      "isbn": "9780140268867",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 17
+  "copies" : 9
+}, {
+  "book" : {
+    "title" : "The Odyssey",
+    "authors" : [ "Homer" ],
+    "isbn" : "9780140268867",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Chronicles of Narnia",
-      "authors": [
-        "C.S. Lewis"
-      ],
-      "isbn": "9780066238500",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 21
+  "copies" : 17
+}, {
+  "book" : {
+    "title" : "The Chronicles of Narnia",
+    "authors" : [ "C.S. Lewis" ],
+    "isbn" : "9780066238500",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Alchemist",
-      "authors": [
-        "Paulo Coelho"
-      ],
-      "isbn": "9780061122415",
-      "genre": "Fantasy",
-      "image": null
-    },
-    "copies": 24
+  "copies" : 21
+}, {
+  "book" : {
+    "title" : "The Alchemist",
+    "authors" : [ "Paulo Coelho" ],
+    "isbn" : "9780061122415",
+    "genre" : "Fantasy",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Kite Runner",
-      "authors": [
-        "Khaled Hosseini"
-      ],
-      "isbn": "9781594631931",
-      "genre": "Mystery",
-      "image": null
-    },
-    "copies": 19
+  "copies" : 24
+}, {
+  "book" : {
+    "title" : "The Kite Runner",
+    "authors" : [ "Khaled Hosseini" ],
+    "isbn" : "9781594631931",
+    "genre" : "Mystery",
+    "image" : null
   },
-  {
-    "book": {
-      "title": "The Hunger Games",
-      "authors": [
-        "Suzanne Collins"
-      ],
-      "isbn": "9780439023528",
-      "genre": "Thriller",
-      "image": null
-    },
-    "copies": 27
-  }
-]
+  "copies" : 19
+}, {
+  "book" : {
+    "title" : "The Hunger Games",
+    "authors" : [ "Suzanne Collins" ],
+    "isbn" : "9780439023528",
+    "genre" : "Thriller",
+    "image" : null
+  },
+  "copies" : 27
+}, {
+  "book" : {
+    "title" : "suuuuuu kkkkkiiii",
+    "authors" : [ "hgaiudhw" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "oabcabciubecb"
+  },
+  "copies" : 1
+}, {
+  "book" : {
+    "title" : "asd",
+    "authors" : [ "sdfsd" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "hyfjhjyfuy"
+  },
+  "copies" : 1
+}, {
+  "book" : {
+    "title" : "sasd",
+    "authors" : [ "asd" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "asda"
+  },
+  "copies" : 1
+}, {
+  "book" : {
+    "title" : "asdasd",
+    "authors" : [ "sadasd" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "hyfjhjyfuy"
+  },
+  "copies" : 1
+}, {
+  "book" : {
+    "title" : "fsdfsf",
+    "authors" : [ "sdfgs" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "asdasf"
+  },
+  "copies" : 1
+}, {
+  "book" : {
+    "title" : "dsfsf",
+    "authors" : [ "asfaf" ],
+    "isbn" : "19893786482",
+    "genre" : "Fantasy",
+    "image" : "affaf"
+  },
+  "copies" : 1
+} ]
