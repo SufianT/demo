@@ -8,17 +8,17 @@ import com.fasterxml.jackson.annotation.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Person {
     @JsonIgnore
-    private ArrayList<Book> borrowedBooks;
+    private ArrayList<Book> borrowHistory;
 
     // No-args constructor for Jackson
     public User() {
         super(null, null, null, null);
-        this.borrowedBooks = new ArrayList<Book>();
+        this.borrowHistory = new ArrayList<Book>();
     }
 
     public User(String name, String email, String id, String password) {
         super(name, email, id, password);
-        this.borrowedBooks = new ArrayList<Book>();
+        this.borrowHistory = new ArrayList<Book>();
     }
 
     public User(String email, String password) {
@@ -26,7 +26,7 @@ public class User extends Person {
     }
 
     public ArrayList<Book> getBookList() {
-        return borrowedBooks;
+        return borrowHistory;
     }
 
 }

@@ -2,7 +2,10 @@ package com.example.demo.model;
 
 import java.time.LocalDate;
 
-public class LoanPeriod { //This is the loanperiod for a user and a book
+/**
+ * This is the loanperiod for a user and a book
+ */
+public class LoanPeriod {
     private LocalDate startDate; //startdate of book loan
     private LocalDate endDate; //endDate of book loan
 

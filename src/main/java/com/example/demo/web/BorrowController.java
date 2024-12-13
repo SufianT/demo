@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.model.Book;
 import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.LoanSystem;
 import com.example.demo.model.LoanSystem.BorrowedBook;
 import com.example.demo.model.exceptions.PersonExistException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,14 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BorrowController {
-    private final LibrarySystem ls;
+    private final LoanSystem ls;
 
-    public BorrowController(LibrarySystem ls) {
+
+    public BorrowController(LoanSystem ls) {
         this.ls = ls;
     }
 
     // @PostMapping("/borrow")
     // public Map<String, Object> onborrowBook(@RequestBody BodyOfBorrowBook requestBody) {
+    //     ls.borrow(requestBody.isbn, null, null);
     //    try {
            
             
@@ -38,6 +41,6 @@ public class BorrowController {
     
     // } 
 
-    public record BodyOfBorrowBook(String isbn, String startDate, String id) {
+    public record BodyOfBorrowBook(String isbn, String token) {
     }
 }

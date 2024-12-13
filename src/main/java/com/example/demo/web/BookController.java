@@ -19,7 +19,7 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body)throws IsbnAlreadyExistException{
+    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body) throws IsbnAlreadyExistException{
         if (!body.isValid()) {
             return Map.of("success", false, "message", "Please fill in all the required fields");
         }

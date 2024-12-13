@@ -88,11 +88,12 @@ function showBookModal(title, isbn, imageUrl, details, borrowed) {
 
 }
 async function borrowBook(isbn) {
+    const userId = localStorage.getItem("userId"); // Retrieve user ID from storage
     try {
         const response = await fetch('/borrow', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ isbn }),
+            body: JSON.stringify({ isbn, userId }),
         });
 
         const result = await response.json();
@@ -103,7 +104,6 @@ async function borrowBook(isbn) {
             borrowButton.onclick = function () {
                 returnBook(isbn);
             };
-            // Optionally refresh the book cards to reflect the updated state
         } else {
             alert(result.message);
         }
