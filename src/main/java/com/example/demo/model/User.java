@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 
+import com.example.demo.model.LoanSystem.BorrowedBook;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,16 +23,6 @@ public class User extends Person {
 
     public User(String email, String password) {
         super("DefaultName", email, "DefaultID", password);
-    }
-
-    public void borrowBook(Book book) {
-        // TODO: borrow and add to borrowedbooks
-    }
-
-    public void returnBook(Book book) { // We have to null LoanPeriod...
-        // TODO return book to library
-        borrowedBooks.remove(book);
-
     }
 
     public ArrayList<Book> getBookList() {

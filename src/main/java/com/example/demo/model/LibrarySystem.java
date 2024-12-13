@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Orchestrates the overall library functionality.
- * Acts as a bridge between the authentication system, database, and library components.
+ * Acts as a bridge between the authentication system, database, and library
+ * components.
  */
 
 @Component
@@ -37,4 +38,14 @@ public class LibrarySystem {
     public ArrayList<Book> getBookList() {
         return Database.getBookList();
     }
+
+    public boolean isAvailable(Book book) {
+        for (LibraryItem libraryItem : Database.getLibraryItems()) {
+            if (libraryItem.book.equals(book) && libraryItem.getCopies() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

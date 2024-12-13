@@ -20,6 +20,10 @@ public class LoanPeriod { //This is the loanperiod for a user and a book
         return startDate;
     }
 
+    public String toString(LocalDate localDate){
+        return localDate.toString();
+    }
+
     public void extendLoan(int extraDays) { //If User wishes to extend loan and there is no reservation Admin should be able to do so
         endDate = endDate.plusDays(extraDays);
     }
