@@ -1,7 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.model.Book;
-import com.example.demo.model.SearchInterface;
+import com.example.demo.model.searchengine.SearchInterface;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;

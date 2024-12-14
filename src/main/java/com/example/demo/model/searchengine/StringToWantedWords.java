@@ -1,9 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.model.searchengine;
+
+import com.example.demo.model.searchengine.StringToWantedWordsInterface;
 
 import java.util.HashMap;
 import java.util.Set;
 
-public class StringToWantedWords implements StringToWantedWordsInterface{
+public class StringToWantedWords implements StringToWantedWordsInterface {
     public static HashMap<String, Integer> resultFromSearch = new HashMap<>();
 
     StringToWantedWords(String string, Set<String> list){

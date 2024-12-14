@@ -1,7 +1,8 @@
-package com.example.demo.model;
+package com.example.demo.model.searchengine;
+
+import com.example.demo.model.Book;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SearchEngine implements SearchInterface {
 

@@ -1,4 +1,7 @@
-package com.example.demo.model;
+package com.example.demo.model.searchengine;
+import com.example.demo.model.Book;
+import com.example.demo.model.searchengine.SetOfBookstoStringInterface;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
