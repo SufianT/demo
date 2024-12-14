@@ -11,20 +11,21 @@ import com.example.demo.model.exceptions.PersonExistException;
 
 @Service
 public class Authenticator implements AuthenticationInterface {
-    HashMap<String, Person> tokens = new HashMap<>();
+    HashMap<String, String> tokens = new HashMap<>();
 
     @Override
     public String loginUser(User user) throws AccountNotFoundException, IncorrectPasswordException {
-        User matchedUser = Database.findUser(user.getEmail(), user.getPassword());
+        User matchedUser = Database.findUser(user.getEmail());
         if (matchedUser == null) {
-            if (Database.findUser(user.getEmail(), null) != null) {
-                throw new IncorrectPasswordException(); // Email exists, wrong password
-            }
             throw new AccountNotFoundException();
         }
 
+        if (!matchedUser.getPassword().equals(user.getPassword())) {
+            throw new IncorrectPasswordException();
+        }
+
         UUID uuid = UUID.randomUUID();
-        tokens.put(uuid.toString(), matchedUser);
+        tokens.put(uuid.toString(), matchedUser.getEmail());
         return uuid.toString();
     }
 
@@ -40,7 +41,7 @@ public class Authenticator implements AuthenticationInterface {
         }
 
         UUID uuid = UUID.randomUUID();
-        tokens.put(uuid.toString(), matchedAdmin);
+        tokens.put(uuid.toString(), matchedAdmin.getEmail());
         return uuid.toString();
     }
 
@@ -51,7 +52,7 @@ public class Authenticator implements AuthenticationInterface {
 
     @Override
     public void registerUser(User user) throws PersonExistException {
-        if (Database.findUser(user.getEmail(), null) != null) {
+        if (Database.findUser(user.getEmail()) != null) {
             throw new PersonExistException(); // User already exists
         }
         Database.addUser(user);
@@ -63,7 +64,7 @@ public class Authenticator implements AuthenticationInterface {
     }
 
     public Person exchange(String uuid) {
-        return tokens.get(uuid);
+        return Database.findUser(tokens.get(uuid));
     }
 
 }

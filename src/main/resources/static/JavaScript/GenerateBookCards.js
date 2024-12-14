@@ -45,6 +45,8 @@ function showBookModal(title, isbn, imageUrl, details) {
     document.getElementById('modalImage').src = imageUrl;
     document.getElementById('modalDetails').innerText = details;
 
+    window.selectedBook = isbn;
+
 
     // Show the modal
     const modal = document.getElementById('bookModal');

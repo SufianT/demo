@@ -2,7 +2,10 @@ package com.example.demo.model;
 
 import java.time.LocalDate;
 
-public class LoanPeriod { //This is the loanperiod for a user and a book
+/**
+ * This is the loanperiod for a user and a book
+ */
+public class LoanPeriod {
     private LocalDate startDate; //startdate of book loan
     private LocalDate endDate; //endDate of book loan
 
@@ -20,6 +23,10 @@ public class LoanPeriod { //This is the loanperiod for a user and a book
         return startDate;
     }
 
+    public String toString(LocalDate localDate){
+        return localDate.toString();
+    }
+
     public void extendLoan(int extraDays) { //If User wishes to extend loan and there is no reservation Admin should be able to do so
         endDate = endDate.plusDays(extraDays);
     }
@@ -31,6 +38,7 @@ public class LoanPeriod { //This is the loanperiod for a user and a book
     public int getOverDueDays(LocalDate currentDate) { //return how many overdue days
         if (!isOverDue(currentDate))
             return 0;
+        
         return DateCalculator.calculateDaysBetween(endDate, currentDate);
     }
 

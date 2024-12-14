@@ -3,8 +3,6 @@ package com.example.demo.model;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -26,7 +24,13 @@ public class Database {
     public static void addBook(Book book) {
         List<LibraryItem> items = loadItems();
         items.add(new LibraryItem(book, 1));
-        saveBooks(items);
+        saveItems(items);
+    }
+
+    public static List<LibraryItem> getLibraryItems() {
+        List<LibraryItem> items = loadItems();
+
+        return items;
     }
 
     public static ArrayList<Book> getBookList() {
@@ -34,26 +38,24 @@ public class Database {
 
         ArrayList<Book> books = new ArrayList<Book>();
         for (LibraryItem item : items) {
-            books.add(item.book());
+            books.add(item.getBook());
         }
 
         return books;
     }
 
     // User Methods
-    public static User findUser(String email, String password) {
-        ArrayList<User> users = loadFromFile(usersFile, new TypeReference<List<User>>() {
+    public static User findUser(String email) {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
         });
         for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                return user;
-            }
+            if (user.getEmail().equals(email)) return user;
         }
         return null;
     }
 
     public static boolean addUser(User user) {
-        ArrayList<User> users = loadFromFile(usersFile, new TypeReference<List<User>>() {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
         });
         for (User u : users) {
             if (u.getEmail().equals(user.getEmail())) {
@@ -65,9 +67,22 @@ public class Database {
         return true;
     }
 
+    public static void updateUser(User user) {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {});
+        for (int i = 0; i < users.size(); i++) {
+            // find user
+            if (users.get(i).getEmail().equals(user.getEmail())) {
+                users.set(i, user);
+                saveToFile(usersFile, users);
+                return;
+            }
+        }
+        System.out.println("updateUser() -> user not found");
+    }
+
     // Admin Methods
     public static Admin findAdmin(String email, String password, String adminKey) {
-        ArrayList<Admin> admins = loadFromFile(adminsFile, new TypeReference<List<Admin>>() {
+        List<Admin> admins = loadFromFile(adminsFile, new TypeReference<ArrayList<Admin>>() {
         });
         for (Admin admin : admins) {
             if (admin.getEmail().equals(email) && admin.getPassword().equals(password)
@@ -93,7 +108,20 @@ public class Database {
         }
     }
 
-    private static void saveBooks(List<LibraryItem> items) {
+    public static void updateItem(LibraryItem item) {
+        ArrayList<LibraryItem> items = loadFromFile(itemsFile, new TypeReference<ArrayList<LibraryItem>>() {});
+        for (int i = 0; i < items.size(); i++) {
+            // find item
+            if (items.get(i).book.equals(item.book)) {
+                items.set(i, item);
+                saveToFile(itemsFile, items);
+                return;
+            }
+        }
+        System.out.println("updateItem() -> item not found");
+    }
+
+    private static void saveItems(List<LibraryItem> items) {
         try {
             new ObjectMapper().writerWithDefaultPrettyPrinter().writeValue(new File(itemsFile), items);
         } catch (Exception e) {
@@ -101,7 +129,7 @@ public class Database {
         }
     }
 
-    private static <T> ArrayList<T> loadFromFile(String filePath, TypeReference<List<T>> typeReference) {
+    private static <T> ArrayList<T> loadFromFile(String filePath, TypeReference<ArrayList<T>> typeReference) {
         try {
             File file = new File(filePath);
             if (file.exists()) {
@@ -113,7 +141,7 @@ public class Database {
         return new ArrayList<>();
     }
 
-    private static <T> void saveToFile(String filePath, ArrayList<T> data) {
+    private static <T> void saveToFile(String filePath, List<T> data) {
         try {
             new ObjectMapper().writeValue(new File(filePath), data);
         } catch (IOException e) {
@@ -122,6 +150,7 @@ public class Database {
         }
     }
 
-    private record LibraryItem(Book book, int copies) {
-    }
+    
+
+
 }

@@ -1,41 +1,44 @@
 package com.example.demo.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.*;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Person {
-    @JsonIgnore
-    private ArrayList<Book> borrowedBooks;
+    private List<LoanLog> logs;
+    private List<String> loans;
+    private List<String> saved;
 
     // No-args constructor for Jackson
     public User() {
         super(null, null, null, null);
-        this.borrowedBooks = new ArrayList<Book>();
     }
 
     public User(String name, String email, String id, String password) {
         super(name, email, id, password);
-        this.borrowedBooks = new ArrayList<Book>();
+        this.logs = new ArrayList<LoanLog>();
     }
 
     public User(String email, String password) {
         super("DefaultName", email, "DefaultID", password);
     }
 
-    public void borrowBook(Book book) {
-        // TODO: borrow and add to borrowedbooks
+    public List<LoanLog> getLogs() {
+        return logs;
     }
 
-    public void returnBook(Book book) { // We have to null LoanPeriod...
-        // TODO return book to library
-        borrowedBooks.remove(book);
-
+    public List<String> getLoans() {
+        return loans;
     }
 
-    public ArrayList<Book> getBookList() {
-        return borrowedBooks;
+    public List<String> getSaved() {
+        return saved;
     }
 
+    public enum LoanLogAction {
+        borrowed,
+        returned,
+    }
+
+    public record LoanLog(LoanLogAction action, LocalDate time, String isbn) {}
 }
