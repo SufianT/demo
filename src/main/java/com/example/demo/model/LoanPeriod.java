@@ -38,6 +38,7 @@ public class LoanPeriod {
     public int getOverDueDays(LocalDate currentDate) { //return how many overdue days
         if (!isOverDue(currentDate))
             return 0;
+        
         return DateCalculator.calculateDaysBetween(endDate, currentDate);
     }
 

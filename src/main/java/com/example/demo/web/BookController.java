@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.Utils;
 import com.example.demo.model.Book;
+import com.example.demo.model.Database;
 import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
 import com.example.demo.model.exceptions.IsbnAlreadyExistException;
@@ -52,7 +53,13 @@ public class BookController {
 
     @GetMapping("/books")
     public List<Book> getBooks() {
-        return ls.getBookList();
+        List<Book> books = new ArrayList<>();
+
+        for (var item : Database.getLibraryItems()) {
+            if (item.copies > 0) books.add(item.book);
+        }
+
+        return books;
     }
 
     record BodyOfAddBook(String title, String author1, String author2, String isbn, String imageURL, Genre genre) {

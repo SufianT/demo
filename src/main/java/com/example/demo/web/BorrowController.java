@@ -1,46 +1,97 @@
 package com.example.demo.web;
 
-import com.example.demo.model.Book;
-import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.Authenticator;
+import com.example.demo.model.Database;
 import com.example.demo.model.LoanSystem;
-import com.example.demo.model.LoanSystem.BorrowedBook;
-import com.example.demo.model.exceptions.PersonExistException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.demo.model.Person;
+import com.example.demo.model.User;
+import com.example.demo.model.exceptions.BookNotAvailableException;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BorrowController {
     private final LoanSystem ls;
+    private final Authenticator auth;
 
-
-    public BorrowController(LoanSystem ls) {
+    public BorrowController(LoanSystem ls, Authenticator auth) {
         this.ls = ls;
+        this.auth = auth;
     }
 
-    // @PostMapping("/borrow")
-    // public Map<String, Object> onborrowBook(@RequestBody BodyOfBorrowBook requestBody) {
-    //     ls.borrow(requestBody.isbn, null, null);
-    //    try {
-           
-            
-    //         return Map.of("success", true);
-    //     } catch () { 
-    //         return Map.of("success", false, "message", "person already exists");
-    //     }
-    // }
+    @GetMapping("/history")
+    public List<User.LoanLog> onGetHistory(@RequestParam String token) {
+        Person p = auth.exchange(token);
 
+        if (p instanceof User u) {
+            return u.getLogs();
+        }
 
-    // @PostMapping("/return")
-    // public Map<String, Object> returnbook(@RequestBody Map<String, String> requestBody) {
-    
-    // } 
-
-    public record BodyOfBorrowBook(String isbn, String token) {
+        return List.of();
     }
+
+    @GetMapping("/saved")
+    public List<String> onGetSaved(@RequestParam String token) {
+        Person p = auth.exchange(token);
+
+        if (p instanceof User u) {
+            return u.getSaved();
+        }
+
+        return List.of();
+    }
+
+    @GetMapping("/favorite")
+    public Map<String, Object> onMakeFavorite(@RequestParam String token, @RequestParam String isbn) {
+        Person p = auth.exchange(token);
+
+        if (p instanceof User u) {
+            var saved = u.getSaved();
+            saved.add(isbn);
+            Database.updateUser(u);
+
+            return Map.of("success", true);
+        }
+        return Map.of("success", false, "message", "idk");
+    }
+
+    @PostMapping("/borrow")
+    public Map<String, Object> onborrowBook(@RequestBody BodyOfBorrowOrReturnBook body) {
+        Person p = auth.exchange(body.token);
+
+        if (p instanceof User u) {
+            try {
+                ls.borrow(u, body.isbn());
+                return Map.of("success", true);
+            } catch (BookNotAvailableException e) {
+                System.out.println(e);
+                return Map.of("success", false, "message", "book not available");
+            }
+        }
+
+        // figure out the error
+        return Map.of("success", false, "message", "");
+    }
+
+    @PostMapping("/return")
+    public Map<String, Object> onReturnBook(@RequestBody BodyOfBorrowOrReturnBook body) {
+        Person p = auth.exchange(body.token);
+
+        if (p instanceof User u) {
+            ls.returnBook(u, body.isbn());
+            return Map.of("success", true);
+        }
+
+        // figure out the error
+        return Map.of("success", false, "message", "person not a user");
+    }
+
+    private record BodyOfBorrowOrReturnBook(String token, String isbn) {}
 }

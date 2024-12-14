@@ -4,20 +4,37 @@
         "email": "sufiantariqorignal@gmail.com",
         "password": "1234",
         "id": "1234567890",
-        "bookList": []
+        "logs": [
+            {
+                "action": "borrowed",
+                "time": null,
+                "isbn": "9780061120084"
+            }
+        ],
+        "loans": [
+            "9780061120084"
+        ],
+        "saved": [
+            "9780061120084",
+            "9780451524935"
+        ]
     },
     {
         "name": "Sukaina",
         "email": "nordiccabpartners@gmail.com",
         "password": "1234",
         "id": "0303219356",
-        "bookList": []
+        "logs": [],
+        "loans": [],
+        "saved": []
     },
     {
         "name": "Sufian",
         "email": "sufiantariq@gmail.com",
         "password": "1234",
         "id": "1234567890",
-        "bookList": []
+        "logs": [],
+        "loans": [],
+        "saved": []
     }
 ]

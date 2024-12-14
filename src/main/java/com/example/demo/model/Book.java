@@ -47,4 +47,13 @@ public class Book {
         }
         return bookString;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Book b) {
+            return this.isbn.equals(b.getISBN());
+        }
+
+        return false;
+    }
 }
