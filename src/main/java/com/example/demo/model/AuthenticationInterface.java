@@ -9,8 +9,6 @@ public interface AuthenticationInterface {
 
     public String loginAdmin(Admin admin) throws AccountNotFoundException, IncorrectPasswordException;
 
-    public void logout(String uuid);
-
     public void registerUser(User user) throws PersonExistException;
 
     public void registerAdmin(Admin admin) throws PersonExistException;
