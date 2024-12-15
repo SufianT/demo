@@ -90,21 +90,6 @@ public class Onboarding {
         }
     }
 
-    @PostMapping("/logout")
-    public Map<String, Object> onPostLogout(@RequestBody Map<String, String> body) {
-        String token = body.get("token");
-        if (token == null || token.isEmpty()) {
-            return Map.of("success", false, "message", "Token is missing.");
-        }
-
-        try {
-            ls.getAuth().logout(token);
-            return Map.of("success", true, "message", "Logged out successfully.");
-        } catch (RuntimeException e) {
-            return Map.of("success", false, "message", "Logout failed: " + e.getMessage());
-        }
-    }
-
     record BodyOfLogin(String email, String password) {
         public boolean isValid() {
             return !Utils.isEmpty(email, password);
