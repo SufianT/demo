@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.exceptions.BookNotAvailableException;
@@ -22,7 +24,7 @@ public class LoanSystem {
                     user.getLoans().add(isbn);
                     Database.updateItem(item);
                     // pass in time to the LoanLog
-                    user.getLogs().add(new User.LoanLog(User.LoanLogAction.borrowed, null, isbn));
+                    user.getLogs().add(new User.LoanLog(User.LoanLogAction.borrowed, LocalDate.now().toString(), isbn));
                     Database.updateUser(user);
                     return;
                 } else {
