@@ -1,34 +1,33 @@
 package com.example.demo.model.searchengine;
 
-import com.example.demo.model.searchengine.StringToWantedWordsInterface;
-
 import java.util.HashMap;
 import java.util.Set;
 
 public class StringToWantedWords implements StringToWantedWordsInterface {
     public static HashMap<String, Integer> resultFromSearch = new HashMap<>();
 
-    StringToWantedWords(String string, Set<String> list){
-
+    StringToWantedWords(String string, Set<String> list) {
 
     }
 
-    public HashMap<String, Integer> searchComplete(String string, Set<String> list, int searchAcceptanceLevel){
+    public HashMap<String, Integer> searchComplete(String string, Set<String> list, int searchAcceptanceLevel) {
 
-        HashMap<String,Integer> resultFromSearch = new HashMap<>();
+        HashMap<String, Integer> resultFromSearch = new HashMap<>();
         resultFromSearch.clear();
         String[] words = string.split("\\s+");
-        for (String wordSearched : words){
+        for (String wordSearched : words) {
             for (String word : list) {
-                int distance = getDistance(wordSearched,word);
-                if (distance <= searchAcceptanceLevel){
-                    resultFromSearch.putIfAbsent(word,searchAcceptanceLevel-distance);
-                    //TODO: This will not get the optimal correct word if it finds a longer path before the shorter.
-                    //TODO: Max(something something)
+                int distance = getDistance(wordSearched, word);
+                if (distance <= searchAcceptanceLevel) {
+                    resultFromSearch.putIfAbsent(word, searchAcceptanceLevel - distance);
+                    // TODO: This will not get the optimal correct word if it finds a longer path
+                    // before the shorter.
+                    // TODO: Max(something something)
 
-                    //resultFromSearch will give the word and the difference between the
-                    //acceptanceLevel and the distance. Meaning that the higher the number the better.
-                    //(This will be handy later).
+                    // resultFromSearch will give the word and the difference between the
+                    // acceptanceLevel and the distance. Meaning that the higher the number the
+                    // better.
+                    // (This will be handy later).
                 }
             }
         }
@@ -36,13 +35,15 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
         return resultFromSearch;
 
     }
-    public static int getDistance(String word1, String word2)
-    {   /*
-            This code should return the shortest distance between two words using
-            substitution, addition or deletion. If you want to understand it better
-            please watch the video bellow:
-            https://www.youtube.com/watch?v=d-Eq6x1yssU
-        */
+
+    public static int getDistance(String word1, String word2) { /*
+                                                                 * This code should return the shortest distance between
+                                                                 * two words using
+                                                                 * substitution, addition or deletion. If you want to
+                                                                 * understand it better
+                                                                 * please watch the video bellow:
+                                                                 * https://www.youtube.com/watch?v=d-Eq6x1yssU
+                                                                 */
         int lengthWord1 = word1.length();
         int lengthWord2 = word2.length();
 

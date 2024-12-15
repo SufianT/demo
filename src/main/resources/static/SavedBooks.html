@@ -27,31 +27,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="color: lightgray;">
-                            Genre
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
-                            <li><a class="dropdown-item" href="#">Romance</a></li>
-                            <li><a class="dropdown-item" href="#">Thriller</a></li>
-                            <li><a class="dropdown-item" href="#">SciFi</a></li>
-                            <li><a class="dropdown-item" href="#">Horror</a></li>
-                            <li><a class="dropdown-item" href="#">Mystery</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="about.html">About us</a>
+                        <a class="nav-link" style="color: lightgray;" href="aboutUser.html">About us</a>
                     </li>
                 </ul>
-                <form class="d-flex mx-auto" style="width: 60%;">
-                    <div class="input-group w-100">
-                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
-                            id="searchInput">
-                        <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
-                    </div>
-                </form>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="Notifications.html" style="color: lightgray;">
@@ -85,6 +64,7 @@
                             <li><a class="dropdown-item" href="SavedBooks.html">Saved Books</a></li>
                             <li><a class="dropdown-item" href="History.html">Borrowing History</a></li>
                             <li><a class="dropdown-item" href="Fines.html">Fines Due</a></li>
+                            <li><a class="dropdown-item" href="Return.html">Return</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -142,23 +122,37 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <script src="src\main\resources\static\JavaScript\GenerateBookCards.js"></script>
     <script>
+
+        function logout() {
+            localStorage.clear();
+            alert("Logged out successfully!");
+            window.location.replace("index.html");
+        }
 
         fetch("saved?token=" + localStorage.token).then((response) => response.json())
             .then((data) => {
-                console.log(data);
-                for (var book of data) {
-                    savedItems.innerHTML += `<div class="col-md-4">
-                    <div class="card">
-                        <img src="/images/bookcover1.jpg" class="card-img-top" alt="Book Cover 1">
-                        <div class="card-body">
-                            <h5 class="card-title">${book}</h5>
-                            <p class="card-text">An epic journey filled with mysteries and courage.</p>
-                            <a href="#" class="btn btn-primary">Details</a>
+                fetch("books").then((response) => response.json()).then((bookData) => {
+                    console.log(data);
+                    for (var isbn of data) {
+                        var book = null;
+                        for(var b of bookData){
+                            if(b.isbn == isbn){
+                                book = b;
+                            }
+                        }
+                        savedItems.innerHTML += `<div class="col-md-4">
+                        <div class="card">
+                            <img src="${book.image}" class="card-img-top" alt="Book Cover 1">
+                            <div class="card-body">
+                                <h5 class="card-title">${book.title}</h5>
+                                <p class="card-text">${book.authors.join(", ")}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>`;
-                }
+                    </div>`;
+                    }
+                })
             });
     </script>
 </body>

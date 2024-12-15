@@ -3,6 +3,7 @@ package com.example.demo.web;
 import Notification.BorrowNotifier;
 import com.example.demo.model.Authenticator;
 import com.example.demo.model.Database;
+import com.example.demo.model.FineManager;
 import com.example.demo.model.LoanSystem;
 import com.example.demo.model.Person;
 import com.example.demo.model.User;
@@ -18,13 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BorrowController {
+public class LoanController {
     private final LoanSystem ls;
     private final Authenticator auth;
+    private final FineManager fm;
 
-    public BorrowController(LoanSystem ls, Authenticator auth) {
+    public LoanController(LoanSystem ls, Authenticator auth, FineManager fm) {
         this.ls = ls;
         this.auth = auth;
+        this.fm = fm;
     }
 
     @GetMapping("/history")
@@ -94,5 +97,18 @@ public class BorrowController {
         return Map.of("success", false, "message", "person not a user");
     }
 
-    private record BodyOfBorrowOrReturnBook(String token, String isbn) {}
+    @GetMapping("/fines")
+    public List<FineManager.FineInstance> onGetFines(@RequestParam String token) {
+        Person p = auth.exchange(token);
+
+        if (p instanceof User u) {
+            return fm.HandleFine(u);
+        }
+
+        return List.of();
+
+    }
+
+    private record BodyOfBorrowOrReturnBook(String token, String isbn) {
+    }
 }

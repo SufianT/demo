@@ -46,11 +46,6 @@ public class Authenticator implements AuthenticationInterface {
     }
 
     @Override
-    public void logout(String uuid) {
-        tokens.remove(uuid);
-    }
-
-    @Override
     public void registerUser(User user) throws PersonExistException {
         if (Database.findUser(user.getEmail()) != null) {
             throw new PersonExistException(); // User already exists
