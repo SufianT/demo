@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.model.exceptions.BookNotAvailableException;
 import com.example.demo.model.exceptions.PersonExistException;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +38,17 @@ public class LibrarySystem {
 
     public ArrayList<Book> getBookList() {
         return Database.getBookList();
+    }
+
+    public Book getBookByISBN(String isbn) throws BookNotAvailableException {
+        Book temp = new Book();
+        for (Book b : getBookList()) {
+            if (b.getISBN().equals(isbn)) {
+                temp = b;
+            } else
+                throw new BookNotAvailableException("ISBN not found in system");
+        }
+        return temp;
     }
 
     public boolean isAvailable(Book book) {

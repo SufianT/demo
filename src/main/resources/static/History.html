@@ -23,31 +23,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="color: lightgray;">
-                            Genre
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
-                            <li><a class="dropdown-item" href="#">Romance</a></li>
-                            <li><a class="dropdown-item" href="#">Thriller</a></li>
-                            <li><a class="dropdown-item" href="#">SciFi</a></li>
-                            <li><a class="dropdown-item" href="#">Horror</a></li>
-                            <li><a class="dropdown-item" href="#">Mystery</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="about.html">About us</a>
+                        <a class="nav-link" style="color: lightgray;" href="aboutUser.html">About us</a>
                     </li>
                 </ul>
-                <form class="d-flex mx-auto" style="width: 60%;">
-                    <div class="input-group w-100">
-                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
-                            id="searchInput">
-                        <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
-                    </div>
-                </form>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="Notifications.html" style="color: lightgray;">
@@ -81,10 +60,11 @@
                             <li><a class="dropdown-item" href="SavedBooks.html">Saved Books</a></li>
                             <li><a class="dropdown-item" href="History.html">Borrowing History</a></li>
                             <li><a class="dropdown-item" href="Fines.html">Fines Due</a></li>
+                            <li><a class="dropdown-item" href="Return.html">Return</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,7 +81,7 @@
                     <tr>
                         <th scope="col">ISBN</th>
                         <th scope="col">TIME</th>
-                        <th scope="col">ACTION</th>
+                        <th scope="col">STATUS</th>
                     </tr>
                 </thead>
                 <tbody id="historyBody">

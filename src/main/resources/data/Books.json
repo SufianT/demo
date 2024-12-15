@@ -1,9 +1,9 @@
 [
   {
     "book": {
-      "title": "To Kill a Mockingbird Harper Lee",
+      "title": "To Kill a Mockingbird",
       "authors": [
-        "Harper Lee"
+        "Harper Lee", "Sufi"
       ],
       "isbn": "9780061120084",
       "genre": "SCIFI",

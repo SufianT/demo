@@ -20,7 +20,7 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body) throws IsbnAlreadyExistException{
+    public Map<String, Object> onPostAddBook(@RequestBody BodyOfAddBook body) throws IsbnAlreadyExistException {
         if (!body.isValid()) {
             return Map.of("success", false, "message", "Please fill in all the required fields");
         }
@@ -32,23 +32,18 @@ public class BookController {
         }
 
         Optional<Book> existingBook = ls.getBookList().stream()
-        .filter(book -> book.getISBN().equals(body.isbn()))
-        .findFirst();
+                .filter(book -> book.getISBN().equals(body.isbn()))
+                .findFirst();
 
         if (existingBook.isPresent()) {
-        return Map.of("success", false, "message", "A book with this ISBN already exists.");
+            return Map.of("success", false, "message", "A book with this ISBN already exists.");
         }
-        
-
-     
-    
 
         // Create book object & save
         Book book = new Book(body.title(), body.isbn(), authors, body.imageURL(), body.genre());
         ls.addBook(book);
 
         return Map.of("success", true, "message", "Book added successfully", "book", book);
-
     }
 
     @GetMapping("/books")
@@ -56,7 +51,8 @@ public class BookController {
         List<Book> books = new ArrayList<>();
 
         for (var item : Database.getLibraryItems()) {
-            if (item.copies > 0) books.add(item.book);
+            if (item.copies > 0)
+                books.add(item.book);
         }
 
         return books;

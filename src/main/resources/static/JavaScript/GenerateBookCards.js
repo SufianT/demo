@@ -12,9 +12,9 @@ async function generateBookCards() {
 
         data.forEach(book => {
             const title = book.title;
-            const isbn=book.isbn;
+            const isbn = book.isbn;
             const genre = book.genre;
-            const image=book.image;
+            const image = book.image;
             const authors = book.authors;
 
 
@@ -53,29 +53,25 @@ function showBookModal(title, isbn, imageUrl, details) {
     modal.style.display = "flex";
 
     const closeButton = document.querySelector('.close');
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
         modal.style.display = 'none';
     }
     const closeButton2 = document.getElementById('closeBtn');
-        closeButton2.onclick = function() {
-            modal.style.display = 'none';
-        }
+    closeButton2.onclick = function () {
+        modal.style.display = 'none';
+    }
 
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     }
-
-
-       
-
 }
 
 
-function loggedOutBorrow(){
-alert("Please log in to start borrowing books");
+function loggedOutBorrow() {
+    alert("Please log in to start borrowing books");
 }
 
 generateBookCards();
