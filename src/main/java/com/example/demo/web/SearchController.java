@@ -3,9 +3,10 @@ package com.example.demo.web;
 import com.example.demo.model.Book;
 import com.example.demo.model.searchengine.SearchInterface;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-
+@RestController
 public class SearchController {
     private SearchInterface searchInterface;
     @GetMapping("/Search")
@@ -21,6 +22,5 @@ public class SearchController {
         returnedArray.addFirst(searchInterface.SearchByISBN(searchedString, books).get(0));
         return returnedArray;
     }
-
 
 }
