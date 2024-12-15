@@ -7,7 +7,7 @@
         "logs": [
             {
                 "action": "borrowed",
-                "time": null,
+                "time": "2024-12-12",
                 "isbn": "9780061120084"
             }
         ],
@@ -24,8 +24,16 @@
         "email": "nordiccabpartners@gmail.com",
         "password": "1234",
         "id": "0303219356",
-        "logs": [],
-        "loans": [],
+        "logs": [
+            {
+                "action": "borrowed",
+                "time": "2024-11-01",
+                "isbn": "9780061120084"
+            }
+        ],
+        "loans": [
+            "9780061120084"
+        ],
         "saved": []
     },
     {

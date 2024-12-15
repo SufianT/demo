@@ -1,10 +1,10 @@
 package com.example.demo.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends Person {
+
+public class User extends Person { 
     private List<LoanLog> logs;
     private List<String> loans;
     private List<String> saved;
@@ -40,5 +40,6 @@ public class User extends Person {
         returned,
     }
 
-    public record LoanLog(LoanLogAction action, LocalDate time, String isbn) {}
+    public record LoanLog(LoanLogAction action, String time, String isbn) {
+    }
 }

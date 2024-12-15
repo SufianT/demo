@@ -57,37 +57,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="color: lightgray;">
-                            Genre
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
-                            <li><a class="dropdown-item" href="#">Romance</a></li>
-                            <li><a class="dropdown-item" href="#">Thriller</a></li>
-                            <li><a class="dropdown-item" href="#">SciFi</a></li>
-                            <li><a class="dropdown-item" href="#">Horror</a></li>
-                            <li><a class="dropdown-item" href="#">Mystery</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgray;" href="about.html">About us</a>
+                        <a class="nav-link" style="color: lightgray;" href="aboutUser.html">About us</a>
                     </li>
                 </ul>
-                <form class="d-flex mx-auto" style="width: 60%;">
-                    <div class="input-group w-100">
-                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search"
-                            id="searchInput">
-                        <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
-                    </div>
-                </form>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="Notifications.html" style="color: lightgray;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
                             </svg>
                         </a>
                     </li>
@@ -95,7 +75,8 @@
                         <a class="nav-link" href="Messages.html" style="color: lightgray;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                <path
+                                    d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                             </svg>
                         </a>
                     </li>
@@ -113,7 +94,10 @@
                             <li><a class="dropdown-item" href="SavedBooks.html">Saved Books</a></li>
                             <li><a class="dropdown-item" href="History.html">Borrowing History</a></li>
                             <li><a class="dropdown-item" href="Fines.html">Fines Due</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="Return.html">Return</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
                         </ul>
                     </li>
@@ -123,11 +107,33 @@
     </nav>
 
     <main>
-        <div class="fines-container">
-            <div class="fines-header">Fines Due</div>
-            <div id="fines-list">
-                <p class="text-center text-muted">You have no fines due.</p>
-            </div>
+        <div class="container mt-5">
+            <h1 class="display-6">Fines</h1>
+
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">FINE</th>
+                    </tr>
+                </thead>
+                <tbody id="finesBody">
+                    <!-- <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr> -->
+                </tbody>
+            </table>
         </div>
     </main>
 
@@ -135,26 +141,22 @@
         <p>&copy; 2024 BookHaven. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
     <script>
-        const fines = [
-            { title: "Late Return: 'The Great Adventure'", amount: "$5", dueDate: "Dec 15, 2024" },
-            { title: "Lost Book: 'Mysterious Tales'", amount: "$20", dueDate: "Dec 20, 2024" },
-        ];
 
-        const finesList = document.getElementById('fines-list');
-
-        if (fines.length > 0) {
-            finesList.innerHTML = '';
-            fines.forEach(fine => {
-                finesList.innerHTML += `
-                    <div class="fine-item">
-                        <h5>${fine.title}</h5>
-                        <p>Amount Due: <strong>${fine.amount}</strong></p>
-                        <p>Due Date: <strong>${fine.dueDate}</strong></p>
-                    </div>
-                `;
+        fetch("fines?token=" + localStorage.token).then((response) => response.json())
+            .then((data) => {
+                for (var fine of data) {
+                    finesBody.innerHTML += `<tr>
+                        <td>${fine.isbn}</td>
+                        <td>${fine.fine} kr</td>
+                    </tr>`;
+                }
             });
-        }
     </script>
 </body>
 
