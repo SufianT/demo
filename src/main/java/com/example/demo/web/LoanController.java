@@ -73,6 +73,8 @@ public class LoanController {
         if (p instanceof User u) {
             try {
                 ls.borrow(u, body.isbn());
+                BorrowNotifier borrowNotifier = new BorrowNotifier();
+                borrowNotifier.notifyBorrow(u, body.isbn());
                 return Map.of("success", true);
             } catch (BookNotAvailableException e) {
                 System.out.println(e);
