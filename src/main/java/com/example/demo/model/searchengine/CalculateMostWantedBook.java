@@ -8,9 +8,8 @@ public class CalculateMostWantedBook implements CalculateMostWantedBookInterface
 
 
     /*
-     * Den här koden viktar så den med högst poäng från en hash
-     *visas först i en lista
-     * */
+    This calculates which books are most relevant to the search.
+    */
     public HashMap<Book, Integer> sortBooksFromSearch(HashMap<String, Integer> hashMap, ArrayList<Book> books) {
         Iterator<String> iterator = hashMap.keySet().iterator();
         HashMap<Book, Integer> booksThatWillShow = new HashMap<>();
