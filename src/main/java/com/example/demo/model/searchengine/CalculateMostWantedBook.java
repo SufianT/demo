@@ -6,10 +6,9 @@ import java.util.*;
 
 public class CalculateMostWantedBook implements CalculateMostWantedBookInterface {
 
-
     /*
-    This calculates which books are most relevant to the search.
-    */
+     * This calculates which books are most relevant to the search.
+     */
     public HashMap<Book, Integer> sortBooksFromSearch(HashMap<String, Integer> hashMap, ArrayList<Book> books) {
         Iterator<String> iterator = hashMap.keySet().iterator();
         HashMap<Book, Integer> booksThatWillShow = new HashMap<>();
@@ -24,7 +23,6 @@ public class CalculateMostWantedBook implements CalculateMostWantedBookInterface
                 if ((" " + book.getAuthors().toString().toLowerCase() + " ").contains(" " + key + " ")) {
                     n += hashMap.get(key);
                 }
-
             }
             if (n > 0) {
                 booksThatWillShow.putIfAbsent(book, n);
@@ -32,10 +30,6 @@ public class CalculateMostWantedBook implements CalculateMostWantedBookInterface
         }
         return booksThatWillShow;
     }
-
-    ;
-
-
 
     public ArrayList<Book> sortHashMapByValue(HashMap<Book, Integer> map) {
         // Create a list from the entries of the HashMap
@@ -52,15 +46,15 @@ public class CalculateMostWantedBook implements CalculateMostWantedBookInterface
             sortedKeys.add(entry.getKey());
         }
 
-        //IF the array is big enough we should reverse its order.
-        if(sortedKeys.size()>1) {
+        // IF the array is big enough we should reverse its order.
+        if (sortedKeys.size() > 1) {
             ArrayList<Book> revArrayList = new ArrayList<>();
             for (int i = sortedKeys.size() - 1; i >= 0; i--) {
 
                 // Append the elements in reverse order
                 revArrayList.add(sortedKeys.get(i));
             }
-            sortedKeys=revArrayList;
+            sortedKeys = revArrayList;
         }
         return sortedKeys;
     }

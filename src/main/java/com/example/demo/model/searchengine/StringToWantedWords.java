@@ -37,13 +37,14 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
     }
 
     private static int getDistance(String word1, String word2) { /*
-                                                                 * This code should return the shortest distance between
-                                                                 * two words using
-                                                                 * substitution, addition or deletion. If you want to
-                                                                 * understand it better
-                                                                 * please watch the video bellow:
-                                                                 * https://www.youtube.com/watch?v=d-Eq6x1yssU
-                                                                 */
+                                                                  * This code should return the shortest distance
+                                                                  * between
+                                                                  * two words using
+                                                                  * substitution, addition or deletion. If you want to
+                                                                  * understand it better
+                                                                  * please watch the video bellow:
+                                                                  * https://www.youtube.com/watch?v=d-Eq6x1yssU
+                                                                  */
         int lengthWord1 = word1.length();
         int lengthWord2 = word2.length();
 
