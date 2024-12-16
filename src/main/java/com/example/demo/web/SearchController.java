@@ -12,14 +12,14 @@ public class SearchController {
     @GetMapping("/Search")
     public ArrayList<Book> search(String searchedString,ArrayList<Book> books){
         ArrayList<Book> returnedArray = new ArrayList<>();
-        returnedArray =searchInterface.SearchByAuthorAndTitle(searchedString, books);
-        if (searchInterface.SearchByISBN(searchedString, books).isEmpty()){
+        returnedArray =searchInterface.searchByAuthorAndTitle(searchedString, books);
+        if (searchInterface.searchByISBN(searchedString, books).isEmpty()){
             return returnedArray;
         }
-        if (returnedArray.contains(searchInterface.SearchByISBN(searchedString, books).get(0))){
-            returnedArray.remove(searchInterface.SearchByISBN(searchedString, books).get(0));
+        if (returnedArray.contains(searchInterface.searchByISBN(searchedString, books).get(0))){
+            returnedArray.remove(searchInterface.searchByISBN(searchedString, books).get(0));
         }
-        returnedArray.addFirst(searchInterface.SearchByISBN(searchedString, books).get(0));
+        returnedArray.addFirst(searchInterface.searchByISBN(searchedString, books).get(0));
         return returnedArray;
     }
 
