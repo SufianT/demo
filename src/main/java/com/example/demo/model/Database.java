@@ -115,7 +115,7 @@ public class Database {
         });
         for (int i = 0; i < items.size(); i++) {
             // find item
-            if (items.get(i).book.equals(item.book)) {
+            if (items.get(i).getBook().equals(item.getBook())) {
                 items.set(i, item);
                 saveToFile(itemsFile, items);
                 return;
