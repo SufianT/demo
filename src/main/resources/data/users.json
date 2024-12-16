@@ -1,22 +1,21 @@
 [
     {
-        "name": "Sukaina",
+        "name": "Sufian",
         "email": "sufiantariqorignal@gmail.com",
         "password": "1234",
         "id": "1234567890",
         "logs": [
             {
-                "action": "borrowed",
-                "time": "2024-12-12",
+                "action": "returned",
+                "time": "2024-12-16",
                 "isbn": "9780061120084"
             }
         ],
-        "loans": [
-            "9780061120084"
-        ],
+        "loans": [],
         "saved": [
             "9780061120084",
-            "9780451524935"
+            "9780451524935",
+            "9781400079988"
         ]
     },
     {
@@ -34,15 +33,6 @@
         "loans": [
             "9780061120084"
         ],
-        "saved": []
-    },
-    {
-        "name": "Sufian",
-        "email": "sufiantariq@gmail.com",
-        "password": "1234",
-        "id": "1234567890",
-        "logs": [],
-        "loans": [],
         "saved": []
     }
 ]

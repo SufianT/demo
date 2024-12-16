@@ -57,6 +57,10 @@ public class LoanController {
 
         if (p instanceof User u) {
             var saved = u.getSaved();
+            for (String s : saved) {
+                if (s.equals(isbn))
+                    return Map.of("success", false, "message", "already saved");
+            }
             saved.add(isbn);
             Database.updateUser(u);
 
@@ -89,10 +93,9 @@ public class LoanController {
 
         if (p instanceof User u) {
             ls.returnBook(u, body.isbn());
-            return Map.of("success", true);
+            return Map.of("success", true, "logs", u.getLogs());
         }
 
-        // figure out the error
         return Map.of("success", false, "message", "person not a user");
     }
 

@@ -3,8 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class User extends Person { 
+public class User extends Person {
     private List<LoanLog> logs;
     private List<String> loans;
     private List<String> saved;
@@ -17,6 +16,8 @@ public class User extends Person {
     public User(String name, String email, String id, String password) {
         super(name, email, id, password);
         this.logs = new ArrayList<LoanLog>();
+        this.loans = new ArrayList<>();
+        this.saved = new ArrayList<>();
     }
 
     public User(String email, String password) {

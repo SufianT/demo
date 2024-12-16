@@ -133,7 +133,7 @@ async function returnBook(isbn) {
 }
 
 function loggedOutBorrow() {
-    alert("Please log in to start borrowing books");
+    alert("You need to be logged in to borrow this book");
 }
 
 generateBookCards();
