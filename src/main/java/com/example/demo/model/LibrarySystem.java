@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 @Component
 public class LibrarySystem {
-    AuthenticationInterface authenticator;
+    private AuthenticationInterface authenticator;
 
     public LibrarySystem(AuthenticationInterface authenticator) {
         this.authenticator = authenticator;
@@ -53,7 +53,7 @@ public class LibrarySystem {
 
     public boolean isAvailable(Book book) {
         for (LibraryItem libraryItem : Database.getLibraryItems()) {
-            if (libraryItem.book.equals(book) && libraryItem.getCopies() > 0) {
+            if (libraryItem.getBook().equals(book) && libraryItem.getCopies() > 0) {
                 return true;
             }
         }

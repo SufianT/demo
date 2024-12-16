@@ -11,7 +11,7 @@ import com.example.demo.model.exceptions.PersonExistException;
 
 @Service
 public class Authenticator implements AuthenticationInterface {
-    HashMap<String, String> tokens = new HashMap<>();
+    private HashMap<String, String> tokens = new HashMap<>();
 
     @Override
     public String loginUser(User user) throws AccountNotFoundException, IncorrectPasswordException {

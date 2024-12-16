@@ -8,19 +8,16 @@ import com.example.demo.model.exceptions.BookNotAvailableException;
 
 @Service
 public class LoanSystem {
-    final LibrarySystem ls;
 
-    public LoanSystem(LibrarySystem ls) {
-        this.ls = ls;
+    public LoanSystem() {
     }
 
     public void borrow(User user, String isbn) throws BookNotAvailableException {
         for (LibraryItem item : Database.getLibraryItems()) {
             // find item
-            if (item.book.getISBN().equals(isbn)) {
-                if (item.copies > 0) {
+            if (item.getBook().getISBN().equals(isbn)) {
+                if (item.getCopies() > 0) {
                     item.setCopies(item.getCopies() - 1);
-                    // can user borrow multiple instances of the same book?? figure it out
                     user.getLoans().add(isbn);
                     Database.updateItem(item);
                     // pass in time to the LoanLog
@@ -28,19 +25,18 @@ public class LoanSystem {
                     Database.updateUser(user);
                     return;
                 } else {
-                    // reserve
+                    // reserve for future 
                 }
             }
         }
 
-        // idk but figure it out
         throw new BookNotAvailableException("Book unavailable");
     }
 
     public void returnBook(User user, String isbn) {
         for (LibraryItem item : Database.getLibraryItems()) {
             // Find item
-            if (item.book.getISBN().equals(isbn)) {
+            if (item.getBook().getISBN().equals(isbn)) {
                 item.setCopies(item.getCopies() + 1);
                 user.getLoans().remove(isbn);
 

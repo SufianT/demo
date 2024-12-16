@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class FineManager {
 
-
     public FineManager() {
 
     }
@@ -27,13 +26,10 @@ public class FineManager {
                 }
 
             }
-
         }
         return fines;
     }
 
-    // pay fines before returning book!!
     public record FineInstance(int fine, String isbn) {
-
     }
 }
