@@ -1,1 +1,38 @@
-[{"name":"Sukaina","email":"sufiantariqorignal@gmail.com","password":"1234","id":"1234567890","logs":[{"action":"borrowed","time":"2024-12-12","isbn":"9780061120084"},{"action":"borrowed","time":"2024-12-15","isbn":"9780451524935"},{"action":"borrowed","time":"2024-12-16","isbn":"9780743273565"},{"action":"borrowed","time":"2024-12-16","isbn":"9781503290563"},{"action":"borrowed","time":"2024-12-16","isbn":"9781503290563"}],"loans":["9780061120084","9780451524935","9780743273565","9781503290563","9781503290563"],"saved":["9780061120084","9780451524935","9780743273565"]},{"name":"Sukaina","email":"nordiccabpartners@gmail.com","password":"1234","id":"0303219356","logs":[{"action":"borrowed","time":"2024-11-01","isbn":"9780061120084"}],"loans":["9780061120084"],"saved":[]},{"name":"Sufian","email":"sufiantariq@gmail.com","password":"1234","id":"1234567890","logs":[],"loans":[],"saved":[]},{"name":"Loura","email":"sufiantariqorignal@gmail.co","password":"1234","id":"1111111111","logs":[],"loans":null,"saved":null},{"name":"Loura","email":"sufiantariqorignal@gmail.c","password":"1234","id":"1111111111","logs":[],"loans":null,"saved":null}]
+[
+    {
+        "name": "Sufian",
+        "email": "sufiantariqorignal@gmail.com",
+        "password": "1234",
+        "id": "1234567890",
+        "logs": [
+            {
+                "action": "returned",
+                "time": "2024-12-16",
+                "isbn": "9780061120084"
+            }
+        ],
+        "loans": [],
+        "saved": [
+            "9780061120084",
+            "9780451524935",
+            "9781400079988"
+        ]
+    },
+    {
+        "name": "Sukaina",
+        "email": "nordiccabpartners@gmail.com",
+        "password": "1234",
+        "id": "0303219356",
+        "logs": [
+            {
+                "action": "borrowed",
+                "time": "2024-11-01",
+                "isbn": "9780061120084"
+            }
+        ],
+        "loans": [
+            "9780061120084"
+        ],
+        "saved": []
+    }
+]

@@ -15,14 +15,14 @@ public class SearchEngine implements SearchInterface {
     {
 
     }
-    public ArrayList<Book> SearchByAuthorAndTitle(String input, ArrayList<Book> books) {
+    public ArrayList<Book> searchByAuthorAndTitle(String input, ArrayList<Book> books) {
 
         return cI.sortHashMapByValue(cI.sortBooksFromSearch(wI.searchComplete(input,setTitleAuthor.setOfBookstoString(books),3),books));
 
     }
 
     @Override
-    public ArrayList<Book> SearchByISBN(String input,ArrayList<Book> books) {
+    public ArrayList<Book> searchByISBN(String input,ArrayList<Book> books) {
         ArrayList<Book> bookFromISBNSearch = new ArrayList<>();
         if (wI.searchComplete(input,setISBN.setOfBooksISBN(books),0).isEmpty()){
             return bookFromISBNSearch;

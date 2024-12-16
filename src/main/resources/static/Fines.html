@@ -98,7 +98,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -110,28 +110,14 @@
         <div class="container mt-5">
             <h1 class="display-6">Fines</h1>
 
-            <table class="table" >
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ISBN</th>
+                        <th scope="col">TITLE</th>
                         <th scope="col">FINE</th>
                     </tr>
                 </thead>
                 <tbody id="finesBody">
-                    <!-- <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -148,14 +134,29 @@
 
     <script>
 
+        function logout() {
+            localStorage.clear();
+            alert("Logged out successfully!");
+            window.location.replace("index.html");
+        }
+
         fetch("fines?token=" + localStorage.token).then((response) => response.json())
             .then((data) => {
-                for (var fine of data) {
-                    finesBody.innerHTML += `<tr>
-                        <td>${fine.isbn}</td>
-                        <td>${fine.fine} kr</td>
-                    </tr>`;
-                }
+                fetch("books").then((response) => response.json()).then((bookData) => {
+                    console.log(data);
+                    for (var fine of data) {
+                        if (fine.fine == 0) continue;
+                        for (var b2 of bookData) {
+                            if (b2.isbn == fine.isbn) {
+                                finesBody.innerHTML += `<tr>
+                                <td>${b2.title}</td>
+                                <td>${fine.fine} kr</td>
+                                </tr>`;
+                                break;
+                            }
+                        }
+                    }
+                })
             });
     </script>
 </body>

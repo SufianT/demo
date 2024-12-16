@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
 public class LibraryItem {
-    public Book book;
-    public int copies;
+    private Book book;
+    private int copies;
 
     public LibraryItem() { //DONT REMOVE!
     }

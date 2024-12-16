@@ -64,7 +64,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -79,26 +79,12 @@
             <table class="table" id="historyTable">
                 <thead>
                     <tr>
-                        <th scope="col">ISBN</th>
+                        <th scope="col">TITLE</th>
                         <th scope="col">TIME</th>
                         <th scope="col">STATUS</th>
                     </tr>
                 </thead>
                 <tbody id="historyBody">
-                    <!-- <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -114,15 +100,29 @@
 
     <script>
 
+        function logout() {
+            localStorage.clear();
+            alert("Logged out successfully!");
+            window.location.replace("index.html");
+        }
+
         fetch("history?token=" + localStorage.token).then((response) => response.json())
             .then((data) => {
-                for (var book of data) {
-                    historyBody.innerHTML += `<tr>
-                        <td>${book.isbn}</td>
-                        <td>${book.time}</td>
-                        <td>${book.action}</td>
-                    </tr>`;
-                }
+                fetch("books").then((response) => response.json()).then((bookData) => {
+                    console.log(data);
+                    for (var b of data) {
+                        for (var b2 of bookData) {
+                            if (b2.isbn == b.isbn) {
+                                historyBody.innerHTML += `<tr>
+                                <td>${b2.title}</td>
+                                <td>${b.time}</td>
+                                <td>${b.action}</td>
+                            </tr>`;
+                                break;
+                            }
+                        }
+                    }
+                })
             });
     </script>
 </body>

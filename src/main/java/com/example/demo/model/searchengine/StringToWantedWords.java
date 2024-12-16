@@ -36,7 +36,7 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
 
     }
 
-    public static int getDistance(String word1, String word2) { /*
+    private static int getDistance(String word1, String word2) { /*
                                                                  * This code should return the shortest distance between
                                                                  * two words using
                                                                  * substitution, addition or deletion. If you want to

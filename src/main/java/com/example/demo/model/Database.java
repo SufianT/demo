@@ -49,7 +49,8 @@ public class Database {
         List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
         });
         for (User user : users) {
-            if (user.getEmail().equals(email)) return user;
+            if (user.getEmail().equals(email) && user.getId().equals(user.getId()))
+                return user;
         }
         return null;
     }
@@ -68,7 +69,8 @@ public class Database {
     }
 
     public static void updateUser(User user) {
-        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {});
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
+        });
         for (int i = 0; i < users.size(); i++) {
             // find user
             if (users.get(i).getEmail().equals(user.getEmail())) {
@@ -109,10 +111,11 @@ public class Database {
     }
 
     public static void updateItem(LibraryItem item) {
-        ArrayList<LibraryItem> items = loadFromFile(itemsFile, new TypeReference<ArrayList<LibraryItem>>() {});
+        ArrayList<LibraryItem> items = loadFromFile(itemsFile, new TypeReference<ArrayList<LibraryItem>>() {
+        });
         for (int i = 0; i < items.size(); i++) {
             // find item
-            if (items.get(i).book.equals(item.book)) {
+            if (items.get(i).getBook().equals(item.getBook())) {
                 items.set(i, item);
                 saveToFile(itemsFile, items);
                 return;
@@ -149,8 +152,5 @@ public class Database {
             System.err.println("Error saving data to " + filePath);
         }
     }
-
-    
-
 
 }
