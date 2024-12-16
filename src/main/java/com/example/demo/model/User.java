@@ -43,4 +43,12 @@ public class User extends Person {
 
     public record LoanLog(LoanLogAction action, String time, String isbn) {
     }
+
+    public void setEmail(String email) {
+        email = this.getEmail();
+    }
+
+    public void setPassword(String password) {
+        password = this.getPassword();
+    }
 }
