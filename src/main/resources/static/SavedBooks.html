@@ -68,7 +68,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -80,36 +80,6 @@
         <div class="container mt-5">
             <h1 class="display-6">Your Saved Books</h1>
             <div class="row mt-3" id="savedItems">
-                <!-- <div class="col-md-4">
-                    <div class="card">
-                        <img src="/images/bookcover1.jpg" class="card-img-top" alt="Book Cover 1">
-                        <div class="card-body">
-                            <h5 class="card-title">The Great Adventure</h5>
-                            <p class="card-text">An epic journey filled with mysteries and courage.</p>
-                            <a href="#" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/images/bookcover2.jpg" class="card-img-top" alt="Book Cover 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Mystery of the Night</h5>
-                            <p class="card-text">A thrilling tale that keeps you on edge.</p>
-                            <a href="#" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/images/bookcover3.jpg" class="card-img-top" alt="Book Cover 3">
-                        <div class="card-body">
-                            <h5 class="card-title">The Fantasy Realm</h5>
-                            <p class="card-text">Dive into a world of dragons and magic.</p>
-                            <a href="#" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </main>
@@ -137,8 +107,8 @@
                     console.log(data);
                     for (var isbn of data) {
                         var book = null;
-                        for(var b of bookData){
-                            if(b.isbn == isbn){
+                        for (var b of bookData) {
+                            if (b.isbn == isbn) {
                                 book = b;
                             }
                         }

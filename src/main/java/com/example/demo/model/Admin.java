@@ -6,15 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Admin extends Person {
 
-    LibrarySystem library;
     @JsonProperty("adminKey")
     private String adminKey;
-
-    public Admin(String name, String email, String id, String password, String adminKey, LibrarySystem library) {
-        super(name, email, id, password);
-        this.adminKey = adminKey;
-        this.library = library;
-    }
 
     public Admin(String name, String email, String id, String password, String adminKey) {
         super(name, email, id, password);
