@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class SetOfBookstoString implements SetOfBooksToSetStringInterface {
 
-    public Set<String> setOfBookstoString(ArrayList<Book> books) {
+    public Set<String> setOfBooksToSetString(ArrayList<Book> books) {
         // Create a Set to store unique words
         Set<String> wordSet = new HashSet<>();
 
