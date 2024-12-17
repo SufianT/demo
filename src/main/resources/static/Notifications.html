@@ -75,15 +75,8 @@
     <main>
         <div class="container mt-5">
             <h1 class="display-6">Your Notifications</h1>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">📚 Your reserved book <strong>"The Great Adventure"</strong> is ready for
-                    pickup.</li>
-                <li class="list-group-item">⚠️ Reminder: The book <strong>"Mystery of the Night"</strong> is due
-                    tomorrow.</li>
-                <li class="list-group-item">🎉 New books added to the <strong>Fantasy</strong> section. Check them out!
-                </li>
-                <li class="list-group-item">🔔 Your fine of $5.00 has been waived. Happy reading!</li>
-                <li class="list-group-item">📝 Survey: Let us know about your experience with BookHaven.</li>
+            <ul id="notificationsContainer" class="list-group mt-3">
+                <!-- Notifications will be dynamically inserted here -->
             </ul>
         </div>
     </main>
@@ -92,6 +85,104 @@
         <p>&copy; 2024 BookHaven. All rights reserved.</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+       fetchNotifications();
+   });
+       async function fetchNotifications() {
+               fetch("finesNotification?token=" + localStorage.token, {
+                   method: "POST", // Use POST to trigger the action
+               })
+               .then(() => {
+                   console.log("Fine notifications checked successfully.");
+                    // Fetch notifications for the logged-in user
+                       fetch("/notification?token=" + localStorage.token)
+                           .then((response) => response.json())
+                           .then((data) => {
+                               console.log("Fetched notifications:", data);
+
+                               const notificationsContainer = document.getElementById("notificationsContainer");
+                               notificationsContainer.innerHTML = ""; // Clear the container before populating
+
+                               // Iterate through notifications and display them
+                               for (const notification of data) {
+                                   notificationsContainer.innerHTML += `
+                                       <div class="list-group-item">
+                                           <h5 class="mb-1">🔔 ${notification.type}</h5>
+                                           <p class="mb-1">${notification.message}</p>
+                                           <button class="btn btn-danger btn-sm float-end" onclick="deleteNotification(${notification.timestamp}, '${notification.type}')">Delete</button>
+                                           <button class="btn btn-success btn-sm"onclick="markAsRead(${notification.timestamp})">Mark as Read</button>
+                                           <small class="text-muted">${new Date(notification.timestamp).toLocaleString()}</small>
+                                       </div>`;
+                               }
+
+                               // If no notifications are available
+                               if (data.length === 0) {
+                                   notificationsContainer.innerHTML = `<div class="list-group-item">No notifications available.</div>`;
+                               }
+                           })
+                           .catch((error) => {
+                               console.error("Error fetching notifications:", error);
+                           });
+               })
+               .catch((error) => {
+                   console.error("Error triggering fines notification:", error);
+               });
+       }
+
+               async function deleteNotification(timestamp,type) {
+               const token = localStorage.token;
+                if (type === "Fine") {
+                    alert("Book must be returned first before deleting this notification.");
+                    return; // Exit the function early
+                    }
+
+                try {
+                   const response = await fetch(`/notification/delete?token=${token}&timestamp=${timestamp}`, {
+                       method: "DELETE",
+                   });
+
+                   const result = await response.json();
+                   console.log("is in delete");
+                   if (result.success) {
+                       alert("Notification deleted successfully!");
+                       fetchNotifications(); // Refresh the notifications list
+                   } else {
+                       alert("Error: " + result.message);
+                   }
+               } catch (error) {
+                   console.error("Error deleting notification:", error);
+               }}
+
+        async function markAsRead(timestamp) {
+    const token = localStorage.token;
+
+    try {
+        const response = await fetch(`/notification/markAsRead?token=${token}&timestamp=${timestamp}`, {
+            method: "PATCH",
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert("Notification marked as read!");
+            // Optionally, update the UI to show the notification as "read"
+            const notificationElement = document.querySelector(`[data-timestamp="${timestamp}"]`);
+            if (notificationElement) {
+                console.log("color");
+                notificationElement.style.backgroundColor = "#e9ecef"; // Visually mark as read
+            }
+        } else {
+            alert("Error: " + result.message);
+        }
+    } catch (error) {
+        console.error("Error marking notification as read:", error);
+    }
+}
+
+
+
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

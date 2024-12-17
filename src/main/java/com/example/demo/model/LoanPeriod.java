@@ -13,7 +13,6 @@ public class LoanPeriod {
     public LoanPeriod(LocalDate startDate, LoanPolicy loanPolicy) {
         this.startDate = startDate;
         this.endDate = DateCalculator.calculateDueDate(startDate, loanPolicy.getLoanDurationDays()); //Calculates endDate based on loanPolicy
-
     }
 
     public LocalDate getEndDate() {

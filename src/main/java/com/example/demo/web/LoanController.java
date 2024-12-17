@@ -1,14 +1,18 @@
 package com.example.demo.web;
 
-import Notification.BorrowNotifier;
+import com.example.demo.model.Notification.BorrowNotifier;
 import com.example.demo.model.Authenticator;
 import com.example.demo.model.Database;
 import com.example.demo.model.FineManager;
 import com.example.demo.model.LoanSystem;
+import com.example.demo.model.Notification.FineNotifier;
+import com.example.demo.model.Notification.NotificationEvent;
+import com.example.demo.model.Notification.NotificationManager;
 import com.example.demo.model.Person;
 import com.example.demo.model.User;
 import com.example.demo.model.exceptions.BookNotAvailableException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -77,8 +81,7 @@ public class LoanController {
         if (p instanceof User u) {
             try {
                 ls.borrow(u, body.isbn());
-                BorrowNotifier borrowNotifier = new BorrowNotifier();
-                borrowNotifier.notifyBorrow(u, body.isbn());
+                new BorrowNotifier(u,body.isbn());
                 return Map.of("success", true);
             } catch (BookNotAvailableException e) {
                 System.out.println(e);
@@ -113,6 +116,28 @@ public class LoanController {
         return List.of();
 
     }
+    @PostMapping("/finesNotification")
+    public void onDueFines(@RequestParam String token) {
+        Person p = auth.exchange(token);
+
+        if (p instanceof User u) {
+             List<String> DueInTwoDays= ls.getBooksDueInTwoDays(u);
+             if (!DueInTwoDays.isEmpty()){
+                 for (String isbn:DueInTwoDays){
+                     boolean alreadyNotified = u.getNotifications().stream()
+                             .anyMatch(n -> n.getType().equals("Fine") && n.getPayload().equals(isbn));
+
+                     if (!alreadyNotified) {
+                         // Only create notification if it doesn't already exist
+                         new FineNotifier(u, isbn);
+                     }
+
+                 }
+             }
+        }
+
+    }
+
 
     private record BodyOfBorrowOrReturnBook(String token, String isbn) {
     }
