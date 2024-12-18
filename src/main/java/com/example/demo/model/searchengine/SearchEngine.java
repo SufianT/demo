@@ -49,9 +49,12 @@ public class SearchEngine implements SearchInterface {
 
     @Override
     public Set<String> find(String input) {
-        List<String> isbns = words.get(input.strip().toUpperCase());
-        if (isbns == null)
-            return Collections.emptySet();
-        return new LinkedHashSet<String>(isbns);
+        Set<String> set = new LinkedHashSet<String>();
+        for (String part : input.strip().toUpperCase().split("\\s+")) {
+            List<String> isbns = words.get(part);
+            if (isbns != null)
+                set.addAll(isbns);
+        }
+        return set;
     }
 }
