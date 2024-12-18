@@ -2,11 +2,8 @@ package com.example.demo.web;
 
 import com.example.demo.model.*;
 import com.example.demo.model.Notification.NotificationEvent;
-import com.example.demo.model.Notification.Observable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;

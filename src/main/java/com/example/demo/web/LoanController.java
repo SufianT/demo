@@ -6,13 +6,10 @@ import com.example.demo.model.Database;
 import com.example.demo.model.FineManager;
 import com.example.demo.model.LoanSystem;
 import com.example.demo.model.Notification.FineNotifier;
-import com.example.demo.model.Notification.NotificationEvent;
-import com.example.demo.model.Notification.NotificationManager;
 import com.example.demo.model.Person;
 import com.example.demo.model.User;
 import com.example.demo.model.exceptions.BookNotAvailableException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

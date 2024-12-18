@@ -2,8 +2,6 @@ package com.example.demo.model;
 
 import com.example.demo.model.Notification.NotificationEvent;
 
-import java.security.PublicKey;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class User extends Person {
         this.logs = new ArrayList<LoanLog>();
         this.loans = new ArrayList<>();
         this.saved = new ArrayList<>();
-        this.notifications=new ArrayList<NotificationEvent>();
+        this.notifications = new ArrayList<NotificationEvent>();
     }
 
     public User(String email, String password) {
@@ -41,7 +39,10 @@ public class User extends Person {
     public List<String> getSaved() {
         return saved;
     }
-    public List<NotificationEvent> getNotifications(){return notifications;}
+
+    public List<NotificationEvent> getNotifications() {
+        return notifications;
+    }
 
     public enum LoanLogAction {
         borrowed,

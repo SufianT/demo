@@ -1,26 +1,23 @@
 package com.example.demo.model.Notification;
 
-import com.example.demo.model.Admin;
-import com.example.demo.model.Book;
-import com.example.demo.model.User;
-
 public class NotificationEvent {
     private String type;
-    private String  id;
+    private String id;
     private String message;
     private Object payload;
     private long timestamp;
     private boolean read;
 
-    public NotificationEvent(){}
+    public NotificationEvent() {
+    }
 
-    public NotificationEvent(String type, String id,Object payload, String message) {
+    public NotificationEvent(String type, String id, Object payload, String message) {
         this.type = type;
         this.id = id;
         this.message = message;
         this.timestamp = System.currentTimeMillis();
-        this.read=false;
-        this.payload=payload;
+        this.read = false;
+        this.payload = payload;
     }
 
     public String getType() {
@@ -34,11 +31,20 @@ public class NotificationEvent {
     public String getMessage() {
         return message;
     }
-    public Object getPayload(){return payload;}
+
+    public Object getPayload() {
+        return payload;
+    }
 
     public long getTimestamp() {
         return timestamp;
     }
-    public boolean getRead(){return read;}
-    public void setRead(boolean read){this.read=read;}
+
+    public boolean getRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
 }

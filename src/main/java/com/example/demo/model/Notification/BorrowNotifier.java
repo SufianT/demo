@@ -1,6 +1,5 @@
 package com.example.demo.model.Notification;
 
-import com.example.demo.model.Database;
 import com.example.demo.model.User;
 
 public class BorrowNotifier extends Observable{
