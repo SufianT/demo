@@ -97,6 +97,16 @@ public class Database {
         }
         System.out.println("updateUser() -> user not found");
     }
+    public static boolean hasNotification(String userId, String type, String payload) {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
+        });        for (User user : users) {
+            if (user.getId().equals(userId)) {
+                return user.getNotifications().stream()
+                        .anyMatch(n -> n.getType().equals(type) && n.getPayload().equals(payload));
+            }
+        }
+        return false;
+    }
 
     // Admin Methods
     public static Admin findAdmin(String email, String password, String adminKey) {

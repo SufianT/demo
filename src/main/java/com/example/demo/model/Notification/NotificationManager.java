@@ -13,7 +13,6 @@ public class NotificationManager implements Observer {
         if (p instanceof User user) {
             // Add the notification to the user
             user.getNotifications().add(event);
-            System.out.println("the list after adding a notis"+user.getNotifications() ); // Initialize notifications list if null
 
             // Persist the updated user object in the database
             Database.updateUser(user);

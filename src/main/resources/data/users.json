@@ -206,5 +206,70 @@
         "read": true
       }
     ]
+  },
+  {
+    "name": "rrr",
+    "email": "rrr",
+    "password": "1234",
+    "id": "1234554324",
+    "logs": [
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9780451524935"
+      },
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9781503290563"
+      },
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9781503290563"
+      },
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9780451524935"
+      },
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9781503290563"
+      },
+      {
+        "action": "returned",
+        "time": "2024-12-18",
+        "isbn": "9780451524935"
+      },
+      {
+        "action": "borrowed",
+        "time": "2024-12-18",
+        "isbn": "9780451524935"
+      }
+    ],
+    "loans": [
+      "9780451524935"
+    ],
+    "saved": [],
+    "notifications": [
+      {
+        "type": "Borrow",
+        "id": "1234554324",
+        "message": "You've just borrowed the book with the ISBN: 9780451524935",
+        "payload": "9780451524935",
+        "timestamp": 1734530245152,
+        "read": true
+      },
+      {
+        "type": "Borrow",
+        "id": "1234554324",
+        "message": "You've just borrowed the book with the ISBN: 9780451524935",
+        "payload": "9780451524935",
+        "timestamp": 1734530498183,
+        "read": true
+      }
+    ]
   }
 ]

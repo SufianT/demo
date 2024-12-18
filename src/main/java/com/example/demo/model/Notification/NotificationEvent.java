@@ -5,25 +5,24 @@ import com.example.demo.model.Book;
 import com.example.demo.model.User;
 
 public class NotificationEvent {
-    private String type;        // The type of event (e.g., "Borrow", "Chat").
-    private String  id;          // The user involved in the event.
-    private String message;     // Additional data (e.g., book or message).
+    private String type;
+    private String  id;
+    private String message;
     private Object payload;
-    private long timestamp;     // Time of the event.
+    private long timestamp;
     private boolean read;
 
     public NotificationEvent(){}
-    // Constructor
+
     public NotificationEvent(String type, String id,Object payload, String message) {
         this.type = type;
         this.id = id;
         this.message = message;
-        this.timestamp = System.currentTimeMillis(); // Automatically set timestamp
+        this.timestamp = System.currentTimeMillis();
         this.read=false;
         this.payload=payload;
     }
 
-    // Getters
     public String getType() {
         return type;
     }

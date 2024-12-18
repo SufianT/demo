@@ -98,6 +98,7 @@ public class LoanController {
         Person p = auth.exchange(body.token);
 
         if (p instanceof User u) {
+            u.getNotifications().removeIf(n -> n.getType().equals("Fine") && n.getPayload().equals(body.isbn));
             ls.returnBook(u, body.isbn());
             return Map.of("success", true, "logs", u.getLogs());
         }
@@ -121,21 +122,17 @@ public class LoanController {
         Person p = auth.exchange(token);
 
         if (p instanceof User u) {
-             List<String> DueInTwoDays= ls.getBooksDueInTwoDays(u);
-             if (!DueInTwoDays.isEmpty()){
-                 for (String isbn:DueInTwoDays){
-                     boolean alreadyNotified = u.getNotifications().stream()
-                             .anyMatch(n -> n.getType().equals("Fine") && n.getPayload().equals(isbn));
-
-                     if (!alreadyNotified) {
-                         // Only create notification if it doesn't already exist
-                         new FineNotifier(u, isbn);
-                     }
-
-                 }
-             }
+            List<String> dueInTwoDays = ls.getBooksDueInTwoDays(u);
+            if (!dueInTwoDays.isEmpty()) {
+                for (String isbn : dueInTwoDays) {
+                    boolean alreadyNotified = Database.hasNotification(u.getId(), "Fine", isbn);
+                    if (!alreadyNotified) {
+                        // Only create notification if it doesn't already exist
+                        new FineNotifier(u, isbn);
+                    }
+                }
+            }
         }
-
     }
 
 
