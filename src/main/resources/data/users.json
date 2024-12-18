@@ -1,248 +1,10 @@
 [
   {
-    "name": "Sufian",
-    "email": "sufiantariqorignal@gmail.com",
-    "password": "1234",
-    "id": "1234567890",
-    "logs": [
-      {
-        "action": "returned",
-        "time": "2024-12-16",
-        "isbn": "9780061120084"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9780743273565"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9780743273565"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-17",
-        "isbn": "9781503290563"
-      }
-    ],
-    "loans": [
-      "9780451524935",
-      "9781503290563",
-      "9781503290563",
-      "9780743273565",
-      "9780743273565",
-      "9781503290563",
-      "9781503290563"
-    ],
-    "saved": [
-      "9780061120084",
-      "9780451524935",
-      "9781400079988"
-    ],
-    "notifications": [
-      {
-        "type": "Borrow",
-        "id": "1234567890",
-        "message": "You borrowed a book with ISBN: ",
-        "payload": "9781503290563",
-        "timestamp": 1734458387614,
-        "read": false
-      },
-      {
-        "type": "Borrow",
-        "id": "1234567890",
-        "message": "You borrowed a book with ISBN: ",
-        "payload": "9781503290563",
-        "timestamp": 1734460869629,
-        "read": false
-      }
-    ]
-  },
-  {
-    "name": "Sukaina",
-    "email": "nordiccabpartners@gmail.com",
-    "password": "1234",
-    "id": "0303219356",
-    "logs": [
-      {
-        "action": "borrowed",
-        "time": "2024-11-01",
-        "isbn": "9780061120084"
-      }
-    ],
-    "loans": [
-      "9780061120084"
-    ],
-    "saved": [],
-    "notifications": []
-  },
-  {
     "name": "Loura",
     "email": "Loura",
     "password": "1234",
     "id": "1111111111",
     "logs": [
-      {
-        "action": "returned",
-        "time": "2024-12-17",
-        "isbn": "9780061120084"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-17",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-17",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-17",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "borrowed",
-        "time": "2023-12-17",
-        "isbn": "9780061120084"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-05",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-18",
-        "isbn": "9780743273565"
-      },
-      {
-        "action": "borrowed",
-        "time": "2024-12-18",
-        "isbn": "9780743273565"
-      }
-    ],
-    "loans": [
-      "9780061120084",
-      "9780451524935",
-      "9780743273565",
-      "9780743273565"
-    ],
-    "saved": [
-      "9780743273565"
-    ],
-    "notifications": [
-      {
-        "type": "Fine",
-        "id": "1111111111",
-        "message": "\uD83D\uDD34 Reminder: The book with ISBN 9780451524935 is due for return within the next 48 hours. Please return it on time to avoid a fine.",
-        "payload": "9780451524935",
-        "timestamp": 1734482762007,
-        "read": true
-      },
-      {
-        "type": "Borrow",
-        "id": "1111111111",
-        "message": "You borrowed a book with ISBN: 9780743273565",
-        "payload": "9780743273565",
-        "timestamp": 1734483992558,
-        "read": true
-      }
-    ]
-  },
-  {
-    "name": "aruol",
-    "email": "aruol",
-    "password": "1234",
-    "id": "2222222222",
-    "logs": [
-      {
-        "action": "borrowed",
-        "time": "2024-12-18",
-        "isbn": "9781503290563"
-      }
-    ],
-    "loans": [
-      "9781503290563"
-    ],
-    "saved": [],
-    "notifications": [
-      {
-        "type": "Welcome",
-        "id": "2222222222",
-        "message": "\uD83C\uDF89 Welcome to BookHaven, aruol! We're thrilled to have you join our community of book lovers. Start exploring our vast collection of books today, and enjoy the journey into the world of stories and knowledge. Happy reading! \uD83D\uDCDA",
-        "payload": "aruol",
-        "timestamp": 1734485515793,
-        "read": false
-      },
-      {
-        "type": "Borrow",
-        "id": "2222222222",
-        "message": "You've just borrowed the book with the ISBN: 9781503290563",
-        "payload": "9781503290563",
-        "timestamp": 1734485538733,
-        "read": true
-      }
-    ]
-  },
-  {
-    "name": "rrr",
-    "email": "rrr",
-    "password": "1234",
-    "id": "1234554324",
-    "logs": [
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9780451524935"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9781503290563"
-      },
-      {
-        "action": "returned",
-        "time": "2024-12-18",
-        "isbn": "9780451524935"
-      },
       {
         "action": "borrowed",
         "time": "2024-12-18",
@@ -255,20 +17,20 @@
     "saved": [],
     "notifications": [
       {
-        "type": "Borrow",
-        "id": "1234554324",
-        "message": "You've just borrowed the book with the ISBN: 9780451524935",
-        "payload": "9780451524935",
-        "timestamp": 1734530245152,
-        "read": true
+        "type": "Welcome",
+        "id": "1111111111",
+        "message": "\uD83C\uDF89 Welcome to BookHaven, Loura! We're thrilled to have you join our community of book lovers. Start exploring our vast collection of books today, and enjoy the journey into the world of stories and knowledge. Happy reading! \uD83D\uDCDA",
+        "payload": "Loura",
+        "timestamp": 1734534149941,
+        "read": false
       },
       {
         "type": "Borrow",
-        "id": "1234554324",
+        "id": "1111111111",
         "message": "You've just borrowed the book with the ISBN: 9780451524935",
         "payload": "9780451524935",
-        "timestamp": 1734530498183,
-        "read": true
+        "timestamp": 1734534155211,
+        "read": false
       }
     ]
   }
