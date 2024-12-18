@@ -30,19 +30,19 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="Notifications.html" style="color: lightgray;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" id="notificationIcon"
+                                 class="bi bi-bell" viewBox="0 0 16 16">
                                 <path
-                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
                             </svg>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Messages.html" style="color: lightgray;">
+                        <a class="nav-link" href="Notifications.html" style="color: lightgray;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                 class="bi bi-bell-fill" viewBox="0 0 16 16">
                                 <path
-                                    d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
                             </svg>
                         </a>
                     </li>
@@ -87,97 +87,101 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-       fetchNotifications();
-   });
-       async function fetchNotifications() {
-               fetch("finesNotification?token=" + localStorage.token, {
-                   method: "POST", // Use POST to trigger the action
-               })
-               .then(() => {
-                   console.log("Fine notifications checked successfully.");
-                    // Fetch notifications for the logged-in user
-                       fetch("/notification?token=" + localStorage.token)
-                           .then((response) => response.json())
-                           .then((data) => {
-                               console.log("Fetched notifications:", data);
+        fetchNotifications();
+    });
+        async function fetchNotifications() {
+                fetch("finesNotification?token=" + localStorage.token, {
+                    method: "POST", // Use POST to trigger the action
+                })
+                .then(() => {
+                    console.log("Fine notifications checked successfully.");
+                     // Fetch notifications for the logged-in user
+                        fetch("/notification?token=" + localStorage.token)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log("Fetched notifications:", data);
 
-                               const notificationsContainer = document.getElementById("notificationsContainer");
-                               notificationsContainer.innerHTML = ""; // Clear the container before populating
+                                const notificationsContainer = document.getElementById("notificationsContainer");
+                                notificationsContainer.innerHTML = ""; // Clear the container before populating
 
-                               // Iterate through notifications and display them
-                               for (const notification of data) {
-                                   notificationsContainer.innerHTML += `
-                                       <div class="list-group-item">
-                                           <h5 class="mb-1">🔔 ${notification.type}</h5>
-                                           <p class="mb-1">${notification.message}</p>
-                                           <button class="btn btn-danger btn-sm float-end" onclick="deleteNotification(${notification.timestamp}, '${notification.type}')">Delete</button>
-                                           <button class="btn btn-success btn-sm"onclick="markAsRead(${notification.timestamp})">Mark as Read</button>
-                                           <small class="text-muted">${new Date(notification.timestamp).toLocaleString()}</small>
-                                       </div>`;
-                               }
+                                // Iterate through notifications and display them
+                                for (const notification of data) {
+                                    console.log(notification.read);
+                                    const isReadStyle = notification.read
+                                    ? 'style="background-color: #e9ecef; color: #6c757d;"'
+                                    : "";
+                                    notificationsContainer.innerHTML += `
+                                        <div class="list-group-item" ${isReadStyle}  data-timestamp="${notification.timestamp}">
+                                            <h5 class="mb-1">🔔 ${notification.type}</h5>
+                                            <p class="mb-1">${notification.message}</p>
+                                            <button class="btn btn-danger btn-sm float-end" onclick="deleteNotification(${notification.timestamp}, '${notification.type}')">Delete</button>
+                                            <button class="btn btn-success btn-sm"onclick="markAsRead(${notification.timestamp})">Mark as Read</button>
+                                            <small class="text-muted">${new Date(notification.timestamp).toLocaleString()}</small>
+                                        </div>`;
+                                }
 
-                               // If no notifications are available
-                               if (data.length === 0) {
-                                   notificationsContainer.innerHTML = `<div class="list-group-item">No notifications available.</div>`;
-                               }
-                           })
-                           .catch((error) => {
-                               console.error("Error fetching notifications:", error);
-                           });
-               })
-               .catch((error) => {
-                   console.error("Error triggering fines notification:", error);
-               });
-       }
-
-               async function deleteNotification(timestamp,type) {
-               const token = localStorage.token;
-                if (type === "Fine") {
-                    alert("Book must be returned first before deleting this notification.");
-                    return; // Exit the function early
-                    }
-
-                try {
-                   const response = await fetch(`/notification/delete?token=${token}&timestamp=${timestamp}`, {
-                       method: "DELETE",
-                   });
-
-                   const result = await response.json();
-                   console.log("is in delete");
-                   if (result.success) {
-                       alert("Notification deleted successfully!");
-                       fetchNotifications(); // Refresh the notifications list
-                   } else {
-                       alert("Error: " + result.message);
-                   }
-               } catch (error) {
-                   console.error("Error deleting notification:", error);
-               }}
-
-        async function markAsRead(timestamp) {
-    const token = localStorage.token;
-
-    try {
-        const response = await fetch(`/notification/markAsRead?token=${token}&timestamp=${timestamp}`, {
-            method: "PATCH",
-        });
-
-        const result = await response.json();
-        if (result.success) {
-            alert("Notification marked as read!");
-            // Optionally, update the UI to show the notification as "read"
-            const notificationElement = document.querySelector(`[data-timestamp="${timestamp}"]`);
-            if (notificationElement) {
-                console.log("color");
-                notificationElement.style.backgroundColor = "#e9ecef"; // Visually mark as read
-            }
-        } else {
-            alert("Error: " + result.message);
+                                // If no notifications are available
+                                if (data.length === 0) {
+                                    notificationsContainer.innerHTML = `<div class="list-group-item">No notifications available.</div>`;
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching notifications:", error);
+                            });
+                })
+                .catch((error) => {
+                    console.error("Error triggering fines notification:", error);
+                });
         }
-    } catch (error) {
-        console.error("Error marking notification as read:", error);
-    }
-}
+
+                async function deleteNotification(timestamp,type) {
+                const token = localStorage.token;
+                 if (type === "Fine") {
+                     alert("Book must be returned first before deleting this notification.");
+                     return; // Exit the function early
+                     }
+
+                 try {
+                    const response = await fetch(`/notification/delete?token=${token}&timestamp=${timestamp}`, {
+                        method: "DELETE",
+                    });
+
+                    const result = await response.json();
+                    console.log("is in delete");
+                    if (result.success) {
+                        alert("Notification deleted successfully!");
+                        fetchNotifications(); // Refresh the notifications list
+                    } else {
+                        alert("Error: " + result.message);
+                    }
+                } catch (error) {
+                    console.error("Error deleting notification:", error);
+                }}
+
+            async function markAsRead(timestamp) {
+            const token = localStorage.token;
+
+            try {
+                const response = await fetch(`/notification/markAsRead?token=${token}&timestamp=${timestamp}`, {
+                     method: "PATCH",
+                 });
+
+                 const result = await response.json();
+                if (result.success) {
+                    alert("Notification marked as read!");
+             // Optionally, update the UI to show the notification as "read"
+                    const notificationElement = document.querySelector(`[data-timestamp="${timestamp}"]`);
+                     if (notificationElement) {
+                        console.log("color");
+                         notificationElement.style.backgroundColor = "#e9ecef"; // Visually mark as read
+                    }
+                } else {
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                console.error("Error marking notification as read:", error);
+            }
+        }
 
 
 

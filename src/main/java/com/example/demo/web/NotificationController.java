@@ -50,6 +50,7 @@ public class NotificationController {
         // If the person is not a user
         return Map.of("success", false, "message", "Invalid token or user not found.");
     }
+
     @PatchMapping("/notification/markAsRead")
     public Map<String, Object> markAsRead(@RequestParam String token, @RequestParam long timestamp) {
         Person p = auth.exchange(token);
@@ -68,5 +69,19 @@ public class NotificationController {
 
         return Map.of("success", false, "message", "Invalid token or user.");
     }
+    @GetMapping("/notification/hasUnread")
+    public Map<String, Object> hasUnreadNotifications(@RequestParam String token) {
+        Person p = auth.exchange(token);
+
+        if (p instanceof User u) {
+            boolean hasUnread = u.getNotifications().stream().anyMatch(n -> !n.getRead());
+            return Map.of("success", true, "hasUnread", hasUnread);
+        }
+
+        return Map.of("success", false, "message", "Invalid user");
+    }
+
+
+
 
 }
