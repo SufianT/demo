@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -63,5 +65,31 @@ public class LoanSystem {
         }
         System.out.println("Book should have existed in the database");
     }
+    public List<String> getBooksDueInTwoDays(User user) {
+        List<String> booksDueSoon = new ArrayList<>();
+        LoanPolicy policy = new BookLoanPolicy();
+
+        for (int i = 0; i < user.getLoans().size(); i++) {
+            for (int j = user.getLogs().size() - 1; j >= 0; j--) {
+                if (user.getLoans().get(i).equals(user.getLogs().get(j).isbn())) {
+                    LoanPeriod period = new LoanPeriod(LoanPeriod.parseDate(user.getLogs().get(j).time()), policy);
+                    LocalDate dueDate = period.getEndDate();
+                    int daysUntilDue = (int) java.time.temporal.ChronoUnit.DAYS.between(LocalDate.now(), dueDate);
+
+                    // Check if the book is due in 2 days or less
+                    if (daysUntilDue <= 2 && daysUntilDue >0) {
+                        if (!booksDueSoon.contains(user.getLoans().get(i))) {
+                            booksDueSoon.add(user.getLoans().get(i)); // Add the ISBN to the list only if it's not already present
+                        }
+                    }
+                    break; // Stop searching once we find the most recent log for this loan
+                }
+            }
+        }
+
+        return booksDueSoon; // Return the list of books due in 2 days
+    }
+
+
 
 }

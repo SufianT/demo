@@ -67,6 +67,22 @@ public class Database {
         saveToFile(usersFile, users);
         return true;
     }
+    public static Person getPersonById(String userId) {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {});
+        List<Admin> admins = loadFromFile(adminsFile, new TypeReference<ArrayList<Admin>>() {});
+
+        for (User user : users) {
+            if (user.getId().equals(userId)) {
+                return user; // Return the matching user
+            }
+        }
+        for (Admin admin: admins) {
+            if (admin.getId().equals(userId)) {
+                return admin; // Return the matching user
+            }
+        }
+        return null; // If no user is found
+    }
 
     public static void updateUser(User user) {
         List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
@@ -81,6 +97,16 @@ public class Database {
         }
         System.out.println("updateUser() -> user not found");
     }
+    public static boolean hasNotification(String userId, String type, String payload) {
+        List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
+        });        for (User user : users) {
+            if (user.getId().equals(userId)) {
+                return user.getNotifications().stream()
+                        .anyMatch(n -> n.getType().equals(type) && n.getPayload().equals(payload));
+            }
+        }
+        return false;
+    }
 
     // Admin Methods
     public static Admin findAdmin(String email, String password, String adminKey) {
@@ -94,6 +120,7 @@ public class Database {
         }
         return null;
     }
+
 
     // Helpers
     private static List<LibraryItem> loadItems() {
@@ -132,6 +159,7 @@ public class Database {
         }
     }
 
+
     private static <T> ArrayList<T> loadFromFile(String filePath, TypeReference<ArrayList<T>> typeReference) {
         try {
             File file = new File(filePath);
@@ -152,5 +180,7 @@ public class Database {
             System.err.println("Error saving data to " + filePath);
         }
     }
+
+
 
 }

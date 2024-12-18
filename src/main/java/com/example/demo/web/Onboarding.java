@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.model.Notification.RegistrationNotifier;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Utils;
@@ -40,6 +41,7 @@ public class Onboarding {
         try {
             ls.getAuth().registerUser(u);
             String token = ls.getAuth().loginUser(u);
+            new RegistrationNotifier(u);
             return Map.of("success", true, "token", token);
         } catch (PersonExistException p) {
             return Map.of("success", false, "message", "person already exists");

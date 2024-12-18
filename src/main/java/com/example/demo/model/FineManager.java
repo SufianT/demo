@@ -32,4 +32,7 @@ public class FineManager {
 
     public record FineInstance(int fine, String isbn) {
     }
+
+
 }
+
