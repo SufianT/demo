@@ -70,6 +70,9 @@
             flex: 1;
         }
     </style>
+    <script type="module">
+        if (!localStorage.token) window.location.replace("/index.html");
+    </script>
 </head>
 
 <body>

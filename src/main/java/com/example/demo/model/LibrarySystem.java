@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class LibrarySystem {
     private AuthenticationInterface authenticator;
 
-    public LibrarySystem(AuthenticationInterface authenticator) {
+    public LibrarySystem(Authenticator authenticator) {
         this.authenticator = authenticator;
     }
 
