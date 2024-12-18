@@ -42,6 +42,10 @@
             margin: 5px 0;
         }
     </style>
+    <!-- Navigation Script -->
+    <script type="module">
+        if (!localStorage.token) window.location.replace("/index.html");
+    </script>
 </head>
 
 <body>
