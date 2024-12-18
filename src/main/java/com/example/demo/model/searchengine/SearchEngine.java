@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SearchEngine implements SearchInterface {
     // word -> [ISBNS]
-    HashMap<String, List<String>> words = new HashMap<>();
+    private HashMap<String, List<String>> words = new HashMap<>();
 
     public SearchEngine() {
         for (Book book : Database.getBookList()) {
