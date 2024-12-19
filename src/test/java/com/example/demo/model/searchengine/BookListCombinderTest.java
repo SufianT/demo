@@ -39,12 +39,6 @@ class BookListCombinderTest {
         String input = "To Kill a Mockingbird".toLowerCase();
         Authenticator aut = new Authenticator();
         LibrarySystem ls = new LibrarySystem(aut);
-        SetOfBookstoString setToString = new SetOfBookstoString();
-        StringToWantedWords sTWW = new StringToWantedWords();
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        CalculateMostWantedBook calc = new CalculateMostWantedBook();
-        ArrayList<Book> lsArray = new ArrayList<>();
-        lsArray = ls.getBookList();
         BookListCombinder blc = new BookListCombinder(ls);
 
         assertEquals("9780061120084",blc.bookListCombinder(input).get(0));
