@@ -1,4 +1,4 @@
-package com.example.demo.model.notification;
+package com.example.demo.model.notifications;
 
 /**
  * Represents a notification event in the system.
