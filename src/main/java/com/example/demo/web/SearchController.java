@@ -16,7 +16,7 @@ public class SearchController {
     }
 
     @GetMapping("/Search")
-    public ArrayList<Book> search(String input){
+    public ArrayList<String> search(String input){
         return s.bookListCombinder(input);
     }
 

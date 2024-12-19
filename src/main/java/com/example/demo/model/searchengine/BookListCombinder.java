@@ -13,15 +13,20 @@ public class BookListCombinder {
         this.ls = ls;
     }
 
-    public ArrayList<Book> bookListCombinder(String s){
+    public ArrayList<String> bookListCombinder(String s){
         StringToWantedWordsInterface w = new StringToWantedWords();
         CalculateMostWantedBookInterface calc = new CalculateMostWantedBook();
         SearchInterface searchIF = new SearchEngine(w,calc);
 
+        ArrayList<String> isbn = new ArrayList<>();
         ArrayList<Book> books= new ArrayList<>();
         books=ls.getBookList();
         if(s.isBlank()){
-            return books;
+            for(Book book:books){
+                isbn.add(book.getISBN());
+            }
+            return isbn;
+
         }
 
         ArrayList<Book> bookSet = new ArrayList<>();
@@ -34,7 +39,10 @@ public class BookListCombinder {
             }
             bookSet.addFirst(searchIF.searchByAuthorAndTitle(s,books).get(0));
         }
-        return bookSet;
+        for(Book book:books){
+            isbn.add(book.getISBN());
+        }
+        return isbn;
     }
 
 }
