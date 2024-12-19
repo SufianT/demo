@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.usermanagement;
 
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;

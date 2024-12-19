@@ -1,7 +1,14 @@
 package com.example.demo.model;
 
+import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.bookmanager.LibraryItem;
 import com.example.demo.model.exceptions.BookNotAvailableException;
 import com.example.demo.model.exceptions.PersonExistException;
+import com.example.demo.model.usermanagement.Admin;
+import com.example.demo.model.usermanagement.AuthenticationInterface;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.usermanagement.User;
+
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

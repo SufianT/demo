@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.loansystem;
 
 import java.time.LocalDate;
 

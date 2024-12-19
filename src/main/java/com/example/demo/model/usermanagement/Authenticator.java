@@ -1,10 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.model.usermanagement;
 
 import java.util.HashMap;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Database;
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;

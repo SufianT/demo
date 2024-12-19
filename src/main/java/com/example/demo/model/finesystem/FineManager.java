@@ -1,10 +1,15 @@
-package com.example.demo.model;
+package com.example.demo.model.finesystem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.example.demo.model.loansystem.BookLoanPolicy;
+import com.example.demo.model.loansystem.LoanPeriod;
+import com.example.demo.model.loansystem.LoanPolicy;
+import com.example.demo.model.usermanagement.User;
 
 @Service
 public class FineManager {

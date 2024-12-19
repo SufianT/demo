@@ -1,5 +1,8 @@
-package com.example.demo.model;
+package com.example.demo.model.chat;
 
+import com.example.demo.model.Database;
+import com.example.demo.model.usermanagement.Admin;
+import com.example.demo.model.usermanagement.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;

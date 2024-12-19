@@ -1,7 +1,11 @@
 package com.example.demo.web;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Notification.NotificationEvent;
+import com.example.demo.model.notification.NotificationEvent;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.usermanagement.Person;
+import com.example.demo.model.usermanagement.User;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

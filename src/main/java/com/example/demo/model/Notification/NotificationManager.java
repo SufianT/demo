@@ -1,8 +1,8 @@
-package com.example.demo.model.Notification;
+package com.example.demo.model.notification;
 
 import com.example.demo.model.Database;
-import com.example.demo.model.Person;
-import com.example.demo.model.User;
+import com.example.demo.model.usermanagement.Person;
+import com.example.demo.model.usermanagement.User;
 
 public class NotificationManager implements Observer {
 

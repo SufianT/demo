@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.finesystem;
 
 public class FineCalculator { // DO not need to store or modify any state
     // Calculates bookfine

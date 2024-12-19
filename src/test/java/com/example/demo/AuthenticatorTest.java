@@ -15,13 +15,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.example.demo.model.Authenticator;
 import com.example.demo.model.Database;
-import com.example.demo.model.Person;
-import com.example.demo.model.User;
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.usermanagement.Person;
+import com.example.demo.model.usermanagement.User;
 
 @ExtendWith(MockitoExtension.class)
 public class AuthenticatorTest {

@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.model.Book;
 import com.example.demo.model.Database;
-import com.example.demo.model.Genre; // Assuming Genre is an enum in your model package
+import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.bookmanager.Genre;
 import com.example.demo.model.searchengine.SearchEngine;
 
 import org.junit.jupiter.api.BeforeEach;

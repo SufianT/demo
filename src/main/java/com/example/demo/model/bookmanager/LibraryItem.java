@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.bookmanager;
 
 public class LibraryItem {
     private Book book;

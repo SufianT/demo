@@ -1,6 +1,6 @@
-package com.example.demo.model.Notification;
+package com.example.demo.model.notification;
 
-import com.example.demo.model.User;
+import com.example.demo.model.usermanagement.User;
 
 public class FineNotifier extends Observable {
     public FineNotifier(User user, String isbn) {

@@ -1,6 +1,13 @@
 package com.example.demo.web;
 
 import com.example.demo.model.*;
+import com.example.demo.model.chat.ChatManager;
+import com.example.demo.model.chat.ChatMessageRequest;
+import com.example.demo.model.chat.ChatPreview;
+import com.example.demo.model.usermanagement.Admin;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.usermanagement.Person;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

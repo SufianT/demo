@@ -1,5 +1,10 @@
 package com.example.demo.model;
 
+import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.bookmanager.LibraryItem;
+import com.example.demo.model.usermanagement.Admin;
+import com.example.demo.model.usermanagement.Person;
+import com.example.demo.model.usermanagement.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

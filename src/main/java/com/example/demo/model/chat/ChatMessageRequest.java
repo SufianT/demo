@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.chat;
 
 public class ChatMessageRequest {
     private String message;

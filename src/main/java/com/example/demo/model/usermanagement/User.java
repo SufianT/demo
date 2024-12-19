@@ -1,9 +1,9 @@
-package com.example.demo.model;
-
-import com.example.demo.model.Notification.NotificationEvent;
+package com.example.demo.model.usermanagement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.demo.model.notification.NotificationEvent;
 
 public class User extends Person {
     private List<LoanLog> logs;

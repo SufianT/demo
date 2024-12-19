@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.loansystem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,7 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Database;
+import com.example.demo.model.bookmanager.LibraryItem;
 import com.example.demo.model.exceptions.BookNotAvailableException;
+import com.example.demo.model.usermanagement.User;
 
 @Service
 public class LoanSystem {
