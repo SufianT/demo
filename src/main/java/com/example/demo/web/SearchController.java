@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Set;
+
 @RestController
 public class SearchController {
     private BookListCombinder s;
@@ -16,7 +18,7 @@ public class SearchController {
     }
 
     @GetMapping("/Search")
-    public ArrayList<String> search(String input){
+    public Set<String> search(String input){
         return s.bookListCombinder(input);
     }
 
