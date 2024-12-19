@@ -1,4 +1,4 @@
-package com.example.demo.model.Notification;
+package com.example.demo.model.notification;
 
 public class NotificationEvent {
     private String type;

@@ -1,4 +1,4 @@
-package com.example.demo.model.Notification;
+package com.example.demo.model.notification;
 
 import com.example.demo.model.User;
 

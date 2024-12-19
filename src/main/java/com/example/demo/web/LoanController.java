@@ -1,14 +1,14 @@
 package com.example.demo.web;
 
-import com.example.demo.model.Notification.BorrowNotifier;
 import com.example.demo.model.Authenticator;
 import com.example.demo.model.Database;
 import com.example.demo.model.FineManager;
 import com.example.demo.model.LoanSystem;
-import com.example.demo.model.Notification.FineNotifier;
 import com.example.demo.model.Person;
 import com.example.demo.model.User;
 import com.example.demo.model.exceptions.BookNotAvailableException;
+import com.example.demo.model.notification.BorrowNotifier;
+import com.example.demo.model.notification.FineNotifier;
 
 import java.util.List;
 import java.util.Map;
@@ -78,7 +78,7 @@ public class LoanController {
         if (p instanceof User u) {
             try {
                 ls.borrow(u, body.isbn());
-                new BorrowNotifier(u,body.isbn());
+                new BorrowNotifier(u, body.isbn());
                 return Map.of("success", true);
             } catch (BookNotAvailableException e) {
                 System.out.println(e);
@@ -113,6 +113,7 @@ public class LoanController {
         return List.of();
 
     }
+
     @PostMapping("/finesNotification")
     public void onDueFines(@RequestParam String token) {
         Person p = auth.exchange(token);
@@ -130,7 +131,6 @@ public class LoanController {
             }
         }
     }
-
 
     private record BodyOfBorrowOrReturnBook(String token, String isbn) {
     }

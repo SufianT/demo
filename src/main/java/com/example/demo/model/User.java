@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import com.example.demo.model.Notification.NotificationEvent;
+import com.example.demo.model.notification.NotificationEvent;
 
 import java.util.ArrayList;
 import java.util.List;

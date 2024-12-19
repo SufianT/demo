@@ -1,6 +1,6 @@
 package com.example.demo.web;
 
-import com.example.demo.model.Notification.RegistrationNotifier;
+import com.example.demo.model.notification.RegistrationNotifier;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Utils;
