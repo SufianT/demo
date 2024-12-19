@@ -1,5 +1,21 @@
 package com.example.demo.model.usermanagement;
 
+/**
+ * Represents a generic person in the system.
+ * - Serves as a base class for different types of users, such as `User` and
+ * `Admin`.
+ * - Stores common attributes like name, email, password, and a unique ID.
+ * 
+ * Key Methods:
+ * - `getName`: Retrieves the person's name.
+ * - `getEmail`: Retrieves the person's email address.
+ * - `getPassword`: Retrieves the person's password.
+ * - `getId`: Retrieves the person's unique ID.
+ * 
+ * Intended to be extended by specific user types to add additional
+ * functionality.
+ */
+
 public abstract class Person {
     private String name;
     private String email;

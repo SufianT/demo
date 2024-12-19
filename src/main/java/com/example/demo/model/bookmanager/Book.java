@@ -2,6 +2,12 @@ package com.example.demo.model.bookmanager;
 
 import java.util.List;
 
+/**
+ * Represents a book with details such as title, authors, ISBN, genre, and an optional image.
+ * Provides constructors to create a book object and methods to access its properties.
+ * Overrides `toString` to generate a string representation of the book and `equals` to compare books based on ISBN.
+ */
+
 public class Book {
     private String title;
     private List<String> authors;

@@ -4,6 +4,19 @@ import com.example.demo.model.Database;
 import com.example.demo.model.usermanagement.Person;
 import com.example.demo.model.usermanagement.User;
 
+/**
+ * Handles the processing and delivery of notifications for users.
+ * - Implements the `Observer` interface to respond to notification events.
+ * - Updates the user's notification list and persists the changes in the
+ * database.
+ * 
+ * Key Method:
+ * - `update`: Processes a `NotificationEvent` by adding it to the corresponding
+ * user's notifications and saving the changes.
+ * 
+ * Works with the `Database` to fetch and update user information.
+ */
+
 public class NotificationManager implements Observer {
 
     @Override

@@ -1,5 +1,19 @@
 package com.example.demo.model.notification;
 
+/**
+ * Represents a notification event in the system.
+ * - Encapsulates details such as type, associated user ID, message, payload, timestamp, and read status.
+ * - Provides constructors for creating notification events and methods for accessing and updating properties.
+ * 
+ * Key Fields:
+ * - `type`: Type of notification (e.g., "Borrow").
+ * - `id`: Identifier of the user associated with the event.
+ * - `message`: Notification message to display.
+ * - `payload`: Additional data related to the event.
+ * - `timestamp`: Time when the event was created.
+ * - `read`: Indicates whether the notification has been read.
+ */
+
 public class NotificationEvent {
     private String type;
     private String id;

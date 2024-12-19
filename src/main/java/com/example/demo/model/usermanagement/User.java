@@ -5,6 +5,32 @@ import java.util.List;
 
 import com.example.demo.model.notification.NotificationEvent;
 
+/**
+ * Represents a user in the system, extending the `Person` class.
+ * - Includes additional attributes for tracking loans, saved items,
+ * notifications, and loan logs.
+ * - Provides constructors for creating user instances with varying levels of
+ * detail.
+ * 
+ * Key Attributes:
+ * - `logs`: A list of loan logs recording actions like borrowing or returning
+ * books.
+ * - `loans`: A list of currently borrowed book ISBNs.
+ * - `saved`: A list of saved book ISBNs for future reference.
+ * - `notifications`: A list of notification events associated with the user.
+ * 
+ * Key Methods:
+ * - `getLogs`: Retrieves the user's loan logs.
+ * - `getLoans`: Retrieves the list of currently borrowed books.
+ * - `getSaved`: Retrieves the list of saved books.
+ * - `getNotifications`: Retrieves the list of notifications for the user.
+ * 
+ * Nested Types:
+ * - `LoanLogAction`: Enum defining actions such as `borrowed` and `returned`.
+ * - `LoanLog`: Record to log loan actions with action type, timestamp, and
+ * ISBN.
+ */
+
 public class User extends Person {
     private List<LoanLog> logs;
     private List<String> loans;

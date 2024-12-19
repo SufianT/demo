@@ -14,6 +14,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages chat interactions between admins and users.
+ * - Supports sending messages from admins to users and vice versa.
+ * - Stores chat messages in a JSON file for persistence.
+ * - Provides methods to retrieve messages for a user or generate chat previews for admins.
+ * 
+ * Key Methods:
+ * - `addMessage`: Adds a message from an admin to a user.
+ * - `addMessageFromUser`: Adds a message from a user to the admin.
+ * - `getMessages`: Retrieves all messages for a specific user.
+ * - `getAdminChats`: Retrieves a list of chat previews for admins.
+ * 
+ * Utilises `ObjectMapper` for JSON file operations to load and save messages.
+ */
+
 @Component
 public class ChatManager {
     private final File messageFile = new File("src/main/resources/data/Chat.json");

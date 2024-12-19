@@ -2,6 +2,17 @@ package com.example.demo.model.notification;
 
 import com.example.demo.model.usermanagement.User;
 
+/**
+ * Sends a welcome notification to a newly registered user.
+ * - Inherits from `Observable` to manage observers and notify them of registration events.
+ * - Automatically creates and sends a `NotificationEvent` upon instantiation.
+ * 
+ * Key Methods:
+ * - `notifyReg`: Generates a personalised welcome message and notifies observers of the registration event.
+ * 
+ * Observers include classes like `NotificationManager` that handle the delivery of the notification.
+ */
+
 public class RegistrationNotifier extends Observable {
 
     public RegistrationNotifier(User user) {
