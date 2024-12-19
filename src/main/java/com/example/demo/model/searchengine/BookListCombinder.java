@@ -1,19 +1,19 @@
 package com.example.demo.model.searchengine;
 
-import com.example.demo.model.Authenticator;
 import com.example.demo.model.Book;
 import com.example.demo.model.LibrarySystem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class BookListCombinder {
-    //private LibrarySystem ls;
+    private LibrarySystem ls;
     //private SearchInterface si;
-    public ArrayList<Book> BookListCombinder(String s){
-        Authenticator aut= new Authenticator();
-        LibrarySystem ls = new LibrarySystem(aut);
+
+    public BookListCombinder(LibrarySystem ls) {
+        this.ls = ls;
+    }
+
+    public ArrayList<Book> bookListCombinder(String s){
         StringToWantedWordsInterface w = new StringToWantedWords();
         CalculateMostWantedBookInterface calc = new CalculateMostWantedBook();
         SearchInterface searchIF = new SearchEngine(w,calc);
