@@ -1,7 +1,11 @@
 package com.example.demo.model.searchengine;
 
-import java.util.Set;
+import com.example.demo.model.Book;
+
+import java.util.ArrayList;
 
 public interface SearchInterface {
-    public Set<String> find(String search);
+    public ArrayList<Book> searchByAuthorAndTitle(String search, ArrayList<Book> books);
+
+    public ArrayList<Book> searchByISBN(String search, ArrayList<Book> books);
 }

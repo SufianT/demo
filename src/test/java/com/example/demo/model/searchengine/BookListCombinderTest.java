@@ -12,6 +12,7 @@ class BookListCombinderTest {
         BookListCombinder test = new BookListCombinder(new LibrarySystem(new Authenticator()));
         var res = test.bookListCombinder("        kill Khaled Lee");
         assertTrue(res.get(0).toString().equals("To Kill a Mockingbird Harper Lee Sufi"));
+        assertEquals(1,test.bookListCombinder("  kill Khaled"));
     }
 
 }
