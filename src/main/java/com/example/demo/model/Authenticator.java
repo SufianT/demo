@@ -41,7 +41,7 @@ public class Authenticator implements AuthenticationInterface {
         }
 
         UUID uuid = UUID.randomUUID();
-        tokens.put(uuid.toString(), matchedAdmin.getEmail());
+        tokens.put(uuid.toString(), matchedAdmin.getId());
         return uuid.toString();
     }
 
@@ -59,7 +59,11 @@ public class Authenticator implements AuthenticationInterface {
     }
 
     public Person exchange(String uuid) {
-        return Database.findUser(tokens.get(uuid));
+        Person user = Database.findUser(tokens.get(uuid));
+        if (user == null) {
+            user = Database.findAdminById(tokens.get(uuid));
+        }
+        return user;
     }
 
 }
