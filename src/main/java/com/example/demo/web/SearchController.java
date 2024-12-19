@@ -4,6 +4,7 @@ import com.example.demo.model.Book;
 import com.example.demo.model.LibrarySystem;
 import com.example.demo.model.searchengine.BookListCombinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class SearchController {
         this.s=s;
     }
 
-    @GetMapping("/Search")
-    public Set<String> search(String input){
-        return s.bookListCombinder(input);
+    @GetMapping("/search")
+    public Set<String> search(@RequestParam String query){
+        return s.bookListCombinder(query);
     }
 
 }

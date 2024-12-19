@@ -42,7 +42,7 @@ public class BookListCombinder {
             }
             bookSet.addFirst(searchIF.searchByAuthorAndTitle(s,books).get(0));
         }
-        for(Book book:books){
+        for(Book book:bookSet){
             isbn.add(book.getISBN());
         }
         return isbn;
