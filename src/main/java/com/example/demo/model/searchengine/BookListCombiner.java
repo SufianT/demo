@@ -7,48 +7,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-Combinds the searchByISBN and searchByAuthorAndTitle
+Combines the searchByISBN and searchByAuthorAndTitle
 and returns a List of string containing ISBN of wanted books.
 (After search)
  */
 
-public class BookListCombinder {
+public class BookListCombiner {
     private LibrarySystem ls;
 
-    public BookListCombinder(LibrarySystem ls) {
+    public BookListCombiner(LibrarySystem ls) {
         this.ls = ls;
     }
 
-    public List<String> bookListCombinder(String s) {
+    public List<String> bookListCombiner(String s) {
         StringToWantedWordsInterface w = new StringToWantedWords();
         CalculateMostWantedBookInterface calc = new CalculateMostWantedBook();
         SearchInterface searchIF = new SearchEngine(w, calc);
 
         List<String> isbn = new ArrayList<>();
-        ArrayList<Book> books = new ArrayList<>();
-        books = ls.getBookList();
+        ArrayList<Book> books = ls.getBookList();
+
         if (s.isBlank()) {
             for (Book book : books) {
                 isbn.add(book.getISBN());
             }
             return isbn;
-
         }
 
         ArrayList<Book> bookSet = new ArrayList<>();
+
         for (Book book : searchIF.searchByAuthorAndTitle(s, books)) {
             bookSet.add(book);
         }
+
         if (searchIF.searchByISBN(s, books).size() == 1) {
-            if (bookSet.contains(searchIF.searchByISBN(s, books))) {
-                bookSet.remove(searchIF.searchByISBN(s, books).get(0));
+            Book isbnBook = searchIF.searchByISBN(s, books).get(0); // Extract the single Book
+            if (bookSet.contains(isbnBook)) {
+                bookSet.remove(isbnBook);
             }
-            bookSet.addFirst(searchIF.searchByISBN(s, books).get(0));
+            bookSet.add(0, isbnBook); // Add at the start of the list
         }
+
         for (Book book : bookSet) {
             isbn.add(book.getISBN());
         }
         return isbn;
     }
-
 }

@@ -25,7 +25,6 @@ public class SearchEngine implements SearchInterface {
 
     }
 
-
     public ArrayList<Book> searchByISBN(String input, ArrayList<Book> books) {
         ArrayList<Book> bookFromISBNSearch = new ArrayList<>();
         if (wI.searchComplete(input, setISBN.setOfBooksToSetString(books), 0).isEmpty()) {
