@@ -1,12 +1,15 @@
 package com.example.demo.web;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Notification.NotificationEvent;
+import com.example.demo.model.notification.NotificationEvent;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.usermanagement.Person;
+import com.example.demo.model.usermanagement.User;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Map;
 
@@ -61,8 +64,8 @@ public class NotificationController {
 
             for (NotificationEvent notification : notifications) {
                 if (notification.getTimestamp() == timestamp) {
-                    notification.setRead(true);
-                    Database.updateUser(u);
+                    notification.setRead(true); // Set the notification as read
+                    Database.updateUser(u); // Persist changes to the database
                     return Map.of("success", true, "message", "Notification marked as read.");
                 }
             }
@@ -83,6 +86,5 @@ public class NotificationController {
 
         return Map.of("success", false, "message", "Invalid user");
     }
-
 
 }

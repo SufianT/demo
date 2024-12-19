@@ -1,10 +1,10 @@
 package com.example.demo.web;
 
 import com.example.demo.Utils;
-import com.example.demo.model.Book;
 import com.example.demo.model.Database;
-import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.bookmanager.Genre;
 import com.example.demo.model.exceptions.IsbnAlreadyExistException;
 
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +51,7 @@ public class BookController {
         List<Book> books = new ArrayList<>();
 
         for (var item : Database.getLibraryItems()) {
-                books.add(item.getBook());
+            books.add(item.getBook());
         }
 
         return books;

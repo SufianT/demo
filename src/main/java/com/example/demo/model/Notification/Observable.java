@@ -1,4 +1,4 @@
-package com.example.demo.model.Notification;
+package com.example.demo.model.notification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,6 @@ public class Observable {
 
     public void addObserver(Observer observer) {
         observers.add(observer);
-    }
-
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
     }
 
     public void notifyObservers(NotificationEvent event) {

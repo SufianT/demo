@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.loansystem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,7 +6,27 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Database;
+import com.example.demo.model.bookmanager.LibraryItem;
 import com.example.demo.model.exceptions.BookNotAvailableException;
+import com.example.demo.model.usermanagement.User;
+
+/**
+ * Manages the borrowing and returning of books within the library system.
+ * - Tracks user loans, updates book availability, and logs actions for
+ * borrowing and returning books.
+ * - Provides a method to identify books due in two days for a specific user.
+ * 
+ * Key Methods:
+ * - `borrow`: Allows a user to borrow a book if copies are available; throws an
+ * exception if unavailable.
+ * - `returnBook`: Processes the return of a borrowed book, updating user logs
+ * and inventory.
+ * - `getBooksDueInTwoDays`: Identifies and returns a list of books that a user
+ * needs to return within two days.
+ * 
+ * Utilises a central `Database` for managing library items and user data.
+ */
 
 @Service
 public class LoanSystem {
@@ -27,7 +47,7 @@ public class LoanSystem {
                     Database.updateUser(user);
                     return;
                 } else {
-                    // reserve for future 
+                    // reserve for future
                 }
             }
         }
@@ -65,6 +85,7 @@ public class LoanSystem {
         }
         System.out.println("Book should have existed in the database");
     }
+
     public List<String> getBooksDueInTwoDays(User user) {
         List<String> booksDueSoon = new ArrayList<>();
         LoanPolicy policy = new BookLoanPolicy();
@@ -77,9 +98,10 @@ public class LoanSystem {
                     int daysUntilDue = (int) java.time.temporal.ChronoUnit.DAYS.between(LocalDate.now(), dueDate);
 
                     // Check if the book is due in 2 days or less
-                    if (daysUntilDue <= 2 && daysUntilDue >0) {
+                    if (daysUntilDue <= 2 && daysUntilDue > 0) {
                         if (!booksDueSoon.contains(user.getLoans().get(i))) {
-                            booksDueSoon.add(user.getLoans().get(i)); // Add the ISBN to the list only if it's not already present
+                            booksDueSoon.add(user.getLoans().get(i)); // Add the ISBN to the list only if it's not
+                                                                      // already present
                         }
                     }
                     break; // Stop searching once we find the most recent log for this loan
@@ -89,7 +111,5 @@ public class LoanSystem {
 
         return booksDueSoon; // Return the list of books due in 2 days
     }
-
-
 
 }

@@ -3,11 +3,11 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import com.example.demo.model.Authenticator;
-import com.example.demo.model.Book;
 import com.example.demo.model.Database;
-import com.example.demo.model.Genre;
 import com.example.demo.model.LibrarySystem;
+import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.bookmanager.Genre;
+import com.example.demo.model.usermanagement.Authenticator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;

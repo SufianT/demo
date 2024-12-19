@@ -1,15 +1,15 @@
 package com.example.demo.web;
 
-import com.example.demo.model.Notification.RegistrationNotifier;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Utils;
-import com.example.demo.model.Admin;
 import com.example.demo.model.LibrarySystem;
-import com.example.demo.model.User;
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;
+import com.example.demo.model.notification.RegistrationNotifier;
+import com.example.demo.model.usermanagement.Admin;
+import com.example.demo.model.usermanagement.User;
 
 import java.util.ArrayList;
 import java.util.Map;

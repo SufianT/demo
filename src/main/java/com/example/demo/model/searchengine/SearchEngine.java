@@ -1,7 +1,7 @@
 package com.example.demo.model.searchengine;
 
-import com.example.demo.model.Book;
 import com.example.demo.model.Database;
+import com.example.demo.model.bookmanager.Book;
 
 import java.util.*;
 

@@ -18,18 +18,24 @@ The project integrates core OOP concepts, design patterns, and follows a modular
   - Persistent token-based authentication.
 - **Library Features:**
   - Browse books by genre, title, and author.
-  - Borrow, reserve, and save books to a personalized list.
+  - Borrow and save books to a personalized list.
   - Notifications for due dates and reserved book availability.
+  - Notifications for actions like borrowing and returning books.
+  - Notifications alert users if the return date is approaching to avoid fines.
   - View borrowing history and outstanding fines.
+  - **Search Functionality:**
+    - Search for books by title, author, or ISBN.
 
 ### **Admin Functionality**
 - **Admin Login:**
   - Predefined admin accounts stored securely in a JSON file.
   - Authentication using an email, password, and a unique admin key.
 - **Admin Features:**
-  - Manage library inventory (add/remove/update books).
-  - View borrowing statistics and user activity.
-  - Notify users about fines or book availability.
+  - Manage library inventory (add books).
+  - Assist users via built in chat system.
+  - **Chat System:**
+    - Communicate with users directly through the platform.
+    - Simultaneously handle chats with multiple users to provide assistance.
 
 ---
 
@@ -75,82 +81,3 @@ The project integrates core OOP concepts, design patterns, and follows a modular
    cd library-management
 2. **Run DemoApplication.java:**
 3. **Start your local host on port 8080 to preview the website**
-
-## **Usage**
-
-### **How to Register and Log In**
-
-### **Registering as a User**
-1. Navigate to the **Registration Page**.
-2. Fill in the required fields:
-    - **Name**
-    - **Email**
-    - **Personnummer** (Swedish format: YYYYMMDDXXXX)
-    - **Password**
-3. Submit the form. If successful:
-    - Your account will be registered.
-    - You will be automatically logged in and redirected to the user dashboard.
-
----
-
-### **Logging In as a User**
-1. Navigate to the **Login Page**.
-2. Enter your registered **email** and **password**.
-3. Click the **Login** button.
-4. Upon successful login:
-    - Access the library to explore books.
-    - Borrow books and manage your account, including viewing borrowing history and fines.
-
----
-
-### **Logging In as an Admin**
-1. Navigate to the **Admin Login Page**.
-2. Use one of the predefined admin credentials from the `admins.json` file:
-
-    ```json
-    [
-    {
-        "name": "John",
-        "email": "johndoe@gmail.com",
-        "password": "1234",
-        "id": "0001",
-        "adminKey": "4000"
-    },
-    {
-        "name": "Jane",
-        "email": "janedoe@gmail.com",
-        "password": "1234",
-        "id": "0002",
-        "adminKey": "4000"
-    }
-   ]
-    ```
-
-3. Enter:
-    - **Email**
-    - **Password**
-    - **Admin Key**
-4. Upon successful login:
-    - Manage the library system.
-    - Add new books to the library.
-    - View and oversee user activities.
-
----
-
-## **Adding Books as an Admin**
-1. After logging in as an admin, navigate to the **Add Books Page**.
-2. Fill in the required details about the book:
-    - **Title**
-    - **Author**
-    - **Genre**
-    - **ISBN**
-    - **Image**
-3. Submit the form to add the book to the library's inventory.
-4. The newly added book will be available for users to borrow.
-
----
-
-## **Future Enhancements**
-- Add **search and filtering features** for books by advanced criteria.
-- Add a chatting system between user and admin for easier communication. 
-

@@ -1,13 +1,42 @@
-package com.example.demo.model;
+package com.example.demo.model.usermanagement;
 
 import java.util.HashMap;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Database;
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;
+
+/**
+ * Handles authentication for users and admins in the system.
+ * - Provides methods for logging in, registering, and exchanging tokens for
+ * user information.
+ * - Implements the `AuthenticationInterface`.
+ * 
+ * Key Methods:
+ * - `loginUser`: Authenticates a user based on email and password, returning a
+ * unique session token.
+ * - `loginAdmin`: Authenticates an admin based on email, password, and admin
+ * key, returning a unique session token.
+ * - `registerUser`: Registers a new user, ensuring the email is not already in
+ * use.
+ * - `exchange`: Retrieves a `Person` (user or admin) based on a session token.
+ * 
+ * Utilises:
+ * - `tokens`: A map of session tokens to user/admin identifiers.
+ * - `Database`: For retrieving and storing user and admin data.
+ * 
+ * Exceptions:
+ * - `AccountNotFoundException`: Thrown when a user or admin account is not
+ * found.
+ * - `IncorrectPasswordException`: Thrown when the provided password or admin
+ * key is incorrect.
+ * - `PersonExistException`: Thrown when trying to register a user with an
+ * existing email.
+ */
 
 @Service
 public class Authenticator implements AuthenticationInterface {
@@ -41,7 +70,7 @@ public class Authenticator implements AuthenticationInterface {
         }
 
         UUID uuid = UUID.randomUUID();
-        tokens.put(uuid.toString(), matchedAdmin.getEmail());
+        tokens.put(uuid.toString(), matchedAdmin.getId());
         return uuid.toString();
     }
 
@@ -59,7 +88,11 @@ public class Authenticator implements AuthenticationInterface {
     }
 
     public Person exchange(String uuid) {
-        return Database.findUser(tokens.get(uuid));
+        Person user = Database.findUser(tokens.get(uuid));
+        if (user == null) {
+            user = Database.findAdminById(tokens.get(uuid));
+        }
+        return user;
     }
 
 }

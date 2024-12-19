@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.loansystem;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,10 +26,6 @@ public class LoanPeriod {
     public static LocalDate parseDate(String s){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return LocalDate.parse(s, dtf);
-    }
-
-    public void extendLoan(int extraDays) { //If User wishes to extend loan and there is no reservation Admin should be able to do so
-        endDate = endDate.plusDays(extraDays);
     }
 
     public boolean isOverDue(LocalDate currentDate) { //Checks if the book is overdue
