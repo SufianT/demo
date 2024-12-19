@@ -51,7 +51,6 @@ public class BookController {
         List<Book> books = new ArrayList<>();
 
         for (var item : Database.getLibraryItems()) {
-            if (item.getCopies() > 0)
                 books.add(item.getBook());
         }
 
