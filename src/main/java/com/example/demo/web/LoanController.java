@@ -4,8 +4,7 @@ import com.example.demo.model.Database;
 import com.example.demo.model.exceptions.BookNotAvailableException;
 import com.example.demo.model.finesystem.FineManager;
 import com.example.demo.model.loansystem.LoanSystem;
-import com.example.demo.model.notification.BorrowNotifier;
-import com.example.demo.model.notification.FineNotifier;
+import com.example.demo.model.notifications.FineNotifier;
 import com.example.demo.model.usermanagement.Authenticator;
 import com.example.demo.model.usermanagement.Person;
 import com.example.demo.model.usermanagement.User;
@@ -78,7 +77,7 @@ public class LoanController {
         if (p instanceof User u) {
             try {
                 ls.borrow(u, body.isbn());
-                new BorrowNotifier(u, body.isbn());
+                new com.example.demo.model.notifications.BorrowNotifier(u, body.isbn());
                 return Map.of("success", true);
             } catch (BookNotAvailableException e) {
                 System.out.println(e);

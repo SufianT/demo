@@ -7,7 +7,7 @@ import com.example.demo.model.LibrarySystem;
 import com.example.demo.model.exceptions.AccountNotFoundException;
 import com.example.demo.model.exceptions.IncorrectPasswordException;
 import com.example.demo.model.exceptions.PersonExistException;
-import com.example.demo.model.notification.RegistrationNotifier;
+import com.example.demo.model.notifications.RegistrationNotifier;
 import com.example.demo.model.usermanagement.Admin;
 import com.example.demo.model.usermanagement.User;
 

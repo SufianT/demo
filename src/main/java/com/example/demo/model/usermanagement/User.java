@@ -3,7 +3,7 @@ package com.example.demo.model.usermanagement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.demo.model.notification.NotificationEvent;
+import com.example.demo.model.notifications.NotificationEvent;
 
 /**
  * Represents a user in the system, extending the `Person` class.

@@ -1,4 +1,4 @@
-package com.example.demo.model.notification;
+package com.example.demo.model.notifications;
 
 import java.util.ArrayList;
 import java.util.List;
