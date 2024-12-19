@@ -6,9 +6,14 @@ import com.example.demo.model.LibrarySystem;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Combinds the searchByISBN and searchByAuthorAndTitle
+and returns a List of string containing ISBN of wanted books.
+(After search)
+ */
+
 public class BookListCombinder {
     private LibrarySystem ls;
-    // private SearchInterface si;
 
     public BookListCombinder(LibrarySystem ls) {
         this.ls = ls;
