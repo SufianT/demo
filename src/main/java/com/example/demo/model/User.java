@@ -18,7 +18,7 @@ public class User extends Person {
 
     public User(String name, String email, String id, String password) {
         super(name, email, id, password);
-        this.logs = new ArrayList<>();
+        this.logs = new ArrayList<LoanLog>();
         this.loans = new ArrayList<>();
         this.saved = new ArrayList<>();
         this.notifications = new ArrayList<NotificationEvent>();
