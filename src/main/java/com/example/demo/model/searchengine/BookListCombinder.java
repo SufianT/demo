@@ -4,6 +4,9 @@ import com.example.demo.model.Book;
 import com.example.demo.model.LibrarySystem;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BookListCombinder {
     private LibrarySystem ls;
@@ -13,12 +16,12 @@ public class BookListCombinder {
         this.ls = ls;
     }
 
-    public ArrayList<String> bookListCombinder(String s){
+    public Set<String> bookListCombinder(String s){
         StringToWantedWordsInterface w = new StringToWantedWords();
         CalculateMostWantedBookInterface calc = new CalculateMostWantedBook();
         SearchInterface searchIF = new SearchEngine(w,calc);
 
-        ArrayList<String> isbn = new ArrayList<>();
+        Set<String> isbn = new HashSet<>();
         ArrayList<Book> books= new ArrayList<>();
         books=ls.getBookList();
         if(s.isBlank()){
