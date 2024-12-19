@@ -28,6 +28,10 @@ public class LoanPeriod {
         return LocalDate.parse(s, dtf);
     }
 
+    public void extendLoan(int extraDays) { //If User wishes to extend loan and there is no reservation Admin should be able to do so
+        endDate = endDate.plusDays(extraDays);
+    }
+
     public boolean isOverDue(LocalDate currentDate) { //Checks if the book is overdue
         return currentDate.isAfter(endDate);
     }

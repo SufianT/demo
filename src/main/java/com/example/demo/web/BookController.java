@@ -51,7 +51,7 @@ public class BookController {
         List<Book> books = new ArrayList<>();
 
         for (var item : Database.getLibraryItems()) {
-            books.add(item.getBook());
+                books.add(item.getBook());
         }
 
         return books;
