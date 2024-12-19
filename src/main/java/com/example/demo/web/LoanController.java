@@ -78,7 +78,7 @@ public class LoanController {
         if (p instanceof User u) {
             try {
                 ls.borrow(u, body.isbn());
-                new BorrowNotifier(u,body.isbn());
+                new BorrowNotifier(u, body.isbn());
                 return Map.of("success", true);
             } catch (BookNotAvailableException e) {
                 System.out.println(e);
@@ -114,6 +114,7 @@ public class LoanController {
         return List.of();
 
     }
+
     @PostMapping("/finesNotification")
     public void onDueFines(@RequestParam String token) {
         Person p = auth.exchange(token);
@@ -131,7 +132,6 @@ public class LoanController {
             }
         }
     }
-
 
     private record BodyOfBorrowOrReturnBook(String token, String isbn) {
     }
