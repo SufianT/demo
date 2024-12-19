@@ -1,1 +1,13 @@
-{"1234567890":["Loura Alammour: Vad gör du?","Admin: Inte så mycket"],"1111111111":["Loura: Hej jag behöver hjälp","Admin: Vad behöver du hjälp med?","Loura: Vilken bok borde jag låna?","Admin: The Great Gatsby är en bra bok","Loura: Ja tack för förslaget"]}
+{
+    "1234567890": [
+        "Loura Alammour: Vad gör du?",
+        "Admin: Inte så mycket"
+    ],
+    "1111111111": [
+        "Loura: Hej jag behöver hjälp",
+        "Admin: Vad behöver du hjälp med?",
+        "Loura: Vilken bok borde jag låna?",
+        "Admin: The Great Gatsby är en bra bok",
+        "Loura: Ja tack för förslaget"
+    ]
+}
