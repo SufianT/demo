@@ -42,8 +42,8 @@ public class Book {
 
     public String toString(){
         String bookString = title;
-        for (int i = 0; i<=authors.size()-1;i++){
-            title+=" "+authors.get(i);
+        for (int i = 0; i<authors.size();i++){
+            bookString+=" "+authors.get(i);
         }
         return bookString;
     }
