@@ -86,7 +86,6 @@ public class LoanController {
             }
         }
 
-        // figure out the error
         return Map.of("success", false, "message", "");
     }
 
