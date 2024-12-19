@@ -20,6 +20,9 @@ public class BookListCombinder {
 
         ArrayList<Book> books= new ArrayList<>();
         books=ls.getBookList();
+        if(s.isBlank()){
+            return books;
+        }
 
         ArrayList<Book> bookSet = new ArrayList<>();
         for (Book book : searchIF.searchByAuthorAndTitle(s,books)){
