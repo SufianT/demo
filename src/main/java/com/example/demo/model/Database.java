@@ -55,6 +55,17 @@ public class Database {
         return null;
     }
 
+    public static User findUserById(String id) {
+        ArrayList<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
+        });
+        for (User user : users) {
+            if (user.getId().equals(id)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public static boolean addUser(User user) {
         List<User> users = loadFromFile(usersFile, new TypeReference<ArrayList<User>>() {
         });
@@ -121,6 +132,16 @@ public class Database {
         return null;
     }
 
+    public static Admin findAdminById(String id) {
+        List<Admin> admins = loadFromFile(adminsFile, new TypeReference<ArrayList<Admin>>() {
+        });
+        for (Admin admin : admins) {
+            if (admin.getId().equals(id)) {
+                return admin;
+            }
+        }
+        return null;
+    }
 
     // Helpers
     private static List<LibraryItem> loadItems() {
