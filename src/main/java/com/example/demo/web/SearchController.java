@@ -1,21 +1,21 @@
 package com.example.demo.web;
 
 import com.example.demo.model.Book;
-import com.example.demo.model.searchengine.SearchCombined;
+import com.example.demo.model.searchengine.BookListCombinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 @RestController
 public class SearchController {
-    private SearchCombined s;
+    private BookListCombinder s;
     public SearchController(){
-        SearchCombined s = new SearchCombined();
+        BookListCombinder s = new BookListCombinder();
         this.s=s;
     }
     @GetMapping("/Search")
     public ArrayList<Book> search(String input){
-        return s.combinedSearch(input);
+        return s.BookListCombinder(input);
     }
 
 }

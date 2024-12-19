@@ -21,7 +21,7 @@ public class SearchEngine implements SearchInterface {
     }
     public ArrayList<Book> searchByAuthorAndTitle(String input, ArrayList<Book> books) {
 
-        return cI.sortHashMapByValue(cI.sortBooksFromSearch(wI.searchComplete(input,setTitleAuthor.setOfBooksToSetString(books),3),books));
+        return cI.sortHashMapByValue(cI.sortBooksFromSearch(wI.searchComplete(input,setTitleAuthor.setOfBooksToSetString(books),2),books));
 
     }
 

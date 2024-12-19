@@ -72,7 +72,7 @@ class CalculateMostWantedBookTest {
         assertEquals(false,hashMap.isEmpty());
         System.out.println(hashMap.entrySet());
         //assertEquals(false,calc.sortBooksFromSearch(hashMap,ls.getBookList()).isEmpty());
-        //assertEquals(false,calc.sortHashMapByValue(calc.sortBooksFromSearch(hashMap,ls.getBookList())).isEmpty());
+        assertEquals(false,calc.sortHashMapByValue(calc.sortBooksFromSearch(hashMap,ls.getBookList())).isEmpty());
 
 
 
@@ -105,5 +105,25 @@ class CalculateMostWantedBookTest {
         assertEquals(false,calc.sortHashMapByValue(bookScores));
 
     }
+    @Test
+    void calculationsufi() {
+        String input = " Picture ".toLowerCase();
+        Authenticator aut = new Authenticator();
+        LibrarySystem ls = new LibrarySystem(aut);
+        SetOfBookstoString setToString = new SetOfBookstoString();
+        StringToWantedWords sTWW = new StringToWantedWords();
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        CalculateMostWantedBook calc = new CalculateMostWantedBook();
 
+        hashMap = sTWW.searchComplete(input, setToString.setOfBooksToSetString(ls.getBookList()), 2);
+        assertEquals(false, hashMap.isEmpty());
+        System.out.println(hashMap.entrySet());
+        String[] words = input.split("\\s+");
+        for (String wordSearched : words) {
+            System.out.println(wordSearched);
+        }
+        //System.out.println(setToString.setOfBooksToSetString(ls.getBookList()));
+        //assertEquals(false,calc.sortBooksFromSearch(hashMap,ls.getBookList()).isEmpty());
+        assertEquals(1, calc.sortHashMapByValue(calc.sortBooksFromSearch(hashMap, ls.getBookList())).size());
+    }
 }
