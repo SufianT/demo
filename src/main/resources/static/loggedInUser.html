@@ -146,6 +146,9 @@
             }).then((response) => response.json())
                 .then((data) => {
                     if (!data.success) {
+                        if(data.message == "book not available"){
+                            alert("Book is currently out of stock!")
+                        }
                         console.log(data.message);
                         return;
                     }
