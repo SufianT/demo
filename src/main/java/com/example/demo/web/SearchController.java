@@ -1,24 +1,21 @@
 package com.example.demo.web;
 
-import com.example.demo.model.searchengine.SearchEngine;
-import com.example.demo.model.searchengine.SearchInterface;
+import com.example.demo.model.Book;
+import com.example.demo.model.searchengine.SearchCombined;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
-
+import java.util.ArrayList;
 @RestController
 public class SearchController {
-    private SearchInterface se;
-
-    public SearchController(SearchEngine se) {
-        this.se = se;
+    private SearchCombined s;
+    public SearchController(){
+        SearchCombined s = new SearchCombined();
+        this.s=s;
+    }
+    @GetMapping("/Search")
+    public ArrayList<Book> search(String input){
+        return s.combinedSearch(input);
     }
 
-    @GetMapping("/search")
-    public Set<String> search(@RequestParam String input) {
-        // Search by everything
-        return se.find(input);
-    }
 }
