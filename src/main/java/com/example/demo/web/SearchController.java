@@ -1,23 +1,24 @@
 package com.example.demo.web;
 
-import com.example.demo.model.Book;
-import com.example.demo.model.LibrarySystem;
-import com.example.demo.model.searchengine.BookListCombinder;
+import com.example.demo.model.searchengine.SearchEngine;
+import com.example.demo.model.searchengine.SearchInterface;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.Set;
+
 @RestController
 public class SearchController {
-    private BookListCombinder s;
-    public SearchController(LibrarySystem librarySystem){
-        BookListCombinder s = new BookListCombinder(librarySystem);
-        this.s=s;
+    private SearchInterface se;
+
+    public SearchController(SearchEngine se) {
+        this.se = se;
     }
 
-    @GetMapping("/Search")
-    public ArrayList<String> search(String input){
-        return s.bookListCombinder(input);
+    @GetMapping("/search")
+    public Set<String> search(@RequestParam String input) {
+        // Search by everything
+        return se.find(input);
     }
-
 }
