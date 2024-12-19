@@ -11,10 +11,6 @@ public class Observable {
         observers.add(observer);
     }
 
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
     public void notifyObservers(NotificationEvent event) {
         for (Observer observer : observers) {
             observer.update(event);

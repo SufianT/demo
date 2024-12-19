@@ -12,9 +12,11 @@ import java.util.Map;
 @RestController
 public class NotificationController {
     Authenticator auth;
-    public NotificationController(Authenticator auth){
-        this.auth=auth;
+
+    public NotificationController(Authenticator auth) {
+        this.auth = auth;
     }
+
     @GetMapping("/notification")
     public List<NotificationEvent> onGetSaved(@RequestParam String token) {
         Person p = auth.exchange(token);
@@ -25,6 +27,7 @@ public class NotificationController {
 
         return List.of();
     }
+
     @DeleteMapping("/notification/delete")
     public Map<String, Object> deleteNotification(@RequestParam String token, @RequestParam long timestamp) {
         Person p = auth.exchange(token);
@@ -58,7 +61,7 @@ public class NotificationController {
             for (NotificationEvent notification : notifications) {
                 if (notification.getTimestamp() == timestamp) {
                     notification.setRead(true); // Set the notification as read
-                    Database.updateUser(u);     // Persist changes to the database
+                    Database.updateUser(u); // Persist changes to the database
                     return Map.of("success", true, "message", "Notification marked as read.");
                 }
             }
@@ -67,6 +70,7 @@ public class NotificationController {
 
         return Map.of("success", false, "message", "Invalid token or user.");
     }
+
     @GetMapping("/notification/hasUnread")
     public Map<String, Object> hasUnreadNotifications(@RequestParam String token) {
         Person p = auth.exchange(token);
@@ -78,8 +82,5 @@ public class NotificationController {
 
         return Map.of("success", false, "message", "Invalid user");
     }
-
-
-
 
 }

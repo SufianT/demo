@@ -9,7 +9,7 @@ public class NotificationManager implements Observer {
     @Override
     public void update(NotificationEvent event) {
 
-        Person p= Database.getPersonById(event.getId());
+        Person p = Database.getPersonById(event.getId());
         if (p instanceof User user) {
             // Add the notification to the user
             user.getNotifications().add(event);
@@ -20,6 +20,5 @@ public class NotificationManager implements Observer {
             System.out.println("Notification added for user: " + user.getName());
         }
     }
-
 
 }

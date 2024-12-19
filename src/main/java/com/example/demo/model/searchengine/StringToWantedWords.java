@@ -6,7 +6,6 @@ import java.util.Set;
 public class StringToWantedWords implements StringToWantedWordsInterface {
     public static HashMap<String, Integer> resultFromSearch = new HashMap<>();
 
-
     public HashMap<String, Integer> searchComplete(String string, Set<String> list, int searchAcceptanceLevel) {
 
         HashMap<String, Integer> resultFromSearch = new HashMap<>();
@@ -14,7 +13,7 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
         String[] words = string.split("\\s+");
         for (String wordSearched : words) {
             for (String word : list) {
-                if(!wordSearched.isBlank()) {
+                if (!wordSearched.isBlank()) {
                     int distance = getDistance(wordSearched, word);
                     if (distance <= searchAcceptanceLevel) {
                         resultFromSearch.putIfAbsent(word, searchAcceptanceLevel - distance + 1);
@@ -36,13 +35,14 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
     }
 
     private static int getDistance(String word1, String word2) { /*
-                                                                 * This code should return the shortest distance between
-                                                                 * two words using
-                                                                 * substitution, addition or deletion. If you want to
-                                                                 * understand it better
-                                                                 * please watch the video bellow:
-                                                                 * https://www.youtube.com/watch?v=d-Eq6x1yssU
-                                                                 */
+                                                                  * This code should return the shortest distance
+                                                                  * between
+                                                                  * two words using
+                                                                  * substitution, addition or deletion. If you want to
+                                                                  * understand it better
+                                                                  * please watch the video bellow:
+                                                                  * https://www.youtube.com/watch?v=d-Eq6x1yssU
+                                                                  */
         int lengthWord1 = word1.length();
         int lengthWord2 = word2.length();
 
