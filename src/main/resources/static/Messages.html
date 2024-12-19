@@ -109,7 +109,6 @@
                 <button class="btn btn-outline-light" type="submit" id="searchButton">Search</button>
             </form>
         </div>
-
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a class="nav-link" href="Notifications.html" style="color: lightgray;">
@@ -221,7 +220,6 @@
     // Attach events to admin chat list
     function attachChatListEvents() {
         const chatList = document.getElementById('chatList');
-        const chatBox = document.getElementById('chatBox');
         const chatBoxText = document.getElementById('chat-box-text');
         const chatBoxSend = document.getElementById('chat-box-send');
 
@@ -236,8 +234,13 @@
             }
         });
 
-        chatBoxSend.addEventListener('click', (e) => {
-            sendMessageAdmin(chatBoxText.value.trim(), selectedUserId);
+        chatBoxSend.addEventListener('click', () => {
+            const message = chatBoxText.value.trim();
+            if (message) {
+                sendMessageAdmin(message, selectedUserId);
+                chatBoxText.value = ''; // Clear input after sending
+                appendMessageToChatBox('You', message); // Show the message immediately
+            }
         });
     }
 
@@ -259,18 +262,16 @@
         const chatBox = document.getElementById('chatBox');
         chatBox.innerHTML = ''; // Clear existing messages
 
-        const uri = userId === undefined ? '/api/chat/messages?token='+localStorage.token : '/api/chat/admin-chat-messages?token='+localStorage.token+'&userId='+userId;
+        const uri = userId === undefined
+            ? '/api/chat/messages?token=' + localStorage.token
+            : '/api/chat/admin-chat-messages?token=' + localStorage.token + '&userId=' + userId;
 
-        // Fetch the Chat.json file and check against its structure
         fetch(uri)
             .then(res => res.json())
-            .then(data => {
-                let messages = data;
-
+            .then(messages => {
                 if (messages.length > 0) {
-                    // Display the messages
                     chatBox.innerHTML = messages.map(messageStr => {
-                        const [sender, message] = messageStr.split(': '); // Split the sender and message
+                        const [sender, message] = messageStr.split(': ');
                         const isSentByUser = sender === 'You'; // Assuming "You" represents the logged-in user
                         return `
                             <div class="message ${isSentByUser ? 'sent' : 'received'}">
@@ -288,25 +289,19 @@
             .catch(err => console.error('Error fetching messages:', err));
     }
 
-    // This function gets the current user's ID from the JSON structure.
-    function getUserIdFromJSON(data) {
-        // Assuming the user object within the `Chat.json` contains some recognizable property to identify the user.
-        // You can modify this function as necessary based on how you identify a user (e.g., match `localStorage.token` with a user ID).
+    // Function to append a new message to the chat box without refreshing
+    function appendMessageToChatBox(sender, message) {
+        const chatBox = document.getElementById('chatBox');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender === 'You' ? 'sent' : 'received'}`;
+        messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatBox.appendChild(messageDiv);
 
-        // Check if the `localStorage` contains token or user data that matches in `Chat.json`
-        const token = localStorage.getItem('token');
-
-        // Iterate over the keys of the JSON data to find the matching user ID
-        for (let userId in data) {
-            if (data[userId].some(message => message.includes(token))) { // Match token to user activity, or any other logic
-                return userId; // Return the matched userId from the JSON file
-            }
-        }
-
-        return null; // Return null if no user ID is found, you can modify this part as necessary
+        // Scroll to the bottom to show the latest message
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // Function to send a message
+    // Attach event for regular users to send a message
     function attachSendMessageEvent() {
         const sendMessageBtn = document.getElementById('sendMessageBtn');
         const messageInput = document.getElementById('messageInput');
@@ -316,26 +311,25 @@
             if (message) {
                 sendMessage(message);
                 messageInput.value = ''; // Clear input after sending
+                appendMessageToChatBox('You', message); // Show the message immediately
             }
         });
     }
 
-    // Send a message to the server (to the appropriate userId)
+    // Function to send a message for regular users
     function sendMessage(message) {
-        const userId = currentUserId || getUserIdFromJSON(); // Use dynamic user ID
-
-        fetch(`/api/chat/send?token=${localStorage.token}&userId=${userId}`, {
+        fetch(`/api/chat/send?token=${localStorage.token}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ message })
         })
-            .then(res => res.json())
-            .then(() => fetchMessages(userId))  // Fetch the updated messages
+            .then(() => fetchMessages()) // Optionally refresh messages
             .catch(err => console.error('Error sending message:', err));
     }
 
+    // Function to send a message for admins
     function sendMessageAdmin(message, userId) {
         fetch(`/api/chat/send-admin?token=${localStorage.token}&recipient=${userId}`, {
             method: 'POST',
@@ -344,8 +338,7 @@
             },
             body: JSON.stringify({ message })
         })
-            .then(res => res.json())
-            .then(() => fetchMessages(userId))  // Fetch the updated messages
+            .then(() => fetchMessages(userId)) // Optionally refresh messages
             .catch(err => console.error('Error sending message:', err));
     }
 
@@ -355,7 +348,6 @@
         .then(userRole => renderChatPage(userRole))
         .catch(err => console.error('Error fetching user role:', err));
 </script>
-
 
 
 </body>
