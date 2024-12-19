@@ -14,12 +14,9 @@ public class StringToWantedWords implements StringToWantedWordsInterface {
         for (String wordSearched : words) {
             for (String word : list) {
                 if (!wordSearched.isBlank()) {
-                    int distance = getDistance(wordSearched, word);
+                    int distance = getDistance(wordSearched.toLowerCase(), word);
                     if (distance <= searchAcceptanceLevel) {
                         resultFromSearch.putIfAbsent(word, searchAcceptanceLevel - distance + 1);
-                        // TODO: This will not get the optimal correct word if it finds a longer path
-                        // before the shorter.
-                        // TODO: Max(something something)
 
                         // resultFromSearch will give the word and the difference between the
                         // acceptanceLevel and the distance. Meaning that the higher the number the

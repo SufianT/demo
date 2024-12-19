@@ -11,6 +11,8 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchEngineTest {
+
+
     @Test
     void searchEngingeTest(){
         String input = "the Picture ".toLowerCase();

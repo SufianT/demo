@@ -34,11 +34,11 @@ public class BookListCombinder {
         for (Book book : searchIF.searchByAuthorAndTitle(s, books)) {
             bookSet.add(book);
         }
-        if (searchIF.searchByAuthorAndTitle(s, books).size() == 1) {
-            if (bookSet.containsAll(searchIF.searchByAuthorAndTitle(s, books))) {
-                bookSet.remove(searchIF.searchByAuthorAndTitle(s, books).get(0));
+        if (searchIF.searchByISBN(s, books).size() == 1) {
+            if (bookSet.contains(searchIF.searchByISBN(s, books))) {
+                bookSet.remove(searchIF.searchByISBN(s, books).get(0));
             }
-            bookSet.addFirst(searchIF.searchByAuthorAndTitle(s, books).get(0));
+            bookSet.addFirst(searchIF.searchByISBN(s, books).get(0));
         }
         for (Book book : bookSet) {
             isbn.add(book.getISBN());
