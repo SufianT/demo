@@ -1,6 +1,7 @@
 package com.example.demo.model.bookmanager;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents a book with details such as title, authors, ISBN, genre, and an optional image.
@@ -47,11 +48,7 @@ public class Book {
     }
 
     public String toString(){
-        String bookString = title;
-        for (int i = 0; i<=authors.size()-1;i++){
-            title+=" "+authors.get(i);
-        }
-        return bookString;
+        return authors.stream().map(author -> " " + author).collect(Collectors.joining("", title, ""));
     }
 
     @Override
