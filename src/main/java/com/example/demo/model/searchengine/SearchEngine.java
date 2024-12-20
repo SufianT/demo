@@ -1,60 +1,45 @@
 package com.example.demo.model.searchengine;
 
-import com.example.demo.model.Database;
 import com.example.demo.model.bookmanager.Book;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class SearchEngine implements SearchInterface {
-    // word -> [ISBNS]
-    HashMap<String, List<String>> words = new HashMap<>();
 
-    public SearchEngine() {
-        for (Book book : Database.getBookList()) {
-            // ISBN
-            distribute(book.getISBN(), book);
+    private StringToWantedWordsInterface wI;
+    private CalculateMostWantedBookInterface cI;
+    private SetOfBooksToSetStringInterface setTitleAuthor;
+    private SetOfBooksToSetStringInterface setISBN;
 
-            // whole title
-            distribute(book.getTitle(), book);
+    public SearchEngine(StringToWantedWordsInterface w, CalculateMostWantedBookInterface c) {
+        setISBN = new SetOfBooksISBN();
+        setTitleAuthor = new SetOfBookstoString();
+        this.wI = w;
+        this.cI = c;
+    }
 
-            // parts of the title
-            for (String part : book.getTitle().split("\\s+"))
-                distribute(part, book);
+    public ArrayList<Book> searchByAuthorAndTitle(String input, ArrayList<Book> books) {
 
-            // authors
-            for (String author : book.getAuthors()) {
-                // whole author name
-                distribute(author, book);
+        return cI.sortHashMapByValue(cI
+                .sortBooksFromSearch(wI.searchComplete(input, setTitleAuthor.setOfBooksToSetString(books), 2), books));
 
-                // part of author names
-                for (String part : author.split("\\s+"))
-                    distribute(part, book);
+    }
+
+    public ArrayList<Book> searchByISBN(String input, ArrayList<Book> books) {
+        ArrayList<Book> bookFromISBNSearch = new ArrayList<>();
+        if (wI.searchComplete(input, setISBN.setOfBooksToSetString(books), 0).isEmpty()) {
+            return bookFromISBNSearch;
+        }
+        for (String key : wI.searchComplete(input, setISBN.setOfBooksToSetString(books), 0).keySet()) {
+            String searchedISBN = key;
+            for (Book book : books) {
+                if (book.getISBN() == searchedISBN) {
+                    bookFromISBNSearch.add(book);
+                    return bookFromISBNSearch;
+                }
             }
         }
+        return bookFromISBNSearch;
     }
 
-    private void distribute(String input, Book book) {
-        input = input.toUpperCase();
-        List<String> items = words.get(input);
-        if (items == null) {
-            items = new ArrayList<>();
-            items.add(book.getISBN());
-            words.put(input, items);
-        } else
-            items.add(book.getISBN());
-    }
-
-    @Override
-    public Set<String> find(String input) {
-        Set<String> set = new LinkedHashSet<String>();
-        for (String part : input.strip().toUpperCase().split("\\s+")) {
-            List<String> isbns = words.get(part);
-            if (isbns != null)
-                set.addAll(isbns);
-        }
-        return set;
-    }
 }
