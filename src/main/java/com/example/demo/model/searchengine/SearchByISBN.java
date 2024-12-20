@@ -1,31 +1,21 @@
 package com.example.demo.model.searchengine;
 
 import com.example.demo.model.bookmanager.Book;
+import com.example.demo.model.searchengine.*;
 
 import java.util.ArrayList;
 
-public class SearchEngine implements SearchInterface {
+public class SearchByISBN implements SearchStrategy {
 
     private StringToWantedWordsInterface wI;
-    private CalculateMostWantedBookInterface cI;
-    private SetOfBooksToSetStringInterface setTitleAuthor;
     private SetOfBooksToSetStringInterface setISBN;
 
-    public SearchEngine(StringToWantedWordsInterface w, CalculateMostWantedBookInterface c) {
+    public SearchByISBN(StringToWantedWordsInterface w, CalculateMostWantedBookInterface c) {
         setISBN = new SetOfBooksISBN();
-        setTitleAuthor = new SetOfBookstoString();
         this.wI = w;
-        this.cI = c;
     }
 
-    public ArrayList<Book> searchByAuthorAndTitle(String input, ArrayList<Book> books) {
-
-        return cI.sortHashMapByValue(cI
-                .sortBooksFromSearch(wI.searchComplete(input, setTitleAuthor.setOfBooksToSetString(books), 2), books));
-
-    }
-
-    public ArrayList<Book> searchByISBN(String input, ArrayList<Book> books) {
+    public ArrayList<Book> search(String input, ArrayList<Book> books) {
         ArrayList<Book> bookFromISBNSearch = new ArrayList<>();
         if (wI.searchComplete(input, setISBN.setOfBooksToSetString(books), 0).isEmpty()) {
             return bookFromISBNSearch;
@@ -41,5 +31,4 @@ public class SearchEngine implements SearchInterface {
         }
         return bookFromISBNSearch;
     }
-
 }

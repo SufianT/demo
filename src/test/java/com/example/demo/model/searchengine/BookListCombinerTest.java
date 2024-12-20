@@ -21,10 +21,10 @@ class BookListCombinerTest {
         lsArray = ls.getBookList();
         BookListCombiner blc = new BookListCombiner(ls);
 
-        SearchEngine se = new SearchEngine(sTWW, calc);
+        SearchStrategy s = new SearchByISBN(sTWW, calc);
 
         // ISBN TESTER
-        assertEquals(false, se.searchByISBN(input, lsArray).isEmpty());
+        assertEquals(false, s.search(input, lsArray).isEmpty());
         assertEquals(false, blc.bookListCombiner(input).isEmpty());
         // first in list
         assertTrue(input.contains(blc.bookListCombiner(input).get(0)));

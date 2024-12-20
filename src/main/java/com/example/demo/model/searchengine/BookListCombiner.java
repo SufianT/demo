@@ -22,7 +22,8 @@ public class BookListCombiner {
     public List<String> bookListCombiner(String s) {
         StringToWantedWordsInterface w = new StringToWantedWords();
         CalculateMostWantedBookInterface calc = new CalculateMostWantedBook();
-        SearchInterface searchIF = new SearchEngine(w, calc);
+        SearchStrategy searchISBN = new SearchByISBN(w, calc);
+        SearchStrategy searchAuthorAndTitle = new SearchByAuthorAndTitle(w, calc);
 
         List<String> isbn = new ArrayList<>();
         ArrayList<Book> books = ls.getBookList();
@@ -36,16 +37,17 @@ public class BookListCombiner {
 
         ArrayList<Book> bookSet = new ArrayList<>();
 
-        for (Book book : searchIF.searchByAuthorAndTitle(s, books)) {
+        for (Book book : searchAuthorAndTitle.search(s, books)) {
             bookSet.add(book);
         }
 
-        if (searchIF.searchByISBN(s, books).size() == 1) {
-            Book isbnBook = searchIF.searchByISBN(s, books).get(0); // Extract the single Book
-            if (bookSet.contains(isbnBook)) {
-                bookSet.remove(isbnBook);
+        if (!searchISBN.search(s, books).isEmpty()) {
+            for (Book book : searchISBN.search(s, books)){
+                if (bookSet.contains(book)) {
+                    bookSet.remove(book);
+                }
+                bookSet.add(0, book);
             }
-            bookSet.add(0, isbnBook); // Add at the start of the list
         }
 
         for (Book book : bookSet) {

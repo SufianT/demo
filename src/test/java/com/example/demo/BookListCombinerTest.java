@@ -2,10 +2,7 @@ package com.example.demo;
 
 import com.example.demo.model.LibrarySystem;
 import com.example.demo.model.bookmanager.Book;
-import com.example.demo.model.searchengine.BookListCombiner;
-import com.example.demo.model.searchengine.CalculateMostWantedBook;
-import com.example.demo.model.searchengine.SearchEngine;
-import com.example.demo.model.searchengine.StringToWantedWords;
+import com.example.demo.model.searchengine.*;
 import com.example.demo.model.usermanagement.Authenticator;
 
 import org.junit.jupiter.api.Test;
@@ -26,13 +23,13 @@ class BookListCombinerTest {
         lsArray = ls.getBookList();
         BookListCombiner blc = new BookListCombiner(ls);
 
-        SearchEngine se = new SearchEngine(sTWW, calc);
+        SearchStrategy s = new SearchByISBN(sTWW, calc);
 
         // ISBN TESTER
-        assertEquals(false, se.searchByISBN(input, lsArray).isEmpty());
+        assertEquals(false, s.search(input, lsArray).isEmpty());
         assertEquals(false, blc.bookListCombiner(input).isEmpty());
         // first in list
-        assertTrue(input.contains(blc.bookListCombiner(input).get(0)));
+        assertTrue(input.contains(blc.bookListCombiner(input).getFirst()));
     }
 
     @Test
@@ -42,6 +39,6 @@ class BookListCombinerTest {
         LibrarySystem ls = new LibrarySystem(aut);
         BookListCombiner blc = new BookListCombiner(ls);
 
-        assertEquals("9780061120084", blc.bookListCombiner(input).get(0));
+        assertEquals("9780061120084", blc.bookListCombiner(input).getFirst());
     }
 }

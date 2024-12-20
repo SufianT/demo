@@ -20,8 +20,8 @@ class SearchEngineTest {
 
         ArrayList<Book> lsarray = ls.getBookList();
 
-        SearchEngine se = new SearchEngine(sTWW, calc);
+        SearchStrategy s = new SearchByISBN(sTWW, calc);
         // assertEquals(1,se.searchByAuthorAndTitle(input,lsarray));
-        assertEquals(1, se.searchByISBN("9780451524935", lsarray).size());
+        assertEquals(1, s.search("9780451524935", lsarray).size());
     }
 }
