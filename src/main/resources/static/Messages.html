@@ -8,6 +8,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Chat | BookHaven</title>
+    <script>
+        function updateNavbarLink() {
+            const navbarBrand = document.querySelector('.navbar-brand');
+            console.log("in function");
+
+            if (localStorage.token) {
+
+                // If a token exists, assume the user is a regular user
+                navbarBrand.href = 'loggedInUser.html';
+            } else {
+                // If no token exists, assume the user is an admin
+                navbarBrand.href = 'loggedInAdmin.html';
+            }
+        }
+
+        // Run the function after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', updateNavbarLink);
+    </script>
     <style>
         .chat-list {
             max-width: 300px;
@@ -335,7 +353,6 @@
         .then(userRole => renderChatPage(userRole))
         .catch(err => console.error('Error fetching user role:', err));
 </script>
-<script src="JavaScript/NotificationBell.js"></script>
 
 
 </body>
