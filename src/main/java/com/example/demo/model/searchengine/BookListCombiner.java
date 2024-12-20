@@ -13,7 +13,7 @@ and returns a List of string containing ISBN of wanted books.
  */
 
 public class BookListCombiner {
-    private LibrarySystem ls;
+    private final LibrarySystem ls;
 
     public BookListCombiner(LibrarySystem ls) {
         this.ls = ls;
@@ -37,9 +37,7 @@ public class BookListCombiner {
 
         ArrayList<Book> bookSet = new ArrayList<>();
 
-        for (Book book : searchAuthorAndTitle.search(s, books)) {
-            bookSet.add(book);
-        }
+        bookSet.addAll(searchAuthorAndTitle.search(s, books));
 
         if (!searchISBN.search(s, books).isEmpty()) {
             for (Book book : searchISBN.search(s, books)){

@@ -41,4 +41,5 @@ class BookListCombinerTest {
 
         assertEquals("9780061120084", blc.bookListCombiner(input).getFirst());
     }
+
 }

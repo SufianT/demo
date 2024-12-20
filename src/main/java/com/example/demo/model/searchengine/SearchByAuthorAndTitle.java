@@ -1,7 +1,6 @@
 package com.example.demo.model.searchengine;
 
 import com.example.demo.model.bookmanager.Book;
-import com.example.demo.model.searchengine.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,9 +8,9 @@ import java.util.Set;
 
 public class SearchByAuthorAndTitle implements SearchStrategy {
 
-    private StringToWantedWordsInterface wI;
-    private CalculateMostWantedBookInterface cI;
-    private SetOfBooksToSetStringInterface setTitleAuthor;
+    private final StringToWantedWordsInterface wI;
+    private final CalculateMostWantedBookInterface cI;
+    private final SetOfBooksToSetStringInterface setTitleAuthor;
 
     public SearchByAuthorAndTitle(StringToWantedWordsInterface w, CalculateMostWantedBookInterface c) {
         setTitleAuthor = new SetOfBookstoString();

@@ -49,4 +49,17 @@ class SearchInterfaceTest {
         assertTrue(s.search("George Orwell", lsarray).getFirst().getAuthors().contains("George Orwell"));
         //Could get an error if a Title contains George Orwell
     }
+    @Test
+    void searchEngingeTest() {
+        Authenticator aut = new Authenticator();
+        LibrarySystem ls = new LibrarySystem(aut);
+        StringToWantedWords sTWW = new StringToWantedWords();
+        CalculateMostWantedBook calc = new CalculateMostWantedBook();
+
+        ArrayList<Book> lsarray = ls.getBookList();
+
+        SearchStrategy s = new SearchByISBN(sTWW, calc);
+        // assertEquals(1,se.searchByAuthorAndTitle(input,lsarray));
+        assertEquals(1, s.search("9780451524935", lsarray).size());
+    }
 }
