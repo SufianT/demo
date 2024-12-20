@@ -1,7 +1,7 @@
 package com.example.demo.model.searchengine;
 
-import com.example.demo.model.Authenticator;
-import com.example.demo.model.Book;
+import com.example.demo.model.usermanagement.Authenticator;
+import com.example.demo.model.bookmanager.Book;
 import com.example.demo.model.LibrarySystem;
 import org.junit.jupiter.api.Test;
 
